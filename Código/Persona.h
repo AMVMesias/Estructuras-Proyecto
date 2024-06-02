@@ -22,9 +22,9 @@ class Persona{
 		
 	Persona buscarPersona(string);
     bool validarPersona_userPswd(Persona, Persona);
-    bool validarDuplicados(string);
-    bool validarDatosVacios(string,string);
-    bool crearCuenta(Persona);
+    bool validarDuplicados(Persona&,Persona&);
+    bool validarDatosVacios(Persona&);
+    bool crearCuenta(Persona&);
     void verPersonas();
     bool obtenerDatos(int, Persona&);
     void actualizarDatos(Persona);

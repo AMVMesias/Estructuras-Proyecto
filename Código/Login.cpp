@@ -40,7 +40,14 @@ void Login::crearCuenta(){
 	cout<<"Clave : ";
 	getline(cin,cad);
 	aux.setPswd(cad);
-	aux.actualizarDatos(aux);
+	if(aux.crearCuenta(aux))
+	{
+		aux.actualizarDatos(aux);
+	}
+	else{
+		cout<<"ERROR INTENTE NUEVAMENTE"<<endl;
+	}	
+	
 }
 
 void Login::iniciarSesion(){

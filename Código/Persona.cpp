@@ -35,22 +35,48 @@ bool Persona::validarPersona_userPswd(Persona aux, Persona aux1)
 {
     bool a = false;
     if (aux.getCedula() == aux1.getCedula() && aux.getContras() == aux1.getContras())
-    {
+    {  
         a = true;
     }
     return a;
 }
 
-bool Persona::validarDuplicados(string)
+//validamos que no ingresen 2 veces uns misma cedula, en este caso cumple rol de id.
+bool Persona::validarDuplicados(Persona& auxP, Persona& auxP2)
 {
+	bool dup=false;
+	if(auxP.getCedula()==auxP2.getCedula())
+	{
+		dup=true;
+	}
+	return dup;
 }
 
-bool Persona::validarDatosVacios(string, string)
+//validar los datos vacios
+bool Persona::validarDatosVacios(Persona& auxP)
 {
+	bool dV=false;
+	if(auxP.getNombre().empty()||auxP.getCedula().empty()||auxP.getContras().empty()){
+		dV=true;
+	}
+	return dV;
 }
 
-bool Persona::crearCuenta(Persona)
+bool Persona::crearCuenta(Persona& auxP)
 {
+	bool Cc=false;
+	if(validarDatosVacios(auxP)){
+		cout<<"No puede existir datos vacios "<<endl;
+	}
+	else{
+		if(obtenerDatos(2,auxP))
+		{
+			cout<<"Se ha encontrado un ID duplicado, vuelva a intentarlo "<<endl;
+		}else{
+			Cc=true;
+		}
+	}
+	return Cc;
 }
 
 void Persona::verPersonas()
@@ -90,12 +116,16 @@ bool Persona::obtenerDatos(int val, Persona& auxP)
                 }else if (n == 2)
                 {
                     per.setPswd(sep);
-                    if (val==1)
-                    {
+                    if(ab==false && val==1){
                     	ab = validarPersona_userPswd(auxP, per);
-                    }
-
-                
+                    	
+					}  
+					
+					else if (val==2)
+                    {
+                    	ab= validarDuplicados(auxP,per);
+					}
+					
                 }
 
                 /*if (n == 2 && val == 1)
