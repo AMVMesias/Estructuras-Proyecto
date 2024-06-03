@@ -2,32 +2,32 @@
 
 #include <iostream>
 
-template<typename NODETYPE>
+template<typename NODO>
 class List;
 
-template<typename NODETYPE>
+template<typename NODO>
 class Node
 {
-    friend class List<NODETYPE>;
+    friend class List<NODO>;
 
 public:
-    explicit Node(const NODETYPE& info)
+    explicit Node(const NODO& info)
         : data(info), next(nullptr), prev(nullptr) {}
 
-    NODETYPE getData() const { return data; }
+    NODO getData() const { return data; }
 
-    Node<NODETYPE>* getNext() const { return next; }
+    Node<NODO>* getNext() const { return next; }
 
-    Node<NODETYPE>* getPrev() const { return prev; }
+    Node<NODO>* getPrev() const { return prev; }
 
-    void setNext(Node<NODETYPE>* newNext) { next = newNext; }
+    void setNext(Node<NODO>* newNext) { next = newNext; }
 
-    void setPrev(Node<NODETYPE>* newPrev) { prev = newPrev; }
+    void setPrev(Node<NODO>* newPrev) { prev = newPrev; }
 
-    void printData() const { std::cout << data << '\n'; }
+    void mostrarDatos() const { std::cout << data << '\n'; }
 
 private:
-    NODETYPE data;
-    Node<NODETYPE>* next;
-    Node<NODETYPE>* prev;
+    NODO data;
+    Node<NODO>* next;
+    Node<NODO>* prev;
 };

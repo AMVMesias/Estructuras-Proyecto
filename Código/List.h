@@ -1,8 +1,7 @@
-#pragma once
 #include <iostream>
 #include "Node.h"
 
-template<typename NODETYPE>
+template<typename NODO>
 class List
 {
 public:
@@ -16,8 +15,8 @@ public:
         {
             std::cout << "Destruyendo nodos... \n";
 
-            Node<NODETYPE>* actual = primero;
-            Node<NODETYPE>* temp = nullptr;
+            Node<NODO>* actual = primero;
+            Node<NODO>* temp = nullptr;
 
             while (actual!= nullptr)
             {
@@ -39,22 +38,23 @@ public:
         }
 
 
-    void insertLast(const NODETYPE& value)
-    {
-        Node<NODETYPE> *newNode = getNewNode(value);
+   void insertLast(const NODO& obj)
+   {
+        Node<NODO> *nuevoNodo = getNewNode(obj);
 
         if (isEmpty())
         {
-            primero = newNode;
-            ultimo = newNode;
+            primero = nuevoNodo;
+            ultimo = nuevoNodo;
         }
         else
         {
-            newNode->setPrev(ultimo);
-            ultimo->setNext(newNode);
-            ultimo = newNode;
+            ultimo->setNext(nuevoNodo);
+            nuevoNodo->setPrev(ultimo);
+            ultimo = nuevoNodo;
         }
-    }
+        ultimo->setNext(nullptr); 
+        }
 
     bool isEmpty() const { return primero == nullptr; }
 
@@ -62,11 +62,11 @@ public:
     {
         if (isEmpty()) 
         {
-            std::cout << "Conjunto vacío\n";
+            std::cout << "Conjunto Vacío\n";
             return;
         }
 
-        Node<NODETYPE>* actual = primero;
+        Node<NODO>* actual = primero;
         std::cout << "La lista es: ";
         while (actual!= nullptr)
         {
@@ -77,7 +77,7 @@ public:
         std::cout << "\n\n";
     }
 
-    Node<NODETYPE>* getLast() const {
+    Node<NODO>* getLast() const {
         if (isEmpty()) {
             throw std::runtime_error("La lista está vacía");
         }
@@ -85,12 +85,12 @@ public:
     }
     
 private:
-    Node<NODETYPE> *primero;
-    Node<NODETYPE> *ultimo;
+    Node<NODO> *primero;
+    Node<NODO> *ultimo;
     
-    Node<NODETYPE>* getNewNode(const NODETYPE &value) const
+    Node<NODO>* getNewNode(const NODO& obj) const
     {
-        return new Node< NODETYPE >(value);
+        return new Node< NODO >(obj);
     }
 };
 
