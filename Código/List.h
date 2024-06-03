@@ -28,6 +28,25 @@ public:
             std::cout << "Se han destruido todos los nodos\n\n";
         }
     }
+    
+    friend std::ostream& operator<<(std::ostream& os, const List<NODO>& list) {
+        if (list.isEmpty())
+        {
+            os << "Conjunto Vacío\n";
+            return os;
+        }
+
+        Node<NODO>* actual = list.primero;
+        os << "La lista es: ";
+        while (actual != nullptr)
+        {
+            os << actual->getData() << " ";
+            actual = actual->getNext();
+        }
+
+        os << "\n\n";
+        return os;
+    }
 
 
     template<typename T, int N>
