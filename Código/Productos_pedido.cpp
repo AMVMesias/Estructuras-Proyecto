@@ -6,7 +6,6 @@ class Producto{
     public:
     N id,precio,stock;
     Producto(N _id=0,N _precio=0,N _stock=0) : id(_id),precio(_precio),stock(_stock){}
-
 };
 template <typename T, typename S>
 class Pedido{
