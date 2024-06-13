@@ -47,7 +47,7 @@ void Pedido::setEstado(const std::string& nuevo_estado) {
 std::string Pedido::getEstado() const {
     return estado;
 }
-
+//HOLAAAAA
 void Pedido::recalcularPrecio() {
     precio = 0.0;
     auto elementos = productos.obtenerElementos();
