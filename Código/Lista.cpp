@@ -35,12 +35,33 @@ void Lista<T>::borrar(T valor){
 
 template<typename T>
 bool Lista<T>::buscar(T){
-    //codigo
-    //To do
+    
+    T valor_b;
+	bool ext =false;
+	if(this->esVacia()){
+		cout<<"La lista esta vacia, no se puede buscar"<<endl;
+	}
+	else{
+	valor_b = this->ingresoDatosEnteros();
+	Nodo* num = new Nodo(valor_b);
+	Nodo* tmp = primero;	
+    while (tmp->getSiguiente()){
+		if (tmp->getValor() == num->getValor()){
+            //cout << "El numero esta en la posicion: "<<count+1<<endl;
+			ext  = true;
+            break;
+        }
+		tmp = tmp->getSiguiente();
+		//count++;
+	}
+	if (ext == false){
+		cout<<"El numero no esta en la lista: "<<endl;
+	}
+}
+return ext;
 }
 
 template<typename T>
 bool Lista<T>::esVacia(){
-    //codigo
-    //To do
+    return cabeza==NULL;
 }
