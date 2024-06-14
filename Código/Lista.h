@@ -1,36 +1,114 @@
+#ifndef LISTA_H
+#define LISTA_H
+
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 template<typename T>
-struct Nodo{
-	public:
-		T dato;
-		Nodo* siguiente;
-		Nodo* anterior;		
+struct Nodo {
+    T dato;
+    Nodo* siguiente;
+    Nodo* anterior;		
 };
+
 template <typename T>
-class Lista
-{
+class Lista {
 private:
     Nodo<T>* cabeza;
 
 public:
-    Lista(){};
-    //Funciones Básicas
-    void insertarAlFinal(T){};
-    void imprimirLista(){};
-    void borrar(T){};
-    bool buscar(T){};
-    bool esVacia(){};
-    //metodos para Lista Pedidos
+    Lista() : cabeza(nullptr) {}
 
-    //metodos para Lista Productos
-    //agregar, borrar, modificar pero solo para el admin
-    void modificarListaProductos(){}
+    void insertarAlFinal(T valor) {
+        Nodo<T>* nuevo = new Nodo<T>;
+        nuevo->dato = valor;
+        nuevo->siguiente = nullptr;
+        nuevo->anterior = nullptr;
 
+        if (!cabeza) {
+            cabeza = nuevo;
+        } else {
+            Nodo<T>* actual = cabeza;
+            while (actual->siguiente) {
+                actual = actual->siguiente;
+            }
+            actual->siguiente = nuevo;
+            nuevo->anterior = actual;
+        }
+    }
 
-    //metodos para Lista Estudiantes
-    void cargarEstudiantes(){};
-        //todas las validaciones de un login y de un crear cuenta
+    void imprimirLista() {
+        Nodo<T>* actual = cabeza;
+        while (actual) {
+            cout << actual->dato << " ";
+            actual = actual->siguiente;
+        }
+        cout << endl;
+    }
+
+	/*void borrar(T valor) {
+        Nodo<T>* actual = cabeza;
+
+        while (actual != nullptr) {
+            Nodo<T>* siguiente = actual->siguiente;
+
+            if (actual->dato == valor) {
+                Nodo<T>* anterior = actual->anterior;
+
+                if (anterior != nullptr) {
+                    anterior->siguiente = siguiente;
+                }
+                if (siguiente != nullptr) {
+                    siguiente->anterior = anterior;
+                }
+
+                if (actual == cabeza) {
+                    cabeza = siguiente;
+                }
+
+                delete actual;
+                actual = siguiente;
+            } else {
+                actual = siguiente;
+            }
+        }
+    }*/
+
+    bool buscar(T valor) {
+        if (esVacia()) {
+            cout << "La lista está vacía, no se puede buscar" << endl;
+            return false;
+        }
+
+        Nodo<T>* tmp = cabeza;
+        while (tmp) {
+            if (tmp->dato == valor) {
+                return true;
+            }
+            tmp = tmp->siguiente;
+        }
+
+        cout << "El número no está en la lista" << endl;
+        return false;
+    }
+
+    bool esVacia() {
+        return cabeza == nullptr;
+    }
+
+    // Métodos adicionales según necesidad
+    // Ejemplo: Obtener elementos de la lista
+    vector<T> obtenerElementos() const {
+        vector<T> elementos;
+        Nodo<T>* actual = cabeza;
+        while (actual) {
+            elementos.push_back(actual->dato);
+            actual = actual->siguiente;
+        }
+        return elementos;
+    }
 };
+
+#endif // LISTA_H
