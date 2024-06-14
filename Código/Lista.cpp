@@ -27,11 +27,36 @@ void Lista<T>::imprimirLista(){
 	cout<<endl;
 }
 
-template<typename T>
-void Lista<T>::borrar(T valor){
-    //codigo
-    //To do
+template <typename T>
+void Lista<T>::borrar(T valor) {
+    Nodo<T>* actual = cabeza;
+
+    while (actual != NULL) {
+        Nodo<T>* siguiente = actual->siguiente;
+
+        if (actual->dato == valor) {
+            Nodo<T>* anterior = actual->anterior;
+
+            if (anterior != NULL) {
+                anterior->siguiente = siguiente;
+            }
+            if (siguiente != NULL) {
+                siguiente->anterior = anterior;
+            }
+
+            if (actual == cabeza) {
+                cabeza = siguiente;
+            }
+
+            delete actual;
+
+            actual = siguiente;
+        } else {
+            actual = siguiente;
+        }
+    }
 }
+
 
 template<typename T>
 bool Lista<T>::buscar(T){
