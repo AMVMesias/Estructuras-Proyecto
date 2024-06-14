@@ -5,6 +5,8 @@
 
 #include <string>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include "Producto.h"
 #include "Lista.h"
 
@@ -18,28 +20,28 @@ private:
     string estado;
 
 public:
-    Pedido() : id(0), precio(0.0), estado("pendiente") {}
+    Pedido() : id(generarId()), precio(0.0), estado("pendiente") {}
 
     void agregarProducto(const Producto& producto) {
         productos.insertarAlFinal(producto);
         precio += producto.getCantidad() * producto.getPrecio();
     }
-	
+
     double calcularTotal() const {
         return precio;
     }
-    
-    void mostrarPedido() const {
+
+    void mostrarPedido() const{
         cout << "ID del pedido: " << id << endl;
         cout << "Estado del pedido: " << estado << endl;
         cout << "Productos en el pedido:" << endl;
-        //productos.imprimirLista(); // Utilizando el método imprimirLista() de la clase Lista
-        cout << "Total del pedido: $" << calcularTotal() << endl;
+        productos.imprimirLista();
+        cout << "Total del pedido: $" << calcularTotal() << endl << endl;
     }
-    
+
     void pagar() {
         estado = "pagado";
-        cout << "El pedido ha sido pagado." << endl;
+        cout << "El pedido ha sido pagado.\n" << endl;
     }
 
     void setEstado(const string& nuevo_estado) {
@@ -50,10 +52,15 @@ public:
         return estado;
     }
 
+    int generarId(){
+        return rand()%5999+399;
+    }
+
 private:
     void recalcularPrecio() {
         precio = 0.0;
     }
+
 };
 
 #endif // PEDIDO_H
