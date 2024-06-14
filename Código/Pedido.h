@@ -33,7 +33,7 @@ public:
         cout << "ID del pedido: " << id << endl;
         cout << "Estado del pedido: " << estado << endl;
         cout << "Productos en el pedido:" << endl;
-        productos.imprimirLista(); // Utilizando el método imprimirLista() de la clase Lista
+        //productos.imprimirLista(); // Utilizando el método imprimirLista() de la clase Lista
         cout << "Total del pedido: $" << calcularTotal() << endl;
     }
     
@@ -53,10 +53,6 @@ public:
 private:
     void recalcularPrecio() {
         precio = 0.0;
-        vector<Producto> elementos = productos.obtenerElementos();
-        for (const Producto& p : elementos) {
-            precio += p.getCantidad() * p.getPrecio();
-        }
     }
 };
 

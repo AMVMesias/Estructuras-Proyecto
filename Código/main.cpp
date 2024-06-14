@@ -7,9 +7,16 @@ int main(){
 
 	Producto p1("pan", 1.5, 2);
 	Producto p2(" Salchipapa", 1.5, 1);
-	Pedido v1();
-
-
+	Producto p3(" Manzana", 1, 3);
+	Pedido v1;
+	v1.agregarProducto(p1);
+	v1.agregarProducto(p2);
+	v1.agregarProducto(p3);
+	
+	v1.mostrarPedido();
+	cout<<endl;
+	v1.pagar();
+	v1.mostrarPedido();
 
 
 	
