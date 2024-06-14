@@ -46,6 +46,27 @@ public:
         cout << endl;
     }
 
+    void eliminarProducto(T& valor){
+    Nodo<T>* actual=cabeza;
+    Nodo<T>* anterior=NULL;
+    while(actual != NULL && actual -> dato != valor){
+        anterior = actual;
+        actual = actual->siguiente;
+    }
+    if(actual != NULL){
+        Nodo<T>* siguiente = actual->siguiente;
+        if (anterior != NULL){
+            anterior->siguiente = siguiente;
+        }else{
+            cabeza = siguiente;
+        }
+        if (siguiente != NULL){
+            siguiente->anterior = anterior;
+        }
+        delete actual;
+    }
+}
+
 	/*void borrar(T valor) {
         Nodo<T>* actual = cabeza;
 
