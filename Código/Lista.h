@@ -2,14 +2,13 @@
 #define LISTA_H
 
 #include <iostream>
-
 using namespace std;
 
 template<typename T>
 struct Nodo {
     T dato;
     Nodo* siguiente;
-    Nodo* anterior;		
+    Nodo* anterior;
 };
 
 template <typename T>
@@ -38,10 +37,10 @@ public:
         }
     }
 
-    void imprimirLista() {
+    void imprimirLista()const{
         Nodo<T>* actual = cabeza;
         while (actual) {
-            cout << actual->dato << " ";
+            actual->dato.mostrarDatos();
             actual = actual->siguiente;
         }
         cout << endl;
