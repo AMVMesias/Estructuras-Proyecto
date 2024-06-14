@@ -19,10 +19,3 @@ class Estudiante{
         cout<<"Contrasenia: "<<contrasenia<<endl;
     }
 };
-int main(){
-    Estudiante cliente;
-    cliente.ingresarDatos();
-    cliente.mostrarDatos();
-}
-
-
