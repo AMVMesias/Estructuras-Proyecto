@@ -2,7 +2,6 @@
 #define LISTA_H
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -100,15 +99,7 @@ public:
 
     // Métodos adicionales según necesidad
     // Ejemplo: Obtener elementos de la lista
-    vector<T> obtenerElementos() const {
-        vector<T> elementos;
-        Nodo<T>* actual = cabeza;
-        while (actual) {
-            elementos.push_back(actual->dato);
-            actual = actual->siguiente;
-        }
-        return elementos;
-    }
+
 };
 
 #endif // LISTA_H
