@@ -1,7 +1,11 @@
+#ifndef MENU_H
+#define MENU_H
+
 #include <iostream>
 #include <string>
 #include "IngresoDatos.h"
 #include "ValidacionCedula.h"
+#include "Estudiante.h"
 using namespace std;
 class Menu
 {
@@ -68,3 +72,4 @@ void Menu::crearCuenta(){
     getline(cin,contrasenia);
     cout<<"Su cuenta se ha creado exitosamente."<<endl;
 }
+#endif

@@ -5,13 +5,13 @@ using namespace std;
 class Estudiante{
     private:
         string nombre;
-        string usuario;
+        int usuario;
         string contrasenia;
     public:
-        Estudiante(){};
-        Estudiante (string _nombre=" ", string _usuario=" ", string _contrasenia=" ") :nombre(_nombre), usuario(_usuario),contrasenia(_contrasenia){}
+        //Estudiante ():nombre(" "), usuario(0),contrasenia(" "){}
+        Estudiante (string _nombre=" ", int _usuario =0, string _contrasenia=" ") :nombre(_nombre), usuario(_usuario),contrasenia(_contrasenia){}
         
-        string getUsuario(){
+        int getUsuario(){
             return usuario;
         }
 
@@ -19,10 +19,13 @@ class Estudiante{
             return contrasenia;
         }
 
-
+		string getNombre(){
+			return nombre;
+		}
+		
     void ingresarDatos() {
         cout<<"Ingrese el usuario: ";
-        getline(cin,usuario);
+        cin>>usuario;
         cout<<"Ingrese la contrasenia: ";
         getline(cin,contrasenia);
     }
@@ -41,7 +44,34 @@ class Estudiante{
     return a;
 	}
 	
-	bool validar_DatosVacios(){
-		
+	bool validar_DatosVacios(string nom, int ced, string passw){
+	bool vDV=false;
+    if(nom.empty()||ced==0||passw.empty())
+    {
+        vDV=true;
+    }
+    return vDV;
 	}
+	
+	bool CrearCuenta(Estudiante persona)
+{
+       bool cc= false;
+    if(this->validar_DatosVacios(persona.getNombre(),persona.getUsuario(),persona.getPswd()))
+    {
+        cout<<"No puede existir un campo vacío\n";
+    }
+    else
+    {
+        /*if(this->validarDuplicados(persona.getCedula()))
+        {
+            cout<<"Se ha detectado un ID duplicado, por favor vuelva a intentarlo\n";
+        }
+        else
+        {
+            cc=true;
+        }*/
+    }
+    return cc;
+
+}
 };
