@@ -49,6 +49,7 @@ public:
     void imprimirListaComida() const {
         Nodo<T>* actual = cabeza;
         while (actual) {
+            cout<<actual->dato<<" \n";
             actual = actual->siguiente;
         }
         cout << endl;

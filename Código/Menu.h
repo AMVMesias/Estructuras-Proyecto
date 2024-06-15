@@ -161,7 +161,7 @@ void Menu::mostrarMenuCarta() {
                 break;
             case 6:
                 cout<<"Su pedido por ahora es: "<<endl;
-                pedido.imprimirLista();
+                pedido.imprimirListaComida();
                 mostrarMenuFunciones();
                 break;
         }
