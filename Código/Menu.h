@@ -110,7 +110,7 @@ void Menu::mostrarMenuFunciones(){
         mostrarMenuCarta();
         break;
     case 2:
-        crearCuenta();
+        //crearCuenta();
         break;
     case 3:
 
@@ -160,6 +160,8 @@ void Menu::mostrarMenuCarta() {
                 cout << "Refresco agregada." << endl;
                 break;
             case 6:
+                cout<<"Su pedido por ahora es: "<<endl;
+                pedido.imprimirLista();
                 mostrarMenuFunciones();
                 break;
         }

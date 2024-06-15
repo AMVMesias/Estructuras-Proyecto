@@ -46,6 +46,14 @@ public:
         cout << endl;
     }
 
+    void imprimirListaComida() const {
+        Nodo<T>* actual = cabeza;
+        while (actual) {
+            actual = actual->siguiente;
+        }
+        cout << endl;
+    }
+
     void eliminar(T& valor){
     Nodo<T>* actual=cabeza;
     Nodo<T>* anterior=NULL;
@@ -66,34 +74,6 @@ public:
         delete actual;
     }
 }
-
-	/*void borrar(T valor) {
-        Nodo<T>* actual = cabeza;
-
-        while (actual != nullptr) {
-            Nodo<T>* siguiente = actual->siguiente;
-
-            if (actual->dato == valor) {
-                Nodo<T>* anterior = actual->anterior;
-
-                if (anterior != nullptr) {
-                    anterior->siguiente = siguiente;
-                }
-                if (siguiente != nullptr) {
-                    siguiente->anterior = anterior;
-                }
-
-                if (actual == cabeza) {
-                    cabeza = siguiente;
-                }
-
-                delete actual;
-                actual = siguiente;
-            } else {
-                actual = siguiente;
-            }
-        }
-    }*/
 
     bool buscar(T valor) {
         if (esVacia()) {

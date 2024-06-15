@@ -42,7 +42,6 @@ long long int validar(long long int &x) {
         if (res == 10)
             res = 0;
         if (res == A[9]) {
-            cout<<"Cedula Valida";
             return x;
         }
         else {
