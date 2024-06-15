@@ -16,6 +16,8 @@ public:
     bool MenuLogin();
     int obtenerIS_CC();
     void crearCuenta();
+    void mostrarMenuFunciones();
+    void mostrarMenuCarta();
 };
 
 int Menu::obtenerIS_CC(){
@@ -30,7 +32,7 @@ int Menu::obtenerIS_CC(){
     switch(cc){
     case 1:
         if(MenuLogin()){
-            cout<<"funciona?"<<endl;
+            mostrarMenuFunciones();
         }
         else{
             cout<<"no"<<endl;
@@ -85,11 +87,82 @@ void Menu::crearCuenta(){
     fflush(stdin);
     if(aux.CrearCuenta(aux)){
         crearNuevoUsuario_BBD(aux.getUsuario(), aux.getPswd(), aux.getNombre());
- 
+
     }else{
         cout<<"Vuelva a intentarlo";
     }
 
-    
+
+}
+void Menu::mostrarMenuFunciones(){
+    int cc=0;
+    IngresoDatos i;
+    do{
+    cout<<"ESPExpress"<<endl;
+    cout<<"Usted desea..."<<endl;
+    cout<<"1. Iniciar orden."<<endl;
+    cout<<"2. Canasta de compras."<<endl;
+    cout<<"3. Ver comprobante de pago."<<endl;
+    cout<<"4. Salir."<<endl;
+    cc=i.IngresoEnteros("Opcion: ");
+    switch(cc){
+    case 1:
+        mostrarMenuCarta();
+        break;
+    case 2:
+        crearCuenta();
+        break;
+    case 3:
+
+        break;
+    case 4:
+        exit(0);
+        break;
+    default:
+        cout<<"La opcion no existe.";
+    }
+    }while(cc!=3);
+}
+
+void Menu::mostrarMenuCarta() {
+    Lista<string> pedido; // Lista para almacenar los pedidos
+    IngresoDatos orden;
+    int opcion;
+    do {
+        cout << "Menu de comida: " << endl;
+        cout << "1. Pizza" << endl;
+        cout << "2. Salchipapa" << endl;
+        cout << "3. Agua" << endl;
+        cout << "4. Hamburguesa" << endl;
+        cout << "5. Refresco" << endl;
+        cout << "6. Regresar" << endl;
+        opcion = orden.IngresoEnteros("Ingrese las opciones que desee: ");
+        cout << endl;
+        switch (opcion) {
+            case 1:
+                pedido.insertarAlFinal("Pizza");
+                cout << "Pizza agregada." << endl;
+                break;
+            case 2:
+                pedido.insertarAlFinal("Salchipapa");
+                cout << "Salchipapa agregada." << endl;
+                break;
+            case 3:
+                pedido.insertarAlFinal("Agua");
+                cout << "Agua agregada." << endl;
+                break;
+            case 4:
+                pedido.insertarAlFinal("Hamburguesa");
+                cout << "Hamburguesa agregada." << endl;
+                break;
+            case 5:
+                pedido.insertarAlFinal("Refresco");
+                cout << "Refresco agregada." << endl;
+                break;
+            case 6:
+                mostrarMenuFunciones();
+                break;
+        }
+    } while (opcion != 6);
 }
 #endif

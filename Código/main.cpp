@@ -15,7 +15,7 @@ SetConsoleOutputCP(CP_UTF8);
 	v1.agregarProducto(p1);
 	v1.agregarProducto(p2);
 	v1.agregarProducto(p3);
-	
+
 	v1.mostrarPedido();
 	cout<<endl;
 	v1.pagar();
@@ -23,24 +23,25 @@ SetConsoleOutputCP(CP_UTF8);
 	Menu m;
 	int a=0;
 	Estudiante e("Denise",0,"aa");
-	m.crearCuenta();
-	
-	
+	//m.crearCuenta();
+	m.MostrarMenuPrincipal();
+
+
 	/*Lista<int> producto1, producto2;
 	producto1.insertarAlFinal(5);
 	producto1.insertarAlFinal(6);
 	producto1.imprimirLista();
 	producto2.insertarAlFinal(4);
 	producto2.imprimirLista();
-	
+
 	producto1.borrar(6);
-	
+
 	producto1.imprimirLista();
 	producto2.imprimirLista();
-	
+
 	if(producto1.buscar(5)){
 		cout<<" Se encontro el valor";
-		
+
 	}*/
 
 	return 0;
