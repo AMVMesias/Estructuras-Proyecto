@@ -1,3 +1,5 @@
+#ifndef INGRESODATOS_H
+#define INGRESODATOS_H
 #include <iostream>
 #include <conio.h>
 #include <string>
@@ -5,9 +7,9 @@
 using namespace std;
 
 class IngresoDatos{
-	public: 
+	public:
 	IngresoDatos(){};
-	
+
 	int IngresoEnteros(string mensaje){
 	char *dato=new char[10],c;
 	int i=0;
@@ -24,6 +26,8 @@ class IngresoDatos{
 	}
 	dato[i]='\0';
     cout<<"\n ";
-	return atoi(dato); 
+	return atoi(dato);
 	}
+
 };
+#endif

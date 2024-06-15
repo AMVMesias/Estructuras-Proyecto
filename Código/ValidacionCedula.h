@@ -1,21 +1,20 @@
 #include <iostream>
+#include <string>
+#include "IngresoDatos.h"
 #define dim 10
 using namespace std;
 
 long long int validarr(long long int &x) {
-
+    IngresoDatos crearUsuario;
     while (x < 100000000 || x > 3999999999) {
-
-        cout<<"Error, Ingrese de nuevo la cedula consta de 10 digitos: ";
-        cin>>x;
-
+        x=crearUsuario.IngresoEnteros("Error, Ingrese de nuevo la cedula consta de 10 digitos: ");
     }
 
     return x;
 
 }
-
 long long int validar(long long int &x) {
+    IngresoDatos crearUsuario;
     long long int A[dim]={0};
     int i = 9, sumapares = 0, sumaimpares = 0, sumat, res, mul, a;
     long long int coc;
@@ -47,23 +46,11 @@ long long int validar(long long int &x) {
             return x;
         }
         else {
-
-            cout<<"\nCedula no Valida\n";
-            cout<<"\nIngrese Nuevamente el Numero de cedula: ";
-            cin>>x;
-
+            x=crearUsuario.IngresoEnteros("Cedula no valida, ingrese de nuevo: ");
             return validar(x);
         }
 
 
 }
 
-int main(){
-    long long int cedula;
 
-    cout<<"Ingrese su numero de cedula: ";
-    cin>>cedula;
-    validar(cedula);
-
-    return 0;
-}
