@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "IngresoDatos.h"
-#define dim 10
+//#define dim 10
 using namespace std;
 
 long long int validarr(long long int &x) {
@@ -15,7 +15,7 @@ long long int validarr(long long int &x) {
 }
 long long int validar(long long int &x) {
     IngresoDatos crearUsuario;
-    long long int A[dim]={0};
+    long long int A[10]={0};
     int i = 9, sumapares = 0, sumaimpares = 0, sumat, res, mul, a;
     long long int coc;
     long long int aux = x;
@@ -29,13 +29,13 @@ long long int validar(long long int &x) {
             i--;
         } while (coc != 0);
 
-        for (int j = 0; j < dim; j += 2) {
+        for (int j = 0; j < 10; j += 2) {
             mul = A[j] * 2;
             if (mul > 9)
                 mul -= 9;
             sumapares += mul;
         }
-        for (int j = 1; j < dim - 1; j += 2)
+        for (int j = 1; j < 10 - 1; j += 2)
             sumaimpares += A[j];
         sumat = sumapares + sumaimpares;
         res = 10 - (sumat % 10);

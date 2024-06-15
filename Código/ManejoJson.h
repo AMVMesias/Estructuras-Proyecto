@@ -17,6 +17,7 @@ bool usuarioExiste(const string& ci) {
     ifstream archivo(nombreArchivo);
     return archivo.good();
 }
+
 void crearNuevoUsuario_BBD(int ci, const string& contrasena, const string& nombres) {
     string ci_str = to_string(ci);
 

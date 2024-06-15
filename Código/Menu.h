@@ -6,6 +6,7 @@
 #include "IngresoDatos.h"
 #include "ValidacionCedula.h"
 #include "Estudiante.h"
+#include "ManejoJson.h"
 using namespace std;
 class Menu
 {
@@ -81,10 +82,10 @@ void Menu::crearCuenta(){
     cout<<"Por favor cree su contrasenia (Debe contener minimo 8 digitos): ";
     getline(cin,contrasenia);
     Estudiante aux(nombre,cedula,contrasenia);
-    //fflush(stdin);
+    fflush(stdin);
     if(aux.CrearCuenta(aux)){
-        cout<<"Su cuenta se ha creado exitosamente."<<endl;
-        //aqui agregar a Jsin y a la lista 
+        crearNuevoUsuario_BBD(aux.getUsuario(), aux.getPswd(), aux.getNombre());
+ 
     }else{
         cout<<"Vuelva a intentarlo";
     }
