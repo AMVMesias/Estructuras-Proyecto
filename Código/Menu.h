@@ -50,12 +50,20 @@ int Menu::obtenerIS_CC(){
 
 bool Menu::MenuLogin(){
     IngresoDatos datosDelUsuario;
-    string usuario,contrasenia;
-    cout<<"Usuario: "<<endl;
-    getline(cin,usuario);
+    string contrasenia;
+    int ced;
+    ced=datosDelUsuario.IngresoEnteros("Cedula: ");
     cout<<"Contrasenia: "<<endl;
     getline(cin,contrasenia);
-return true;
+    Estudiante aux(" ",ced,contrasenia);
+    Estudiante aux1(" ",1756177935,"Chimuelo");
+    if(aux.validarPersona_userPswd(aux,aux1)){
+        return true;
+    }else{
+        cout<<"Claves invalidas"<<endl;
+        return false;
+    }
+//return true;
 }
 void Menu::MostrarMenuPrincipal(){
     obtenerIS_CC();

@@ -3,10 +3,11 @@
 #include "Lista.h"
 #include  "Menu.h"
 #include "Estudiante.h"
+#include <windows.h>
 using namespace std;
 
 int main(){
-
+SetConsoleOutputCP(CP_UTF8);
 	/*Producto p1("pan", 1.5, 2);
 	Producto p2(" Salchipapa", 1.5, 1);
 	Producto p3(" Manzana", 1, 3);
@@ -19,19 +20,14 @@ int main(){
 	cout<<endl;
 	v1.pagar();
 	v1.mostrarPedido();*/
-/*	Menu m;
+	Menu m;
 	int a=0;
-	a=m.obtenerIS_CC();
-	cout<<a<<endl;*/
-
-	Estudiante p("Denise",0,"chimuelo");
-	//Estudiante p1;
-	if(p.CrearCuenta(p)){
-		cout<<"Funca"<<endl;
+	if(m.MenuLogin()){
+		cout<<"Si vale"<<endl;
 	}else{
-		cout<<"Negao"<<endl;
+		cout<<"Negao";
 	}
-	
+
 	
 	
 	/*Lista<int> producto1, producto2;
