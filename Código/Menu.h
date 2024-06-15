@@ -70,14 +70,25 @@ void Menu::MostrarMenuPrincipal(){
 }
 void Menu::crearCuenta(){
     IngresoDatos datosCrear;
-    string contrasenia;
+    string contrasenia, nombre;
     long long int cedula;
-    cout<<"Usteda a seleccionado creacion de cuenta, su cedula va ser su usuario."<<endl;
-    cedula=datosCrear.IngresoEnteros("Por favor ingrese su cedula de identidad: ");
+    cout<<"Usted a seleccionado creación de cuenta, su cédula se convertirá en su usuario para iniciar Sesión."<<endl;
+    cout<<"Por favor, ingrese los siguiente sdatos."<<endl;
+    cout<<"Nombre:  ";
+    getline(cin,nombre);
+    cedula=datosCrear.IngresoEnteros("Cédula de identidad: ");
     validar(cedula);
-    fflush(stdin);
     cout<<"Por favor cree su contrasenia (Debe contener minimo 8 digitos): ";
     getline(cin,contrasenia);
-    cout<<"Su cuenta se ha creado exitosamente."<<endl;
+    Estudiante aux(nombre,cedula,contrasenia);
+    //fflush(stdin);
+    if(aux.CrearCuenta(aux)){
+        cout<<"Su cuenta se ha creado exitosamente."<<endl;
+        //aqui agregar a Jsin y a la lista 
+    }else{
+        cout<<"Vuelva a intentarlo";
+    }
+
+    
 }
 #endif

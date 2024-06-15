@@ -22,12 +22,8 @@ SetConsoleOutputCP(CP_UTF8);
 	v1.mostrarPedido();*/
 	Menu m;
 	int a=0;
-	if(m.MenuLogin()){
-		cout<<"Si vale"<<endl;
-	}else{
-		cout<<"Negao";
-	}
-
+	Estudiante e("Denise",0,"aa");
+	m.crearCuenta();
 	
 	
 	/*Lista<int> producto1, producto2;

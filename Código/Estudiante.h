@@ -73,6 +73,7 @@ class Estudiante{
         {
             cc=true;
         }*/
+        cc=true;
     }
     return cc;
 
