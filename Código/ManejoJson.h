@@ -6,42 +6,85 @@
 #include <string>
 #include <dirent.h>
 #include "nlohmann/json.hpp"
+#include "Lista.h"
+#include "Estudiante.h"
 
 using namespace std;
 using json = nlohmann::json;
 
-const string carpetaUsuarios = "Usuarios"; 
+const string CARPETA_USUARIOS = "Usuarios"; 
 
-bool usuarioExiste(const string& ci) {
-    string nombreArchivo = carpetaUsuarios + "/usuario_" + ci + ".json";
+bool estudianteExiste(int usuario) {
+    string nombreArchivo = CARPETA_USUARIOS + "/usuario_" + to_string(usuario) + ".json";
     ifstream archivo(nombreArchivo);
     return archivo.good();
 }
 
-void crearNuevoUsuario_BBD(int ci, const string& contrasena, const string& nombres) {
-    string ci_str = to_string(ci);
-
-    if (usuarioExiste(ci_str)) {
-        cout << "Error: El usuario con CI '" << ci_str << "' ya existe." << endl;
+void crearNuevoUsuario_BBD(int usuario, const string& contrasenia, const string& nombre) {
+    if (estudianteExiste(usuario)) {
+        cout << "Error: El estudiante con usuario '" << usuario << "' ya existe." << endl;
         return;
     }
 
-    string nombreArchivo = carpetaUsuarios + "/usuario_" + ci_str + ".json";
+    string nombreArchivo = CARPETA_USUARIOS + "/usuario_" + to_string(usuario) + ".json";
 
     json j;
-    j["ci"] = ci_str;
-    j["contrasena"] = contrasena;
-    j["nombres"] = nombres;
+    j["ci"] = to_string(usuario);
+    j["contrasena"] = contrasenia;
+    j["nombres"] = nombre;
 
     ofstream archivo(nombreArchivo);
     if (archivo.is_open()) {
         archivo << j.dump(4);
         archivo.close();
-        cout << "Usuario creado exitosamente: " << nombres << endl;
+        cout << "Estudiante creado exitosamente: " << nombre << endl;
     } else {
         cerr << "No se pudo abrir el archivo para escribir: " << nombreArchivo << endl;
     }
 }
 
+void cargarEstudiantes(Lista<Estudiante>& listaEstudiantes) {
+    DIR* dir;
+    struct dirent* ent;
+
+    if ((dir = opendir(CARPETA_USUARIOS.c_str())) != NULL) {
+        while ((ent = readdir(dir)) != NULL) {
+            string nombreArchivo = ent->d_name;
+            if (nombreArchivo.find(".json") != string::npos) {
+                string rutaArchivo = CARPETA_USUARIOS + "/" + nombreArchivo;
+                ifstream archivo(rutaArchivo);
+                if (archivo.is_open()) {
+                    json j;
+                    try {
+                        archivo >> j;
+                        archivo.close();
+
+                        if (j.contains("ci") && !j["ci"].is_null() &&
+                            j.contains("contrasena") && !j["contrasena"].is_null() &&
+                            j.contains("nombres") && !j["nombres"].is_null()) {
+
+                            Estudiante estudiante(
+                                j["nombres"].get<string>(), 
+                                stoi(j["ci"].get<string>()), 
+                                j["contrasena"].get<string>()
+                            );
+
+                            listaEstudiantes.insertarAlFinal(estudiante);
+                        } else {
+                            cerr << "El archivo " << rutaArchivo << " no contiene los campos necesarios o alguno es nulo." << endl;
+                        }
+                    } catch (const json::exception& e) {
+                        cerr << "Error al procesar el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    }
+                } else {
+                    cerr << "No se pudo abrir el archivo: " << rutaArchivo << endl;
+                }
+            }
+        }
+        closedir(dir);
+    } else {
+        cerr << "No se pudo abrir el directorio: " << CARPETA_USUARIOS << endl;
+    }
+}
 
 #endif 

@@ -35,6 +35,7 @@ class Estudiante{
     void mostrarDatos(){
         cout<<"Usuario: "<<usuario<<endl;
         cout<<"Contrasenia: "<<contrasenia<<endl;
+        cout<<"Nombres: "<<nombre<<endl;
     }
 
     bool validarPersona_userPswd(Estudiante aux, Estudiante aux1){
