@@ -59,21 +59,25 @@ void cargarEstudiantes(Lista<Estudiante>& listaEstudiantes) {
                         archivo >> j;
                         archivo.close();
 
-                        if (j.contains("ci") && !j["ci"].is_null() &&
-                            j.contains("contrasena") && !j["contrasena"].is_null() &&
-                            j.contains("nombres") && !j["nombres"].is_null()) {
+                        if (j.contains("ci") && j["ci"].is_number_integer() &&
+                            j.contains("contrasena") && j["contrasena"].is_string() &&
+                            j.contains("nombres") && j["nombres"].is_string()) {
 
                             Estudiante estudiante(
-                                j["nombres"].get<string>(), 
-                                stoi(j["ci"].get<string>()), 
+                                j["nombres"].get<string>(),
+                                j["ci"].get<int>(),
                                 j["contrasena"].get<string>()
                             );
 
                             listaEstudiantes.insertarAlFinal(estudiante);
                         } else {
-                            cerr << "El archivo " << rutaArchivo << " no contiene los campos necesarios o alguno es nulo." << endl;
+                            cerr << "El archivo " << rutaArchivo << " no contiene los campos necesarios o algunos tienen tipos incorrectos." << endl;
                         }
-                    } catch (const json::exception& e) {
+                    } catch (const json::parse_error& e) {
+                        cerr << "Error de parseo en el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    } catch (const json::type_error& e) {
+                        cerr << "Error de tipo en el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    } catch (const std::exception& e) {
                         cerr << "Error al procesar el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
                     }
                 } else {

@@ -9,9 +9,15 @@ using namespace std;
 int main(){
 SetConsoleOutputCP(CP_UTF8);
 	Menu m;
-	int a=0;
-	Estudiante e("Denise",0,"aa");
+
 	//m.crearCuenta();
-	m.MostrarMenuPrincipal();
+	//m.MostrarMenuPrincipal();
+	
+	Lista<Estudiante> listaEstudiantes;
+
+    cargarEstudiantes(listaEstudiantes);
+    listaEstudiantes.imprimirLista();
+
+	
 	return 0;
 }
