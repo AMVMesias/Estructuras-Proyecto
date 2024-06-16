@@ -10,6 +10,7 @@ private:
     int cantidad;
     int id;
 
+
 public:
     Producto(string _descripcion = " ", float _precio = 0, int _cantidad = 0, int _id=0)
         : descripcion(_descripcion), precio(_precio), cantidad(_cantidad), id(_id){}

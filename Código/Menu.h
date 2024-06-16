@@ -7,9 +7,12 @@
 #include "ValidacionCedula.h"
 #include "Estudiante.h"
 #include "ManejoJson.h"
+#include "Lista.h"
 using namespace std;
 class Menu
 {
+private:
+    Lista<string> pedido;
 public:
     Menu(){};
     void MostrarMenuPrincipal();
@@ -18,6 +21,7 @@ public:
     void crearCuenta();
     void mostrarMenuFunciones();
     void mostrarMenuCarta();
+    void mostrarCanasta();
 };
 
 int Menu::obtenerIS_CC(){
@@ -56,7 +60,7 @@ bool Menu::MenuLogin(){
     string contrasenia;
     int ced;
     ced=datosDelUsuario.IngresoEnteros("Cedula: ");
-    cout<<"Contrasenia: "<<endl;
+    cout<<"Contrasenia: ";
     getline(cin,contrasenia);
     Estudiante aux(" ",ced,contrasenia);
     Estudiante aux1(" ",1756177935,"Chimuelo");
@@ -110,7 +114,7 @@ void Menu::mostrarMenuFunciones(){
         mostrarMenuCarta();
         break;
     case 2:
-        //crearCuenta();
+        mostrarCanasta();
         break;
     case 3:
 
@@ -125,46 +129,48 @@ void Menu::mostrarMenuFunciones(){
 }
 
 void Menu::mostrarMenuCarta() {
-    Lista<string> pedido; // Lista para almacenar los pedidos
     IngresoDatos orden;
     int opcion;
     do {
-        cout << "Menu de comida: " << endl;
-        cout << "1. Pizza" << endl;
-        cout << "2. Salchipapa" << endl;
-        cout << "3. Agua" << endl;
-        cout << "4. Hamburguesa" << endl;
-        cout << "5. Refresco" << endl;
-        cout << "6. Regresar" << endl;
+        cout <<"Menu de comida: " << endl;
+        cout <<"1. Pizza" << endl;
+        cout <<"2. Salchipapa" << endl;
+        cout <<"3. Agua" << endl;
+        cout <<"4. Hamburguesa" << endl;
+        cout <<"5. Refresco" << endl;
+        cout <<"6. Regresar" << endl;
         opcion = orden.IngresoEnteros("Ingrese las opciones que desee: ");
         cout << endl;
-        switch (opcion) {
+        switch(opcion){
             case 1:
-                pedido.insertarAlFinal("Pizza");
-                cout << "Pizza agregada." << endl;
+                pedido.insertarComida("Pizza");
+                cout <<"Pizza agregada." << endl;
                 break;
             case 2:
-                pedido.insertarAlFinal("Salchipapa");
-                cout << "Salchipapa agregada." << endl;
+                pedido.insertarComida("Salchipapa");
+                cout <<"Salchipapa agregada." << endl;
                 break;
             case 3:
-                pedido.insertarAlFinal("Agua");
-                cout << "Agua agregada." << endl;
+                pedido.insertarComida("Agua");
+                cout <<"Agua agregada." << endl;
                 break;
             case 4:
-                pedido.insertarAlFinal("Hamburguesa");
-                cout << "Hamburguesa agregada." << endl;
+                pedido.insertarComida("Hamburguesa");
+                cout <<"Hamburguesa agregada." << endl;
                 break;
             case 5:
-                pedido.insertarAlFinal("Refresco");
-                cout << "Refresco agregada." << endl;
+                pedido.insertarComida("Refresco");
+                cout <<"Refresco agregada." << endl;
                 break;
             case 6:
-                cout<<"Su pedido por ahora es: "<<endl;
-                pedido.imprimirListaComida();
                 mostrarMenuFunciones();
                 break;
         }
-    } while (opcion != 6);
+    }while(opcion != 6);
+}
+
+void Menu::mostrarCanasta() {
+    cout<<"Su pedido por ahora es: "<<endl;
+    pedido.imprimirListaComida();
 }
 #endif

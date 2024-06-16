@@ -6,6 +6,7 @@ using namespace std;
 
 template<typename T>
 struct Nodo {
+    int contador;
     T dato;
     Nodo* siguiente;
     Nodo* anterior;
@@ -18,12 +19,12 @@ private:
 
 public:
     Lista() : cabeza(nullptr) {}
-
     void insertarAlFinal(T valor) {
         Nodo<T>* nuevo = new Nodo<T>;
         nuevo->dato = valor;
         nuevo->siguiente = nullptr;
         nuevo->anterior = nullptr;
+        nuevo->contador = 1;
 
         if (!cabeza) {
             cabeza = nuevo;
@@ -36,7 +37,34 @@ public:
             nuevo->anterior = actual;
         }
     }
+    void insertarComida(T valor){
+    Nodo<T>* actual=cabeza;
+    bool repetido=false;
+    while(actual!=NULL){
+        if(actual->dato==valor){
+            actual->contador++;
+            repetido=true;
+            break;
+        }
+        actual=actual->siguiente;
+    }
+    Nodo<T>* nuevo = new Nodo<T>;
+    nuevo->dato = valor;
+    nuevo->siguiente = nullptr;
+    nuevo->anterior = nullptr;
+    nuevo->contador = 1;
 
+    if (!cabeza) {
+        cabeza = nuevo;
+    } else {
+        Nodo<T>* actual = cabeza;
+        while (actual->siguiente) {
+            actual = actual->siguiente;
+        }
+        actual->siguiente = nuevo;
+        nuevo->anterior = actual;
+    }
+    }
     void imprimirLista()const{
         Nodo<T>* actual = cabeza;
         while (actual) {
@@ -49,7 +77,7 @@ public:
     void imprimirListaComida() const {
         Nodo<T>* actual = cabeza;
         while (actual) {
-            cout<<actual->dato<<" \n";
+            cout<<actual->dato<<" "<<actual->contador<<endl;
             actual = actual->siguiente;
         }
         cout << endl;
