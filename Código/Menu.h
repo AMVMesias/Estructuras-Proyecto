@@ -22,6 +22,7 @@ public:
     void mostrarMenuFunciones();
     void mostrarMenuCarta();
     void mostrarCanasta();
+    void pagarPedido();
 };
 
 int Menu::obtenerIS_CC(){
@@ -115,6 +116,7 @@ void Menu::mostrarMenuFunciones(){
         break;
     case 2:
         mostrarCanasta();
+        pagarPedido();
         break;
     case 3:
 
@@ -172,5 +174,20 @@ void Menu::mostrarMenuCarta() {
 void Menu::mostrarCanasta() {
     cout<<"Su pedido por ahora es: "<<endl;
     pedido.imprimirListaComida();
+}
+void Menu::pagarPedido(){
+    IngresoDatos orden;
+    int opcion;
+    cout<<"1. Pagar"<<endl;
+    cout<<"2. Regresar al menu de comida"<<endl;
+    opcion = orden.IngresoEnteros("Elija una opcion: ");
+    switch(opcion){
+    case 1:
+        cout<<"Pedido cancelado exitosamente."<<endl;
+        break;
+    case 2:
+        mostrarMenuFunciones();
+        break;
+    }
 }
 #endif
