@@ -1,7 +1,5 @@
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
-
-
 #include <string>
 #include <iostream>
 
@@ -11,13 +9,12 @@ class Producto {
 private:
     string descripcion;
     float precio;
-    int cantidad;
     int id;
 
 
 public:
-    Producto(string _descripcion = " ", float _precio = 0, int _cantidad = 0, int _id=0)
-        : descripcion(_descripcion), precio(_precio), cantidad(_cantidad), id(_id){}
+    Producto(string _descripcion = " ", float _precio = 0, int _id=0)
+        : descripcion(_descripcion), precio(_precio), id(_id){}
 
     void setDescripcion(string _descripcion) {
         descripcion = _descripcion;
@@ -25,10 +22,6 @@ public:
 
     void setPrecio(float _precio) {
         precio = _precio;
-    }
-
-    void setCantidad(int _cantidad) {
-        cantidad = _cantidad;
     }
 
     void setId(int _id){
@@ -43,18 +36,17 @@ public:
         return precio;
     }
 
-    int getCantidad() const {
-        return cantidad;
-    }
 
     int getId() const {
         return id;
+    }
+    bool operator==(const Producto& otro) const {
+        return this->id == otro.id;  // Comparaci�n por id
     }
     void mostrarDatos() const {
         cout << "Id del producto: " << id << endl;
         cout << "Descripcion del producto: " << descripcion << endl;
         cout << "Precio del producto (unidad) $" << precio << "." << endl;
-        cout << "Cantidad: " << cantidad << endl;
     }
 };
 #endif

@@ -41,32 +41,34 @@ public:
         }
     }
     void insertarComida(T valor){
-    Nodo<T>* actual=cabeza;
-    bool repetido=false;
-    while(actual!=NULL){
-        if(actual->dato==valor){
-            actual->contador++;
-            repetido=true;
-            break;
-        }
-        actual=actual->siguiente;
-    }
-    Nodo<T>* nuevo = new Nodo<T>;
-    nuevo->dato = valor;
-    nuevo->siguiente = nullptr;
-    nuevo->anterior = nullptr;
-    nuevo->contador = 1;
-
-    if (!cabeza) {
-        cabeza = nuevo;
-    } else {
         Nodo<T>* actual = cabeza;
-        while (actual->siguiente) {
+        bool repetido = false;
+        while(actual != nullptr){
+            if(actual->dato == valor){
+                actual->contador++;
+                repetido = true;
+                break;
+            }
             actual = actual->siguiente;
         }
-        actual->siguiente = nuevo;
-        nuevo->anterior = actual;
-    }
+        if(!repetido) {
+            Nodo<T>* nuevo = new Nodo<T>;
+            nuevo->dato = valor;
+            nuevo->siguiente = nullptr;
+            nuevo->anterior = nullptr;
+            nuevo->contador = 1;
+
+            if (!cabeza) {
+                cabeza = nuevo;
+            } else {
+                Nodo<T>* actual = cabeza;
+                while (actual->siguiente) {
+                    actual = actual->siguiente;
+                }
+                actual->siguiente = nuevo;
+                nuevo->anterior = actual;
+            }
+        }
     }
     void imprimirLista()const{
         Nodo<T>* actual = cabeza;
@@ -80,12 +82,22 @@ public:
     void imprimirListaComida() const {
         Nodo<T>* actual = cabeza;
         while (actual) {
-            cout<<actual->dato<<" "<<actual->contador<<endl;
+            cout << "Producto: " << actual->dato.getDescripcion() << endl;
+            cout << "Precio unitario: $" << actual->dato.getPrecio() << endl;
+            cout << "Cantidad: " << actual->contador << endl;
             actual = actual->siguiente;
         }
         cout << endl;
     }
-
+    void imprimirMenu(){
+        Nodo<T>* actual=cabeza;
+        int cont=1;
+        while(actual){
+            cout<<cont<<". "<<actual->dato.getDescripcion()<<"........$ "<<actual->dato.getPrecio()<<endl;
+            actual=actual->siguiente;
+            cont++;
+        }
+    }
     void eliminar(T& valor){
     Nodo<T>* actual=cabeza;
     Nodo<T>* anterior=NULL;

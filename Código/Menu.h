@@ -14,12 +14,18 @@ using namespace std;
 class Menu
 {
 private:
-    Lista<string> pedido;
+    Lista<Producto> pedido;
     Lista<Estudiante> Listausuarios;
     Lista<Pedido> Listapedidos;
     Lista<Producto> ListaProductos;
 public:
-    Menu(){};
+    Menu(){
+        ListaProductos.insertarAlFinal(Producto("Pizza", 1.00,0));
+        ListaProductos.insertarAlFinal(Producto("Salchipapa", 1.50,0));
+        ListaProductos.insertarAlFinal(Producto("Agua", 0.50,0));
+        ListaProductos.insertarAlFinal(Producto("Hamburguesa", 2.00,0));
+        ListaProductos.insertarAlFinal(Producto("Refresco", 0.40,0));
+    };
     void MostrarMenuPrincipal();
     bool MenuLogin();
     int obtenerIS_CC();
@@ -31,7 +37,7 @@ public:
 };
 
 int Menu::obtenerIS_CC(){
-	//aqui se debería cargar los datos 
+	//aqui se debería cargar los datos
     cargarEstudiantes(this->Listausuarios);
     int cc=0;
     IngresoDatos i;
@@ -142,38 +148,34 @@ void Menu::mostrarMenuFunciones(){
 void Menu::mostrarMenuCarta() {
 	//cargar la Lista de Productos
     //aquí se debería imprimir la lista de productos
-    
+
     IngresoDatos orden;
     int opcion;
     do {
         cout <<"Menu de comida: " << endl;
-        cout <<"1. Pizza" << endl;
-        cout <<"2. Salchipapa" << endl;
-        cout <<"3. Agua" << endl;
-        cout <<"4. Hamburguesa" << endl;
-        cout <<"5. Refresco" << endl;
+        ListaProductos.imprimirMenu();
         cout <<"6. Regresar" << endl;
         opcion = orden.IngresoEnteros("Ingrese las opciones que desee: ");
         cout << endl;
         switch(opcion){
             case 1:
-                pedido.insertarComida("Pizza");
+                pedido.insertarComida(Producto("Pizza",1.00,0));
                 cout <<"Pizza agregada." << endl;
                 break;
             case 2:
-                pedido.insertarComida("Salchipapa");
+                pedido.insertarComida(Producto("Salchipapa",1.50,0));
                 cout <<"Salchipapa agregada." << endl;
                 break;
             case 3:
-                pedido.insertarComida("Agua");
+                pedido.insertarComida(Producto("Agua",0.50,0));
                 cout <<"Agua agregada." << endl;
                 break;
             case 4:
-                pedido.insertarComida("Hamburguesa");
+                pedido.insertarComida(Producto("Hamburguesa",2.00,0));
                 cout <<"Hamburguesa agregada." << endl;
                 break;
             case 5:
-                pedido.insertarComida("Refresco");
+                pedido.insertarComida(Producto("Refresco",0.40,0));
                 cout <<"Refresco agregada." << endl;
                 break;
             case 6:

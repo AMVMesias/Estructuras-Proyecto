@@ -24,7 +24,7 @@ public:
 
     void agregarProducto(const Producto& producto) {
         productos.insertarAlFinal(producto);
-        precio += producto.getCantidad() * producto.getPrecio();
+        precio += producto.getPrecio();
     }
 
     double calcularTotal() const {
