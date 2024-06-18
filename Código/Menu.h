@@ -13,6 +13,10 @@ class Menu
 {
 private:
     Lista<string> pedido;
+    //capaz de poner aqui las listas 
+    //Lista Estudiantes
+    //Lista Pedido
+    //Lista productos
 public:
     Menu(){};
     void MostrarMenuPrincipal();
@@ -26,6 +30,7 @@ public:
 };
 
 int Menu::obtenerIS_CC(){
+	//aqui se debería cargar los datos 
     int cc=0;
     IngresoDatos i;
     do{
@@ -64,6 +69,7 @@ bool Menu::MenuLogin(){
     cout<<"Contrasenia: ";
     getline(cin,contrasenia);
     Estudiante aux(" ",ced,contrasenia);
+    //aqui debemos obtener el objeto de la lista , método buscar y que me retorne un objeto EStudiante
     Estudiante aux1(" ",1756177935,"Chimuelo");
     if(aux.validarPersona_userPswd(aux,aux1)){
         return true;
@@ -91,6 +97,7 @@ void Menu::crearCuenta(){
     Estudiante aux(nombre,cedula,contrasenia);
     fflush(stdin);
     if(aux.CrearCuenta(aux)){
+    	//conexión a Json usado como base de datos
         crearNuevoUsuario_BBD(aux.getUsuario(), aux.getPswd(), aux.getNombre());
 
     }else{
@@ -131,6 +138,7 @@ void Menu::mostrarMenuFunciones(){
 }
 
 void Menu::mostrarMenuCarta() {
+	//aquí se debería imprimir la lista de productos
     IngresoDatos orden;
     int opcion;
     do {
