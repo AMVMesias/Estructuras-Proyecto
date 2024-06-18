@@ -6,6 +6,8 @@
 #include "IngresoDatos.h"
 #include "ValidacionCedula.h"
 #include "Estudiante.h"
+#include "Pedido.h"
+#include "Producto.h"
 #include "ManejoJson.h"
 #include "Lista.h"
 using namespace std;
@@ -13,10 +15,9 @@ class Menu
 {
 private:
     Lista<string> pedido;
-    //capaz de poner aqui las listas 
-    //Lista Estudiantes
-    //Lista Pedido
-    //Lista productos
+    Lista<Estudiante> Listausuarios;
+    Lista<Pedido> Listapedidos;
+    Lista<Producto> ListaProductos;
 public:
     Menu(){};
     void MostrarMenuPrincipal();
@@ -31,6 +32,7 @@ public:
 
 int Menu::obtenerIS_CC(){
 	//aqui se debería cargar los datos 
+    cargarEstudiantes(this->Listausuarios);
     int cc=0;
     IngresoDatos i;
     do{
@@ -69,8 +71,8 @@ bool Menu::MenuLogin(){
     cout<<"Contrasenia: ";
     getline(cin,contrasenia);
     Estudiante aux(" ",ced,contrasenia);
-    //aqui debemos obtener el objeto de la lista , método buscar y que me retorne un objeto EStudiante
-    Estudiante aux1(" ",1756177935,"Chimuelo");
+    Estudiante aux1;
+    Listausuarios.obtenerUserBuscado(aux1,ced);
     if(aux.validarPersona_userPswd(aux,aux1)){
         return true;
     }else{
@@ -138,7 +140,9 @@ void Menu::mostrarMenuFunciones(){
 }
 
 void Menu::mostrarMenuCarta() {
-	//aquí se debería imprimir la lista de productos
+	//cargar la Lista de Productos
+    //aquí se debería imprimir la lista de productos
+    
     IngresoDatos orden;
     int opcion;
     do {

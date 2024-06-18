@@ -1,3 +1,7 @@
+#ifndef PRODUCTO_H
+#define PRODUCTO_H
+
+
 #include <string>
 #include <iostream>
 
@@ -53,3 +57,4 @@ public:
         cout << "Cantidad: " << cantidad << endl;
     }
 };
+#endif

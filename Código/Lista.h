@@ -2,6 +2,9 @@
 #define LISTA_H
 
 #include <iostream>
+#include "Estudiante.h"
+#include <string>
+
 using namespace std;
 
 template<typename T>
@@ -129,6 +132,16 @@ public:
     // Métodos adicionales según necesidad
     // Ejemplo: Obtener elementos de la lista
 
+    //METODOS PARA LISTA ESTUDIANTES- USUARIOS
+    void obtenerUserBuscado(Estudiante &aux,int ced){
+        Nodo<Estudiante>* tmp = cabeza;
+        while (tmp) {
+            if (tmp->dato.getUsuario() == ced) {
+                aux=tmp->dato;
+            }
+            tmp = tmp->siguiente;
+        }
+    }
 };
 
 #endif // LISTA_H
