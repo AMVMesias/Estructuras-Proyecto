@@ -9,6 +9,7 @@
 #include <ctime>
 #include "Producto.h"
 #include "Lista.h"
+#include "Estudiante.h"
 
 using namespace std;
 
@@ -18,10 +19,14 @@ private:
     Lista<Producto> productos;
     double precio;
     string estado;
+    Estudiante cliente;
 
 public:
     Pedido() : id(generarId()), precio(0.0), estado("pendiente") {}
 
+    void setCliente(const Estudiante& cliente){
+        this->cliente=cliente;
+    }
     void agregarProducto(const Producto& producto) {
         productos.insertarAlFinal(producto);
         precio += producto.getPrecio();
@@ -32,9 +37,7 @@ public:
     }
 
     void mostrarPedido() const{
-        cout << "ID del pedido: " << id << endl;
-        cout << "Estado del pedido: " << estado << endl;
-        cout << "Productos en el pedido:" << endl;
+        cout << "Contenido:" << endl;
         productos.imprimirLista();
         cout << "Total del pedido: $" << calcularTotal() << endl << endl;
     }
@@ -56,6 +59,16 @@ public:
         return rand()%5999+399;
     }
 
+    void generarComprobante(){
+        cout<<"Comprobante de pago."<<endl;
+        cout<<"Orden #: "<<id<<endl;
+        cout<<"Cliente: "<<cliente.getNombre()<<endl;
+        cout<<"Productos adquiridos: "<<endl;
+        productos.imprimirListaComida();
+        cout<<"Total: "<<calcularTotal()<<endl;
+        cout<<"Estado: "<<estado<<endl;
+
+    }
 private:
     void recalcularPrecio() {
         precio = 0.0;

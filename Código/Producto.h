@@ -44,8 +44,7 @@ public:
         return this->id == otro.id;  // Comparaci�n por id
     }
     void mostrarDatos() const {
-        cout << "Id del producto: " << id << endl;
-        cout << "Descripcion del producto: " << descripcion << endl;
+        cout << "Descripcion: " << descripcion << endl;
         cout << "Precio del producto (unidad) $" << precio << "." << endl;
     }
 };

@@ -12,8 +12,8 @@ SetConsoleOutputCP(CP_UTF8);
 	Menu m;
 	//	m.MenuLogin();
 	//m.crearCuenta();
-	//m.MostrarMenuPrincipal();
-	
+	m.MostrarMenuPrincipal();
+
 /*	 Estudiante student("John Doe", 12345, "password");
 
     // Create a new order for the student
@@ -33,5 +33,5 @@ SetConsoleOutputCP(CP_UTF8);
 */
     return 0;
 }
-   
-	
+
+

@@ -14,9 +14,8 @@ using namespace std;
 class Menu
 {
 private:
-    Lista<Producto> pedido;
+    Pedido pedido;
     Lista<Estudiante> Listausuarios;
-    Lista<Pedido> Listapedidos;
     Lista<Producto> ListaProductos;
 public:
     Menu(){
@@ -46,14 +45,12 @@ int Menu::obtenerIS_CC(){
     cout<<"Usted desea..."<<endl;
     cout<<"1. Iniciar Sesion"<<endl;
     cout<<"2. Crear Cuenta"<<endl;
+    cout<<"3. Salir"<<endl;
     cc=i.IngresoEnteros("Opcion: ");
     switch(cc){
     case 1:
         if(MenuLogin()){
             mostrarMenuFunciones();
-        }
-        else{
-            cout<<"no"<<endl;
         }
         break;
     case 2:
@@ -72,20 +69,25 @@ int Menu::obtenerIS_CC(){
 bool Menu::MenuLogin(){
     IngresoDatos datosDelUsuario;
     string contrasenia;
-    int ced;
-    ced=datosDelUsuario.IngresoEnteros("Cedula: ");
+    int ced,opcion;
+    ced=datosDelUsuario.IngresoEnteros("Usuario: ");
     cout<<"Contrasenia: ";
     getline(cin,contrasenia);
     Estudiante aux(" ",ced,contrasenia);
     Estudiante aux1;
     Listausuarios.obtenerUserBuscado(aux1,ced);
     if(aux.validarPersona_userPswd(aux,aux1)){
+            pedido.setCliente(aux1);
         return true;
     }else{
-        cout<<"Claves invalidas"<<endl;
-        return false;
+        cout<<"Credenciales incorrectas"<<endl;
+        opcion=datosDelUsuario.IngresoEnteros("1. Volver al inicio\n2. Volver a intentar\n");
+        if(opcion==1){
+            return false;
+        }else if(opcion == 2){
+            return MenuLogin();
+        }
     }
-//return true;
 }
 void Menu::MostrarMenuPrincipal(){
     obtenerIS_CC();
@@ -134,7 +136,7 @@ void Menu::mostrarMenuFunciones(){
         pagarPedido();
         break;
     case 3:
-
+        pedido.generarComprobante();
         break;
     case 4:
         exit(0);
@@ -159,23 +161,23 @@ void Menu::mostrarMenuCarta() {
         cout << endl;
         switch(opcion){
             case 1:
-                pedido.insertarComida(Producto("Pizza",1.00,1));
+                pedido.agregarProducto(Producto("Pizza",1.00,1));
                 cout <<"Pizza agregada." << endl;
                 break;
             case 2:
-                pedido.insertarComida(Producto("Salchipapa",1.50,2));
+                pedido.agregarProducto(Producto("Salchipapa",1.50,2));
                 cout <<"Salchipapa agregada." << endl;
                 break;
             case 3:
-                pedido.insertarComida(Producto("Agua",0.50,3));
+                pedido.agregarProducto(Producto("Agua",0.50,3));
                 cout <<"Agua agregada." << endl;
                 break;
             case 4:
-                pedido.insertarComida(Producto("Hamburguesa",2.00,4));
+                pedido.agregarProducto(Producto("Hamburguesa",2.00,4));
                 cout <<"Hamburguesa agregada." << endl;
                 break;
             case 5:
-                pedido.insertarComida(Producto("Refresco",0.40,5));
+                pedido.agregarProducto(Producto("Refresco",0.40,5));
                 cout <<"Refresco agregada." << endl;
                 break;
             case 6:
@@ -187,7 +189,7 @@ void Menu::mostrarMenuCarta() {
 
 void Menu::mostrarCanasta() {
     cout<<"Su pedido por ahora es: "<<endl;
-    pedido.imprimirListaComida();
+    pedido.mostrarPedido();
 }
 void Menu::pagarPedido(){
     IngresoDatos orden;
@@ -197,6 +199,8 @@ void Menu::pagarPedido(){
     opcion = orden.IngresoEnteros("Elija una opcion: ");
     switch(opcion){
     case 1:
+        pedido.pagar();
+        pedido.generarComprobante();
         cout<<"Pedido cancelado exitosamente."<<endl;
         break;
     case 2:
