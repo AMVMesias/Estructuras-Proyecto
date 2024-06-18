@@ -31,7 +31,14 @@ public:
         productos.insertarComida(producto);
         precio += producto.getPrecio();
     }
-
+    void eliminarProducto(Producto& producto) {
+        if (productos.eliminar(producto)) {
+            precio -= producto.getPrecio();
+            cout << "Se ha eliminado " << producto.getDescripcion() << endl;
+        } else {
+            cout << "El producto existe en la canasta." << endl;
+        }
+    }
     double calcularTotal() const {
         return precio;
     }
@@ -63,7 +70,7 @@ public:
     	system("cls");
         string comprobante;
         comprobante+="Comprobante de pago.\n";
-        comprobante+="Orden #: "+to_string(id);
+        comprobante+="\nOrden #: "+to_string(id);
         comprobante+="\nCliente: "+cliente.getNombre();
         comprobante+="\nProductos adquiridos: ";
         Nodo<Producto>* actual=productos.getCabeza();
@@ -75,6 +82,8 @@ public:
         comprobante+="Estado: "+estado+"\n";
         return comprobante;
     }
+
+
 private:
     void recalcularPrecio() {
         precio = 0.0;

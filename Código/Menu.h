@@ -33,6 +33,7 @@ public:
     void mostrarMenuCarta();
     void mostrarCanasta();
     void pagarPedido();
+    void eliminarProducto();
 };
 
 int Menu::obtenerIS_CC(){
@@ -93,7 +94,7 @@ bool Menu::MenuLogin(){
         	system("cls");
             login= false;
         }else if(opcion == 2){
-        	
+
             return MenuLogin();
         }
     }
@@ -147,7 +148,6 @@ void Menu::mostrarMenuFunciones(){
         break;
     case 2:
         mostrarCanasta();
-        pagarPedido();
         break;
     case 3:
     	cout<<endl;
@@ -206,6 +206,8 @@ void Menu::mostrarMenuCarta() {
 }
 
 void Menu::mostrarCanasta() {
+    IngresoDatos ordenInd;
+    int opcion;
 	cout<<"Su pedido por ahora "<<endl;
 	system("cls");
 	if(pedido.calcularTotal()==0){
@@ -217,8 +219,27 @@ void Menu::mostrarCanasta() {
 			system("cls");
 	}else{
 	pedido.mostrarPedido();
+	cout<<"\n1. Continuar"<<endl;
+	cout<<"2. Agregar mas comida"<<endl;
+	cout<<"3. Quitar comida."<<endl;
+	cout<<"4. Regresar al menu principal."<<endl;
+	opcion=ordenInd.IngresoEnteros("Ingrese una opcion: ");
+	switch(opcion){
+    case 1:
+        pagarPedido();
+        break;
+    case 2:
+        mostrarCanasta();
+        break;
+    case 3:
+        eliminarProducto();
+        break;
+    case 4:
+        mostrarMenuFunciones();
+        break;
 	}
-	
+	}
+
 }
 void Menu::pagarPedido(){
     IngresoDatos orden;
@@ -228,18 +249,51 @@ void Menu::pagarPedido(){
 		cout<<" Realiza tu orden primero. "<<endl;
 	}else{
 	cout<<endl<<"1. Pagar"<<endl;
-    cout<<"2. Agregar mas comida"<<endl;
+    cout<<"2. Volver al menu principal"<<endl;
     opcion = orden.IngresoEnteros("Elija una opcion: ");
     switch(opcion){
     case 1:
         pedido.pagar();
         cout<<pedido.generarComprobante();
         cout<<"Su pedido ha sido pagado de forma exitosa."<<endl;
+        pedido=Pedido();
         break;
     case 2:
-        mostrarMenuCarta();
+        mostrarMenuFunciones();
         break;
     }
 	}
+}
+void Menu::eliminarProducto() {
+    IngresoDatos ordenEliminar;
+    int opcion;
+    cout << "Seleccione el producto que desea eliminar: " << endl;
+    ListaProductos.imprimirMenu();
+    cout<<"6. Ver canasta"<<endl;
+    do{
+    opcion = ordenEliminar.IngresoEnteros("Ingrese el número del producto que desea eliminar: ");
+    Producto eliminarPlato;
+    switch (opcion) {
+    case 1:
+        eliminarPlato = Producto("Pizza", 1.00, 1);
+        break;
+    case 2:
+        eliminarPlato = Producto("Salchipapa", 1.50, 2);
+        break;
+    case 3:
+        eliminarPlato = Producto("Agua", 0.50, 3);
+        break;
+    case 4:
+        eliminarPlato = Producto("Hamburguesa", 2.00, 4);
+        break;
+    case 5:
+        eliminarPlato = Producto("Refresco", 0.40, 5);
+        break;
+    case 6:
+        mostrarCanasta();
+        break;
+    }
+    pedido.eliminarProducto(eliminarPlato);
+    }while(opcion=!6);
 }
 #endif

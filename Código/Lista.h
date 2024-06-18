@@ -110,61 +110,34 @@ public:
             cont++;
         }
     }
-   /* void eliminar(T& valor){
-    Nodo<T>* actual=cabeza;
-    Nodo<T>* anterior=NULL;
-    while(actual != NULL && actual -> dato != valor){
-        anterior = actual;
-        actual = actual->siguiente;
-    }
-    if(actual != NULL){
-        Nodo<T>* siguiente = actual->siguiente;
-        if (anterior != NULL){
-            anterior->siguiente = siguiente;
-        }else{
-            cabeza = siguiente;
+   bool eliminar(T& valor){
+        Nodo<T>* actual=cabeza;
+        Nodo<T>* anterior=NULL;
+        while(actual != NULL && actual -> dato != valor){
+            anterior = actual;
+            actual = actual->siguiente;
         }
-        if (siguiente != NULL){
-            siguiente->anterior = anterior;
+        if(actual==NULL){
+            cout<<"El producto ingresado no existe en la carta."<<endl;
+            return false;
         }
-        delete actual;
+        if(actual->contador >= 1){
+                actual->contador--;
+        }else {
+            Nodo<T>* siguiente = actual->siguiente;
+            if (anterior != nullptr) {
+                anterior->siguiente = siguiente;
+            } else {
+                cabeza = siguiente;
+            }
+            if (siguiente != nullptr) {
+                siguiente->anterior = anterior;
+            }
+            delete actual;
+            cout << "Se ha eliminado " << valor.getDescripcion() << endl;
+        }
+        return true;
     }
-}*/
-void eliminar(T& valor) {
-    Nodo<T>* actual = cabeza;
-    Nodo<T>* anterior = nullptr;
-
-    // Buscamos le dato nodo por nodo
-    while (actual != nullptr && actual->dato != valor) {
-        anterior = actual;
-        actual = actual->siguiente;
-    }
-
-    if (actual == nullptr) {
-    	cout<<"Lo sentimos, su dato no se encuentra en la lista"<<endl;
-        return;
-    }
-
-    Nodo<T>* siguiente = actual->siguiente;
-
-    // Actualizar el puntero del nodo anterior
-    if (anterior != nullptr) {
-        anterior->siguiente = siguiente;
-    } else {
-    	// Si anterior es nullptr entonces actual se convierte en la cabeza
-        cabeza = siguiente; 
-    }
-
-    if (siguiente != nullptr) {
-        siguiente->anterior = anterior;
-    } else {
-    	//redireccionamos la cola de la lista
-        siguiente = anterior;
-    }
-    //borrarmos el nodo con el valor 
-    delete actual;
-}
-
 
     bool buscar(T valor) {
         if (esVacia()) {
@@ -201,7 +174,7 @@ void eliminar(T& valor) {
             tmp = tmp->siguiente;
         }
     }
-    
+
     ~Lista(){
     	 Nodo<T>* actual = cabeza;
         while (actual != nullptr) {

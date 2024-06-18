@@ -15,7 +15,9 @@ private:
 public:
     Producto(string _descripcion = " ", float _precio = 0, int _id=0)
         : descripcion(_descripcion), precio(_precio), id(_id){}
-
+    bool operator!=(const Producto& otro) const {
+        return this->id != otro.id;
+    }
     void setDescripcion(string _descripcion) {
         descripcion = _descripcion;
     }
