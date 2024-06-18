@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Estudiante.h"
+#include "Producto.h"
 #include <string>
 
 using namespace std;
@@ -17,7 +18,7 @@ struct Nodo {
 
 template <typename T>
 class Lista {
-private:
+public:
     Nodo<T>* cabeza;
 
 public:
@@ -81,12 +82,18 @@ public:
 
     void imprimirListaComida() const {
         Nodo<T>* actual = cabeza;
+        float pago=0;
         while (actual) {
+            float precioProducto=actual->dato.getPrecio();
+            int cantidad=actual->contador;
+            float precio=precioProducto*cantidad;
             cout << "Producto: " << actual->dato.getDescripcion() << endl;
-            cout << "Precio unitario: $" << actual->dato.getPrecio() << endl;
+            cout << "Precio unitario:                           $" << actual->dato.getPrecio() << endl;
             cout << "Cantidad: " << actual->contador << endl;
+            pago+=precio;
             actual = actual->siguiente;
         }
+        cout<<"Precio total de la orden:                  $"<<pago<<endl;
         cout << endl;
     }
     void imprimirMenu(){

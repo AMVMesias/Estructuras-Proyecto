@@ -193,14 +193,14 @@ void Menu::pagarPedido(){
     IngresoDatos orden;
     int opcion;
     cout<<"1. Pagar"<<endl;
-    cout<<"2. Regresar al menu de comida"<<endl;
+    cout<<"2. Agregar mas comida"<<endl;
     opcion = orden.IngresoEnteros("Elija una opcion: ");
     switch(opcion){
     case 1:
         cout<<"Pedido cancelado exitosamente."<<endl;
         break;
     case 2:
-        mostrarMenuFunciones();
+        mostrarMenuCarta();
         break;
     }
 }
