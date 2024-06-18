@@ -165,6 +165,16 @@ public:
             tmp = tmp->siguiente;
         }
     }
+    
+    ~Lista(){
+    	 Nodo<T>* actual = cabeza;
+        while (actual != nullptr) {
+            Nodo<T>* siguiente = actual->siguiente;
+            delete actual;
+            actual = siguiente;
+        }
+        cabeza = nullptr;
+	}
 };
 
 #endif // LISTA_H

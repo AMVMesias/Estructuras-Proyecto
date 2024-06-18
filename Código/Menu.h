@@ -93,6 +93,7 @@ void Menu::MostrarMenuPrincipal(){
     obtenerIS_CC();
 }
 void Menu::crearCuenta(){
+	Listausuarios.~Lista();
     IngresoDatos datosCrear;
     string contrasenia, nombre;
     long long int cedula;
@@ -109,7 +110,7 @@ void Menu::crearCuenta(){
     if(aux.CrearCuenta(aux)){
     	//conexión a Json usado como base de datos
         crearNuevoUsuario_BBD(aux.getUsuario(), aux.getPswd(), aux.getNombre());
-
+		cargarEstudiantes(this->Listausuarios);
     }else{
         cout<<"Vuelva a intentarlo";
     }
