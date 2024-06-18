@@ -60,18 +60,19 @@ public:
     }
 
     string generarComprobante(){
+    	system("cls");
         string comprobante;
-        comprobante+="Comprobante de pago.";
+        comprobante+="Comprobante de pago.\n";
         comprobante+="Orden #: "+to_string(id);
-        comprobante+="Cliente: "+cliente.getNombre();
-        comprobante+="Productos adquiridos: ";
+        comprobante+="\nCliente: "+cliente.getNombre();
+        comprobante+="\nProductos adquiridos: ";
         Nodo<Producto>* actual=productos.getCabeza();
         while(actual){
-            comprobante+=actual->dato.getDescripcion()+"........$ "+to_string(actual->dato.getPrecio());
+            comprobante+=actual->dato.getDescripcion()+"........$ "+to_string(actual->dato.getPrecio())+"\n";
             actual=actual->siguiente;
         }
-        comprobante+="Total: "+to_string(calcularTotal());
-        comprobante+="Estado: "+estado;
+        comprobante+="Total: "+to_string(calcularTotal())+"\n";
+        comprobante+="Estado: "+estado+"\n";
         return comprobante;
     }
 private:

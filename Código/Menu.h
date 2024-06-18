@@ -36,8 +36,6 @@ public:
 };
 
 int Menu::obtenerIS_CC(){
-	//aqui se debería cargar los datos
-    cargarEstudiantes(this->Listausuarios);
     int cc=0;
     IngresoDatos i;
     do{
@@ -50,6 +48,7 @@ int Menu::obtenerIS_CC(){
     switch(cc){
     case 1:
         if(MenuLogin()){
+        	system("cls");
             mostrarMenuFunciones();
         }
         break;
@@ -67,8 +66,10 @@ int Menu::obtenerIS_CC(){
 }
 
 bool Menu::MenuLogin(){
+	cargarEstudiantes(this->Listausuarios);
     IngresoDatos datosDelUsuario;
     string contrasenia;
+    bool login=false;
     int ced,opcion;
     ced=datosDelUsuario.IngresoEnteros("Usuario: ");
     cout<<"Contrasenia: ";
@@ -78,22 +79,31 @@ bool Menu::MenuLogin(){
     Listausuarios.obtenerUserBuscado(aux1,ced);
     if(aux.validarPersona_userPswd(aux,aux1)){
             pedido.setCliente(aux1);
-        return true;
+            cout<<"Claves ingresadas correctas"<<endl;
+			cout << "\nPresione  Enter  para continuar...";
+			getchar();
+			getchar();
+        login=true;
     }else{
+    	system("cls");
+    	Listausuarios.~Lista();
         cout<<"Credenciales incorrectas"<<endl;
         opcion=datosDelUsuario.IngresoEnteros("1. Volver al inicio\n2. Volver a intentar\n");
         if(opcion==1){
-            return false;
+        	system("cls");
+            login= false;
         }else if(opcion == 2){
+        	
             return MenuLogin();
         }
     }
+    return login;
 }
 void Menu::MostrarMenuPrincipal(){
     obtenerIS_CC();
 }
 void Menu::crearCuenta(){
-	Listausuarios.~Lista();
+	system("cls");
     IngresoDatos datosCrear;
     string contrasenia, nombre;
     long long int cedula;
@@ -110,14 +120,17 @@ void Menu::crearCuenta(){
     if(aux.CrearCuenta(aux)){
     	//conexión a Json usado como base de datos
         crearNuevoUsuario_BBD(aux.getUsuario(), aux.getPswd(), aux.getNombre());
-		cargarEstudiantes(this->Listausuarios);
     }else{
         cout<<"Vuelva a intentarlo";
     }
-
+			cout << "\nPresione  Enter  para continuar...";
+			getchar();
+			getchar();
+	system("cls");
 
 }
 void Menu::mostrarMenuFunciones(){
+	system("cls");
     int cc=0;
     IngresoDatos i;
     do{
@@ -137,7 +150,10 @@ void Menu::mostrarMenuFunciones(){
         pagarPedido();
         break;
     case 3:
-        pedido.generarComprobante();
+    	cout<<endl;
+        cout<<pedido.generarComprobante()<<endl;
+        system("pause");
+			mostrarMenuFunciones();
         break;
     case 4:
         exit(0);
@@ -149,6 +165,7 @@ void Menu::mostrarMenuFunciones(){
 }
 
 void Menu::mostrarMenuCarta() {
+	system("cls");
 	//cargar la Lista de Productos
     //aquí se debería imprimir la lista de productos
 
@@ -189,24 +206,40 @@ void Menu::mostrarMenuCarta() {
 }
 
 void Menu::mostrarCanasta() {
-    cout<<"Su pedido por ahora es: "<<endl;
-    pedido.mostrarPedido();
+	cout<<"Su pedido por ahora "<<endl;
+	system("cls");
+	if(pedido.calcularTotal()==0){
+	cout<<"Su pedido por ahora"<<endl;
+	cout<<"se encuentra vacío, primero realice su orden por favor"<<endl;
+			cout << "\nPresione  Enter  para continuar...";
+			getchar();
+			getchar();
+			system("cls");
+	}else{
+	pedido.mostrarPedido();
+	}
+	
 }
 void Menu::pagarPedido(){
     IngresoDatos orden;
     int opcion;
-    cout<<endl<<"1. Pagar"<<endl;
+	if(pedido.calcularTotal()==0){
+		cout<<"Su pedido está vacío, tenemos un extenso menu "<<endl;
+		cout<<" Realiza tu orden primero. "<<endl;
+	}else{
+	cout<<endl<<"1. Pagar"<<endl;
     cout<<"2. Agregar mas comida"<<endl;
     opcion = orden.IngresoEnteros("Elija una opcion: ");
     switch(opcion){
     case 1:
         pedido.pagar();
         cout<<pedido.generarComprobante();
-        cout<<"Pedido cancelado exitosamente."<<endl;
+        cout<<"Su pedido ha sido pagado de forma exitosa."<<endl;
         break;
     case 2:
         mostrarMenuCarta();
         break;
     }
+	}
 }
 #endif

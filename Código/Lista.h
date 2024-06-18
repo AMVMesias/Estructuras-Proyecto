@@ -78,6 +78,7 @@ public:
         Nodo<T>* actual = cabeza;
         while (actual) {
             actual->dato.mostrarDatos();
+            //cout<<actual->dato<<endl;
             actual = actual->siguiente;
         }
         cout << endl;
@@ -109,7 +110,7 @@ public:
             cont++;
         }
     }
-    void eliminar(T& valor){
+   /* void eliminar(T& valor){
     Nodo<T>* actual=cabeza;
     Nodo<T>* anterior=NULL;
     while(actual != NULL && actual -> dato != valor){
@@ -128,7 +129,42 @@ public:
         }
         delete actual;
     }
+}*/
+void eliminar(T& valor) {
+    Nodo<T>* actual = cabeza;
+    Nodo<T>* anterior = nullptr;
+
+    // Buscamos le dato nodo por nodo
+    while (actual != nullptr && actual->dato != valor) {
+        anterior = actual;
+        actual = actual->siguiente;
+    }
+
+    if (actual == nullptr) {
+    	cout<<"Lo sentimos, su dato no se encuentra en la lista"<<endl;
+        return;
+    }
+
+    Nodo<T>* siguiente = actual->siguiente;
+
+    // Actualizar el puntero del nodo anterior
+    if (anterior != nullptr) {
+        anterior->siguiente = siguiente;
+    } else {
+    	// Si anterior es nullptr entonces actual se convierte en la cabeza
+        cabeza = siguiente; 
+    }
+
+    if (siguiente != nullptr) {
+        siguiente->anterior = anterior;
+    } else {
+    	//redireccionamos la cola de la lista
+        siguiente = anterior;
+    }
+    //borrarmos el nodo con el valor 
+    delete actual;
 }
+
 
     bool buscar(T valor) {
         if (esVacia()) {
