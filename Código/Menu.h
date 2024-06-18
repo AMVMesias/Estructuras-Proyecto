@@ -20,11 +20,11 @@ private:
     Lista<Producto> ListaProductos;
 public:
     Menu(){
-        ListaProductos.insertarAlFinal(Producto("Pizza", 1.00,0));
-        ListaProductos.insertarAlFinal(Producto("Salchipapa", 1.50,0));
-        ListaProductos.insertarAlFinal(Producto("Agua", 0.50,0));
-        ListaProductos.insertarAlFinal(Producto("Hamburguesa", 2.00,0));
-        ListaProductos.insertarAlFinal(Producto("Refresco", 0.40,0));
+        ListaProductos.insertarAlFinal(Producto("Pizza", 1.00,1));
+        ListaProductos.insertarAlFinal(Producto("Salchipapa", 1.50,2));
+        ListaProductos.insertarAlFinal(Producto("Agua", 0.50,3));
+        ListaProductos.insertarAlFinal(Producto("Hamburguesa", 2.00,4));
+        ListaProductos.insertarAlFinal(Producto("Refresco", 0.40,5));
     };
     void MostrarMenuPrincipal();
     bool MenuLogin();
@@ -159,23 +159,23 @@ void Menu::mostrarMenuCarta() {
         cout << endl;
         switch(opcion){
             case 1:
-                pedido.insertarComida(Producto("Pizza",1.00,0));
+                pedido.insertarComida(Producto("Pizza",1.00,1));
                 cout <<"Pizza agregada." << endl;
                 break;
             case 2:
-                pedido.insertarComida(Producto("Salchipapa",1.50,0));
+                pedido.insertarComida(Producto("Salchipapa",1.50,2));
                 cout <<"Salchipapa agregada." << endl;
                 break;
             case 3:
-                pedido.insertarComida(Producto("Agua",0.50,0));
+                pedido.insertarComida(Producto("Agua",0.50,3));
                 cout <<"Agua agregada." << endl;
                 break;
             case 4:
-                pedido.insertarComida(Producto("Hamburguesa",2.00,0));
+                pedido.insertarComida(Producto("Hamburguesa",2.00,4));
                 cout <<"Hamburguesa agregada." << endl;
                 break;
             case 5:
-                pedido.insertarComida(Producto("Refresco",0.40,0));
+                pedido.insertarComida(Producto("Refresco",0.40,5));
                 cout <<"Refresco agregada." << endl;
                 break;
             case 6:
