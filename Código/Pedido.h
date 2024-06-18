@@ -35,9 +35,7 @@ public:
         if (productos.eliminar(producto)) {
             precio -= producto.getPrecio();
             cout << "Se ha eliminado " << producto.getDescripcion() << endl;
-        } else {
-            cout << "El producto existe en la canasta." << endl;
-        }
+        } 
     }
     double calcularTotal() const {
         return precio;

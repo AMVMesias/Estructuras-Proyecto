@@ -229,7 +229,7 @@ void Menu::mostrarCanasta() {
         pagarPedido();
         break;
     case 2:
-        mostrarCanasta();
+        mostrarMenuCarta();
         break;
     case 3:
         eliminarProducto();

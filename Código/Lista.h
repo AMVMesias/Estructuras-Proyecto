@@ -121,7 +121,7 @@ public:
             cout<<"El producto ingresado no existe en la carta."<<endl;
             return false;
         }
-        if(actual->contador >= 1){
+        if(actual->contador > 1){
                 actual->contador--;
         }else {
             Nodo<T>* siguiente = actual->siguiente;
