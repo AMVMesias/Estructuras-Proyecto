@@ -18,26 +18,15 @@ struct Nodo {
 
 template <typename T>
 class Lista {
-private: 
+public:
     Nodo<T>* cabeza;
 
 public:
     Lista() : cabeza(nullptr) {}
-    
-    ~Lista() {
-        Nodo<T>* current = cabeza;
-        while (current != nullptr) {
-            Nodo<T>* temp = current;
-            current = current->siguiente;
-            delete temp;
-        }
-    }
-
-    
-    Nodo<T>* getCabeza() const {
+    Nodo<T>* getCabeza(){
         return cabeza;
     }
-    void insertarAlFinal(const T valor) {
+    void insertarAlFinal(T valor) {
         Nodo<T>* nuevo = new Nodo<T>;
         nuevo->dato = valor;
         nuevo->siguiente = nullptr;
@@ -94,21 +83,22 @@ public:
         cout << endl;
     }
 
-    void imprimirListaComida() const {
+    string imprimirListaComida(float& pago) const {
         Nodo<T>* actual = cabeza;
-        float pago=0;
+        string total;
+        pago=0;
         while (actual) {
             float precioProducto=actual->dato.getPrecio();
             int cantidad=actual->contador;
             float precio=precioProducto*cantidad;
-            cout << "Producto: " << actual->dato.getDescripcion() << endl;
-            cout << "Precio unitario:                           $" << actual->dato.getPrecio() << endl;
-            cout << "Cantidad: " << actual->contador << endl;
+            cout << "Producto: "+actual->dato.getDescripcion()<<endl;
+            cout << "Precio unitario:                           $"+to_string(precioProducto)<<endl;
+            cout << "Cantidad: "+to_string(cantidad)<<endl;
             pago+=precio;
             actual = actual->siguiente;
         }
-        cout<<"Precio total de la orden:                  $"<<pago<<endl;
-        cout << endl;
+        total+="Precio total de la orden:                  $"+to_string(pago);
+        return total;
     }
     void imprimirMenu(){
         Nodo<T>* actual=cabeza;
@@ -162,6 +152,10 @@ public:
         return cabeza == nullptr;
     }
 
+    // Métodos adicionales según necesidad
+    // Ejemplo: Obtener elementos de la lista
+
+    //METODOS PARA LISTA ESTUDIANTES- USUARIOS
     void obtenerUserBuscado(Estudiante &aux,int ced){
         Nodo<Estudiante>* tmp = cabeza;
         while (tmp) {
@@ -173,4 +167,4 @@ public:
     }
 };
 
-#endif
+#endif // LISTA_H

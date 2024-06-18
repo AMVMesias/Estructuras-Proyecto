@@ -28,7 +28,7 @@ public:
         this->cliente=cliente;
     }
     void agregarProducto(const Producto& producto) {
-        productos.insertarAlFinal(producto);
+        productos.insertarComida(producto);
         precio += producto.getPrecio();
     }
 
@@ -37,9 +37,9 @@ public:
     }
 
     void mostrarPedido() const{
-        cout << "Contenido:" << endl;
-        productos.imprimirLista();
-        cout << "Total del pedido: $" << calcularTotal() << endl << endl;
+        float pago;
+        string orden=productos.imprimirListaComida(pago);
+        cout<<orden;
     }
 
     void pagar() {
@@ -59,15 +59,20 @@ public:
         return rand()%5999+399;
     }
 
-    void generarComprobante(){
-        cout<<"Comprobante de pago."<<endl;
-        cout<<"Orden #: "<<id<<endl;
-        cout<<"Cliente: "<<cliente.getNombre()<<endl;
-        cout<<"Productos adquiridos: "<<endl;
-        productos.imprimirListaComida();
-        cout<<"Total: "<<calcularTotal()<<endl;
-        cout<<"Estado: "<<estado<<endl;
-
+    string generarComprobante(){
+        string comprobante;
+        comprobante+="Comprobante de pago.";
+        comprobante+="Orden #: "+to_string(id);
+        comprobante+="Cliente: "+cliente.getNombre();
+        comprobante+="Productos adquiridos: ";
+        Nodo<Producto>* actual=productos.getCabeza();
+        while(actual){
+            comprobante+=actual->dato.getDescripcion()+"........$ "+to_string(actual->dato.getPrecio());
+            actual=actual->siguiente;
+        }
+        comprobante+="Total: "+to_string(calcularTotal());
+        comprobante+="Estado: "+estado;
+        return comprobante;
     }
 private:
     void recalcularPrecio() {

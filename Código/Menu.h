@@ -153,10 +153,10 @@ void Menu::mostrarMenuCarta() {
 
     IngresoDatos orden;
     int opcion;
+    cout <<"Menu de comida: " << endl;
+    ListaProductos.imprimirMenu();
+    cout <<"6. Regresar" << endl;
     do {
-        cout <<"Menu de comida: " << endl;
-        ListaProductos.imprimirMenu();
-        cout <<"6. Regresar" << endl;
         opcion = orden.IngresoEnteros("Ingrese las opciones que desee: ");
         cout << endl;
         switch(opcion){
@@ -194,13 +194,13 @@ void Menu::mostrarCanasta() {
 void Menu::pagarPedido(){
     IngresoDatos orden;
     int opcion;
-    cout<<"1. Pagar"<<endl;
+    cout<<endl<<"1. Pagar"<<endl;
     cout<<"2. Agregar mas comida"<<endl;
     opcion = orden.IngresoEnteros("Elija una opcion: ");
     switch(opcion){
     case 1:
         pedido.pagar();
-        pedido.generarComprobante();
+        cout<<pedido.generarComprobante();
         cout<<"Pedido cancelado exitosamente."<<endl;
         break;
     case 2:
