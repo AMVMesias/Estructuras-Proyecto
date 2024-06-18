@@ -18,12 +18,26 @@ struct Nodo {
 
 template <typename T>
 class Lista {
-public:
+private: 
     Nodo<T>* cabeza;
 
 public:
     Lista() : cabeza(nullptr) {}
-    void insertarAlFinal(T valor) {
+    
+    ~Lista() {
+        Nodo<T>* current = cabeza;
+        while (current != nullptr) {
+            Nodo<T>* temp = current;
+            current = current->siguiente;
+            delete temp;
+        }
+    }
+
+    
+    Nodo<T>* getCabeza() const {
+        return cabeza;
+    }
+    void insertarAlFinal(const T valor) {
         Nodo<T>* nuevo = new Nodo<T>;
         nuevo->dato = valor;
         nuevo->siguiente = nullptr;
@@ -148,10 +162,6 @@ public:
         return cabeza == nullptr;
     }
 
-    // Métodos adicionales según necesidad
-    // Ejemplo: Obtener elementos de la lista
-
-    //METODOS PARA LISTA ESTUDIANTES- USUARIOS
     void obtenerUserBuscado(Estudiante &aux,int ced){
         Nodo<Estudiante>* tmp = cabeza;
         while (tmp) {
@@ -163,4 +173,4 @@ public:
     }
 };
 
-#endif // LISTA_H
+#endif

@@ -14,15 +14,15 @@ class Estudiante{
         //Estudiante ():nombre(" "), usuario(0),contrasenia(" "){}
         Estudiante (string _nombre=" ", int _usuario =0, string _contrasenia=" ") :nombre(_nombre), usuario(_usuario),contrasenia(_contrasenia){}
         
-        int getUsuario(){
+        int getUsuario() const{
             return usuario;
         }
 
-        string getPswd(){
+        string getPswd() const{
             return contrasenia;
         }
 
-		string getNombre(){
+		string getNombre() const{
 			return nombre;
 		}
 		
@@ -35,7 +35,7 @@ class Estudiante{
     void mostrarDatos(){
         cout<<"Usuario: "<<usuario<<endl;
         cout<<"Contrasenia: "<<contrasenia<<endl;
-        cout<<"Nombres: "<<nombre<<endl;
+        cout<<"Nombres: "<<nombre << "\n" <<endl;
     }
 
     bool validarPersona_userPswd(Estudiante aux, Estudiante aux1){
