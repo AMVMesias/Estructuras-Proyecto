@@ -222,6 +222,58 @@ void cargarPedidos(Lista<Pedido>& listaPedidos) {
 
 
 
+cpp
+Copy code
+void cargarAdmins(Lista<Admin>& listaAdmins) {
+    DIR* dir;
+    struct dirent* ent;
+
+    if ((dir = opendir(CARPETA_USUARIOS.c_str())) != NULL) {
+        while ((ent = readdir(dir)) != NULL) {
+            string nombreArchivo = ent->d_name;
+            if (nombreArchivo.find(".json") != string::npos) {
+                string rutaArchivo = CARPETA_USUARIOS + "/" + nombreArchivo;
+                ifstream archivo(rutaArchivo);
+                if (archivo.is_open()) {
+                    json j;
+                    try {
+                        archivo >> j;
+                        archivo.close();
+
+                        if (j.contains("id") && j["id"].is_number_integer() &&
+                            j.contains("contrasena") && j["contrasena"].is_string() &&
+                            j.contains("nombre") && j["nombre"].is_string()) {
+
+                            Admin admin(
+                                j["id"].get<int>(),
+                                j["nombre"].get<string>(),
+                                j["contrasena"].get<string>()
+                            );
+
+                            listaAdmins.insertarAlFinal(admin);
+                        } else {
+                            cerr << "El archivo " << rutaArchivo << " no contiene los campos necesarios o algunos tienen tipos incorrectos." << endl;
+                        }
+                    } catch (const json::parse_error& e) {
+                        cerr << "Error de parseo en el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    } catch (const json::type_error& e) {
+                        cerr << "Error de tipo en el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    } catch (const std::exception& e) {
+                        cerr << "Error al procesar el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    }
+                } else {
+                    cerr << "No se pudo abrir el archivo: " << rutaArchivo << endl;
+                }
+            }
+        }
+        closedir(dir);
+    } else {
+        cerr << "No se pudo abrir el directorio: " << CARPETA_USUARIOS << endl;
+    }
+}
+
+
+
 
 
 
