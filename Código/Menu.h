@@ -25,6 +25,14 @@ public:
         ListaProductos.insertarAlFinal(Producto("Agua", 0.50,3));
         ListaProductos.insertarAlFinal(Producto("Hamburguesa", 2.00,4));
         ListaProductos.insertarAlFinal(Producto("Refresco", 0.40,5));
+        ListaProductos.insertarAlFinal(Producto("Papipollo", 2.25,6));
+        ListaProductos.insertarAlFinal(Producto("Hot dog", 1.25,7));
+        ListaProductos.insertarAlFinal(Producto("Costillas de cerdo", 2.50,8));
+        ListaProductos.insertarAlFinal(Producto("Chuleta", 2.50,9));
+        ListaProductos.insertarAlFinal(Producto("Pechuga con papas fritas", 2.50,10));
+        ListaProductos.insertarAlFinal(Producto("Alitas de BBq", 2.50,11));
+        ListaProductos.insertarAlFinal(Producto("Tigrillo", 2.25,12));
+
     };
     void MostrarMenuPrincipal();
     bool MenuLogin();
