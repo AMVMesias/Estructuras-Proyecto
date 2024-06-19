@@ -67,14 +67,16 @@ int Menu::obtenerIS_CC(){
 }
 
 bool Menu::MenuLogin(){
+	short min=8;
+	short max=15;
 	cargarEstudiantes(this->Listausuarios);
     IngresoDatos datosDelUsuario;
-    string contrasenia;
+    std::string contrasenia;
     bool login=false;
     int ced,opcion;
     ced=datosDelUsuario.IngresoEnteros("Usuario: ");
     cout<<"Contrasenia: ";
-    getline(cin,contrasenia);
+    contrasenia=string{datosDelUsuario.ingresoContra(8,15)};
     Estudiante aux(" ",ced,contrasenia);
     Estudiante aux1;
     Listausuarios.obtenerUserBuscado(aux1,ced);
@@ -229,7 +231,7 @@ void Menu::mostrarCanasta() {
         pagarPedido();
         break;
     case 2:
-        mostrarMenuCarta();
+        mostrarCanasta();
         break;
     case 3:
         eliminarProducto();
