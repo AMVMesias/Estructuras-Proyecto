@@ -222,8 +222,6 @@ void cargarPedidos(Lista<Pedido>& listaPedidos) {
 
 
 
-cpp
-Copy code
 void cargarAdmins(Lista<Admin>& listaAdmins) {
     DIR* dir;
     struct dirent* ent;
