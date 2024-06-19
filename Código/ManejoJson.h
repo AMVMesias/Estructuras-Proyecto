@@ -16,6 +16,7 @@ using json = nlohmann::json;
 
 const string CARPETA_USUARIOS = "Usuarios"; 
 const string CARPETA_PRODUCTOS = "Productos";  
+
 const string CARPETA_ORDENES = "Comprobantes"; 
 
 bool estudianteExiste(int usuario) {
@@ -128,23 +129,38 @@ void crearNuevoProducto(int id, const string& descripcion, float precio, int can
 
 
 
-void guardarPedido(const Pedido& pedido) {
-        string nombreArchivo = CARPETA_ORDENES + "/orden_" + to_string(pedido.generarId()) + ".json";
 
-        json j;
-        j["comprobante"] = pedido.generarComprobante();
+void guardarPedido(const Estudiante& cliente, const Lista<Producto>& productos, double total, const string& estado, const Pedido& pedido, int user){
+    string nombreArchivo = CARPETA_ORDENES + "/orden_" + to_string(pedido.generarId()) + ".json";
 
-        ofstream archivo(nombreArchivo);
-        if (archivo.is_open()) {
-            archivo << j.dump(4);
-            archivo.close();
-            cout << "Comprobante de pedido guardado exitosamente: " << nombreArchivo << endl;
-        } else {
-            cerr << "No se pudo abrir el archivo para escribir: " << nombreArchivo << endl;
-        }
+    json j;
+    j["cliente"] = cliente.getNombre(); 
+    j["total"] = total;
+    j["estado"] = estado;
+    j["CI:"] = user;  
+    json productosJson = json::array();
+    Nodo<Producto>* actual = productos.getCabeza();
+    while (actual) {
+        json productoJson;
+        productoJson["descripcion"] = actual->dato.getDescripcion();
+        productoJson["precio"] = actual->dato.getPrecio();
+        productosJson.push_back(productoJson);
+        actual = actual->siguiente;
     }
+    j["productos"] = productosJson;
+
+    ofstream archivo(nombreArchivo);
+    if (archivo.is_open()) {
+        archivo << setw(4) << j << endl; 
+        archivo.close();
+        cout << "Comprobante de pedido guardado exitosamente: " << nombreArchivo << endl;
+    } else {
+        cerr << "No se pudo abrir el archivo para escribir: " << nombreArchivo << endl;
+    }
+}
+
  
-void cargarComprobantesPedidos(Lista<string>& comprobantes) {
+void cargarPedidos(Lista<Pedido>& listaPedidos) {
     DIR* dir;
     struct dirent* ent;
 
@@ -155,10 +171,44 @@ void cargarComprobantesPedidos(Lista<string>& comprobantes) {
                 string rutaArchivo = CARPETA_ORDENES + "/" + nombreArchivo;
                 ifstream archivo(rutaArchivo);
                 if (archivo.is_open()) {
-                    string comprobante;
-                    getline(archivo, comprobante, '\0'); 
-                    archivo.close();
-                    comprobantes.insertarAlFinal(comprobante);
+                    json j;
+                    try {
+                        archivo >> j;
+                        archivo.close();
+
+                        if (j.contains("cliente") && j["cliente"].is_string() &&
+                            j.contains("total") && j["total"].is_number_float() &&
+                            j.contains("estado") && j["estado"].is_string() &&
+                            j.contains("CI:") && j["CI:"].is_number_integer() &&
+                            j.contains("productos") && j["productos"].is_array()) {
+
+                            Pedido pedido;
+                            pedido.setCliente(Estudiante(j["cliente"].get<string>(), j["CI:"].get<int>(), "")); // No se carga la contraseña en este ejemplo
+                            pedido.setEstado(j["estado"].get<string>());
+                            for (auto& productoJson : j["productos"]) {
+                                if (productoJson.contains("descripcion") && productoJson["descripcion"].is_string() &&
+                                    productoJson.contains("precio") && productoJson["precio"].is_number_float()) {
+
+                                    Producto producto(
+                                        productoJson["descripcion"].get<string>(),
+                                        productoJson["precio"].get<double>()
+                                    );
+                                    pedido.agregarProducto(producto);
+                                } else {
+                                    cerr << "El archivo " << rutaArchivo << " tiene un producto con campos incorrectos." << endl;
+                                }
+                            }
+                            listaPedidos.insertarAlFinal(pedido);
+                        } else {
+                            cerr << "El archivo " << rutaArchivo << " no contiene los campos necesarios o algunos tienen tipos incorrectos." << endl;
+                        }
+                    } catch (const json::parse_error& e) {
+                        cerr << "Error de parseo en el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    } catch (const json::type_error& e) {
+                        cerr << "Error de tipo en el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    } catch (const std::exception& e) {
+                        cerr << "Error al procesar el archivo JSON " << rutaArchivo << ": " << e.what() << endl;
+                    }
                 } else {
                     cerr << "No se pudo abrir el archivo: " << rutaArchivo << endl;
                 }
@@ -169,4 +219,10 @@ void cargarComprobantesPedidos(Lista<string>& comprobantes) {
         cerr << "No se pudo abrir el directorio: " << CARPETA_ORDENES << endl;
     }
 }
+
+
+
+
+
+
 #endif 

@@ -1,0 +1,28 @@
+{
+    "CI:": 1727669267,
+    "cliente": "Mesias Mariscal",
+    "estado": "Pagado",
+    "productos": [
+        {
+            "descripcion": "Pizza",
+            "precio": 1.0
+        },
+        {
+            "descripcion": "Salchipapa",
+            "precio": 1.5
+        },
+        {
+            "descripcion": "Agua",
+            "precio": 0.5
+        },
+        {
+            "descripcion": "Refresco",
+            "precio": 0.4000000059604645
+        },
+        {
+            "descripcion": "Papipollo",
+            "precio": 2.25
+        }
+    ],
+    "total": 5.6500000059604645
+}

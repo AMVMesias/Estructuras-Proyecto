@@ -312,7 +312,7 @@ void Menu::pagarPedido(){
         comprobante=pedido.generarComprobante();
         cout<<comprobante;
         cout<<"Su pedido ha sido pagado de forma exitosa."<<endl;
-		guardarPedido(pedido);
+        guardarPedido(pedido.getCliente().getNombre(), pedido.getProductos(), pedido.calcularTotal(), "Pagado", pedido, pedido.getCliente().getUsuario());
         pedido=Pedido();
         system("pause");
         break;
