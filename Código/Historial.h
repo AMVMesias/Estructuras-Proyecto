@@ -2,34 +2,28 @@
 #define HISTORIAL_H
 
 #include <iostream>
-#include "Recibo.h"
-#include "Estudiante.h"
+#include "Pedido.h"
 #include "Lista.h"
-
 
 class Historial {
 private:
-    Lista<Recibo> listaRecibos;
+    Lista<Pedido> listaPedidos;
 
 public:
-	
-	Historial(){}
-	
-	
-    void agregarRecibo(const Recibo& recibo) {
-        listaRecibos.insertarAlFinal(recibo);
+    Historial() {}
+
+    void agregarPedido(const Pedido& pedido) {
+        listaPedidos.insertarAlFinal(pedido);
     }
 
     void mostrarHistorial() const {
-        Nodo<Recibo>* actual = listaRecibos.getCabeza(); 
+        Nodo<Pedido>* actual = listaPedidos.getCabeza(); 
         while (actual) {
-            actual->dato.mostrarRecibo();
+            actual->dato.mostrarPedido();
             actual = actual->siguiente;
         }
-        cout << endl;
+        std::cout << std::endl;
     }
-
 };
-
 
 #endif // HISTORIAL_H
