@@ -210,10 +210,38 @@ void Menu::mostrarMenuCarta() {
                 cout <<"Refresco agregada." << endl;
                 break;
             case 6:
+                pedido.agregarProducto(Producto("Papipollo", 2.25,6));
+                cout <<"Refresco agregada." << endl;
+                break;
+            case 7:
+                pedido.agregarProducto(Producto("Hot dog", 1.25,7));
+                cout <<"Refresco agregada." << endl;
+                break;
+            case 8:
+                pedido.agregarProducto(Producto("Costillas de cerdo", 2.50,8));
+                cout <<"Refresco agregada." << endl;
+                break;
+            case 9:
+                pedido.agregarProducto(Producto("Chuleta", 2.50,9));
+                cout <<"Refresco agregada." << endl;
+                break;
+            case 10:
+                pedido.agregarProducto(Producto("Pechuga con papas fritas", 2.50,10));
+                cout <<"Refresco agregada." << endl;
+                break;
+            case 11:
+                pedido.agregarProducto(Producto("Alitas de BBq", 2.50,11));
+                cout <<"Refresco agregada." << endl;
+                break;
+            case 12:
+                pedido.agregarProducto(Producto("Tigrillo", 2.25,12));
+                cout <<"Refresco agregada." << endl;
+                break;
+            case 13:
                 mostrarMenuFunciones();
                 break;
         }
-    }while(opcion != 6);
+    }while(opcion != 13);
 }
 
 void Menu::mostrarCanasta() {
@@ -282,7 +310,7 @@ void Menu::eliminarProducto() {
     int opcion;
     cout << "Seleccione el producto que desea eliminar: " << endl;
     ListaProductos.imprimirMenu();
-    cout<<"6. Ver canasta"<<endl;
+    cout<<"13. Ver canasta"<<endl;
     do{
     opcion = ordenEliminar.IngresoEnteros("Ingrese el número del producto que desea eliminar: ");
     Producto eliminarPlato;
@@ -302,11 +330,32 @@ void Menu::eliminarProducto() {
     case 5:
         eliminarPlato = Producto("Refresco", 0.40, 5);
         break;
-    case 6:
+     case 6:
+        eliminarPlato = Producto("Papipollo", 2.25,6);
+        break;
+     case 7:
+        eliminarPlato = Producto("Hot dog", 1.25,7);
+        break;       
+    case 8:
+        eliminarPlato = Producto("Costillas de cerdo", 2.50,8);
+        break;
+    case 9:
+        eliminarPlato = Producto("Chuleta", 2.50,9);
+        break;
+    case 10:
+        eliminarPlato = Producto("Pechuga con papas fritas", 2.50,10);
+        break;
+    case 11:
+        eliminarPlato = Producto("Alitas de BBq", 2.50,11);
+        break;
+    case 12:
+        eliminarPlato = Producto("Tigrillo", 2.25,12);
+        break;
+    case 13:
         mostrarCanasta();
         break;
     }
     pedido.eliminarProducto(eliminarPlato);
-    }while(opcion=!6);
+    }while(opcion=!13);
 }
 #endif

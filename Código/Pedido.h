@@ -22,6 +22,7 @@ private:
     Estudiante cliente;
 
 public:
+
     Pedido() : id(generarId()), precio(0.0), estado("pendiente") {}
 
     void setCliente(const Estudiante& cliente){
@@ -60,7 +61,7 @@ public:
         return estado;
     }
 
-    int generarId()const {
+    int generarId() const {
         return rand()%5999+399;
     }
 
@@ -68,7 +69,7 @@ public:
     	system("cls");
         string comprobante;
         comprobante+="Comprobante de pago.\n";
-        //comprobante+="\nOrden #: "+to_string(generarId());
+        comprobante+= "\nCI: " + to_string(cliente.getUsuario());
         comprobante+="\nCliente: "+cliente.getNombre();
         comprobante+="\nProductos adquiridos: ";
         Nodo<Producto>* actual=productos.getCabeza();

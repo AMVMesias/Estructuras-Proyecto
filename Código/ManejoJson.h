@@ -128,7 +128,7 @@ void crearNuevoProducto(int id, const string& descripcion, float precio, int can
 
 
 
-    void guardarPedido(const Pedido& pedido) {
+void guardarPedido(const Pedido& pedido) {
         string nombreArchivo = CARPETA_ORDENES + "/orden_" + to_string(pedido.generarId()) + ".json";
 
         json j;
