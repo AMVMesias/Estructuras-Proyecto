@@ -35,7 +35,7 @@ public:
         if (productos.eliminar(producto)) {
             precio -= producto.getPrecio();
             cout << "Se ha eliminado " << producto.getDescripcion() << endl;
-        } 
+        }
     }
     double calcularTotal() const {
         return precio;
@@ -73,7 +73,7 @@ public:
         comprobante+="\nProductos adquiridos: ";
         Nodo<Producto>* actual=productos.getCabeza();
         while(actual){
-            comprobante+=actual->dato.getDescripcion()+"........$ "+to_string(actual->dato.getPrecio())+"\n";
+            comprobante+=actual->dato.getDescripcion()+"........$ "+to_string(actual->dato.getPrecio()*actual->contador)+"\n";
             actual=actual->siguiente;
         }
         comprobante+="Total: "+to_string(calcularTotal())+"\n";

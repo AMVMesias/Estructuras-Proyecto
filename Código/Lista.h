@@ -93,7 +93,7 @@ public:
             int cantidad=actual->contador;
             float precio=precioProducto*cantidad;
             cout << "Producto: "+actual->dato.getDescripcion()<<endl;
-            cout << "Precio unitario:                           $"+to_string(precioProducto)<<endl;
+            cout << "Precio:                           $"+to_string(precioProducto*cantidad)<<endl;
             cout << "Cantidad: "+to_string(cantidad)<<endl;
             pago+=precio;
             actual = actual->siguiente;
