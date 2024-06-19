@@ -10,6 +10,9 @@
 #include "Producto.h"
 #include "Lista.h"
 #include "Estudiante.h"
+#include <sstream>
+#include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -33,6 +36,7 @@ public:
         precio += producto.getPrecio();
     }
     void eliminarProducto(Producto& producto) {
+    	system("cls");
         if (productos.eliminar(producto)) {
             precio -= producto.getPrecio();
             cout << "Se ha eliminado " << producto.getDescripcion() << endl;
@@ -65,7 +69,7 @@ public:
         return rand()%5999+399;
     }
 
-    string generarComprobante()const {
+    /*tring generarComprobante()const {
     	system("cls");
         string comprobante;
         comprobante+="Comprobante de pago.\n";
@@ -80,7 +84,30 @@ public:
         comprobante+="Total: "+to_string(calcularTotal())+"\n";
         comprobante+="Estado: "+estado+"\n";
         return comprobante;
+    }*/
+    
+    string generarComprobante() const {
+    system("cls");
+    string comprobante;
+    comprobante += "Comprobante de pago.\n";
+    comprobante += "\nCI: " + to_string(cliente.getUsuario());
+    comprobante += "\nCliente: " + cliente.getNombre();
+    comprobante += "\nProductos adquiridos: ";
+    
+    Nodo<Producto>* actual = productos.getCabeza();
+    while (actual) {
+        ostringstream precioStream;
+        precioStream << fixed << setprecision(2) << (actual->dato.getPrecio() * actual->contador);
+        comprobante += actual->dato.getDescripcion() + "........$ " + precioStream.str() + "\n";
+        actual = actual->siguiente;
     }
+    
+    std::ostringstream totalStream;
+    totalStream << std::fixed << std::setprecision(2) << calcularTotal();
+    comprobante += "Total: " + totalStream.str() + "\n";
+    comprobante += "Estado: " + estado + "\n";
+    return comprobante;
+}
 
 
 private:

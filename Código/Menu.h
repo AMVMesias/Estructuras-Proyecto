@@ -115,6 +115,9 @@ void Menu::MostrarMenuPrincipal(){
     obtenerIS_CC();
 }
 void Menu::crearCuenta(){
+	bool login=false;
+	IngresoDatos datosDelUsuario;
+	int opcion=0;
 	system("cls");
     IngresoDatos datosCrear;
     string contrasenia, nombre;
@@ -125,9 +128,21 @@ void Menu::crearCuenta(){
     getline(cin,nombre);
     cedula=datosCrear.IngresoEnteros("Cédula de identidad: ");
     validar(cedula);
-    cout<<"Por favor cree su contrasenia (Debe contener minimo 8 digitos): ";
+    cout<<"Por favor cree su contraseña (Debe contener minimo 8 digitos y máximo 15): ";
     getline(cin,contrasenia);
-    Estudiante aux(nombre,cedula,contrasenia);
+    if(contrasenia.size()<8 || contrasenia.size()>15){
+    	cout<<"Rango no permitido, contraseña insegura"<<endl;
+    	system("pause");
+    	opcion=datosDelUsuario.IngresoEnteros("1. Volver al inicio\n2. Volver a intentar\n");
+        if(opcion==1){
+        	system("cls");
+            login= false;
+        }else if(opcion == 2){
+
+            return crearCuenta();
+        }
+	}else{
+	Estudiante aux(nombre,cedula,contrasenia);
     fflush(stdin);
     if(aux.CrearCuenta(aux)){
     	//conexión a Json usado como base de datos
@@ -139,6 +154,7 @@ void Menu::crearCuenta(){
 			getchar();
 			getchar();
 	system("cls");
+	}
 
 }
 void Menu::mostrarMenuFunciones(){
@@ -184,7 +200,7 @@ void Menu::mostrarMenuCarta() {
     int opcion;
     cout <<"Menu de comida: " << endl;
     ListaProductos.imprimirMenu();
-    cout <<"6. Regresar" << endl;
+    cout <<"13. Regresar" << endl;
     do {
         opcion = orden.IngresoEnteros("Ingrese las opciones que desee: ");
         cout << endl;
@@ -211,31 +227,31 @@ void Menu::mostrarMenuCarta() {
                 break;
             case 6:
                 pedido.agregarProducto(Producto("Papipollo", 2.25,6));
-                cout <<"Refresco agregada." << endl;
+                cout <<"Papipollo agregada." << endl;
                 break;
             case 7:
                 pedido.agregarProducto(Producto("Hot dog", 1.25,7));
-                cout <<"Refresco agregada." << endl;
+                cout <<"Hot dog agregada." << endl;
                 break;
             case 8:
                 pedido.agregarProducto(Producto("Costillas de cerdo", 2.50,8));
-                cout <<"Refresco agregada." << endl;
+                cout <<"Costillas de cerdo agregada." << endl;
                 break;
             case 9:
                 pedido.agregarProducto(Producto("Chuleta", 2.50,9));
-                cout <<"Refresco agregada." << endl;
+                cout <<"Chuleta agregada." << endl;
                 break;
             case 10:
                 pedido.agregarProducto(Producto("Pechuga con papas fritas", 2.50,10));
-                cout <<"Refresco agregada." << endl;
+                cout <<"Pechuga con papas fritas agregada." << endl;
                 break;
             case 11:
                 pedido.agregarProducto(Producto("Alitas de BBq", 2.50,11));
-                cout <<"Refresco agregada." << endl;
+                cout <<"Alitas de BBq agregada." << endl;
                 break;
             case 12:
                 pedido.agregarProducto(Producto("Tigrillo", 2.25,12));
-                cout <<"Refresco agregada." << endl;
+                cout <<"Tigrillo agregada." << endl;
                 break;
             case 13:
                 mostrarMenuFunciones();
@@ -298,6 +314,7 @@ void Menu::pagarPedido(){
         cout<<"Su pedido ha sido pagado de forma exitosa."<<endl;
 		guardarPedido(pedido);
         pedido=Pedido();
+        system("pause");
         break;
     case 2:
         mostrarMenuFunciones();
