@@ -9,12 +9,14 @@
 #include "Lista.h"
 #include "Estudiante.h"
 #include "Producto.h"
+#include "Pedido.h"
 
 using namespace std;
 using json = nlohmann::json;
 
 const string CARPETA_USUARIOS = "Usuarios"; 
 const string CARPETA_PRODUCTOS = "Productos";  
+const string CARPETA_ORDENES = "Comprobantes"; 
 
 bool estudianteExiste(int usuario) {
     string nombreArchivo = CARPETA_USUARIOS + "/usuario_" + to_string(usuario) + ".json";
@@ -126,7 +128,45 @@ void crearNuevoProducto(int id, const string& descripcion, float precio, int can
 
 
 
+    void guardarPedido(const Pedido& pedido) {
+        string nombreArchivo = CARPETA_ORDENES + "/orden_" + to_string(pedido.generarId()) + ".json";
 
+        json j;
+        j["comprobante"] = pedido.generarComprobante();
 
+        ofstream archivo(nombreArchivo);
+        if (archivo.is_open()) {
+            archivo << j.dump(4);
+            archivo.close();
+            cout << "Comprobante de pedido guardado exitosamente: " << nombreArchivo << endl;
+        } else {
+            cerr << "No se pudo abrir el archivo para escribir: " << nombreArchivo << endl;
+        }
+    }
+ 
+void cargarComprobantesPedidos(Lista<string>& comprobantes) {
+    DIR* dir;
+    struct dirent* ent;
 
+    if ((dir = opendir(CARPETA_ORDENES.c_str())) != NULL) {
+        while ((ent = readdir(dir)) != NULL) {
+            string nombreArchivo = ent->d_name;
+            if (nombreArchivo.find(".json") != string::npos) {
+                string rutaArchivo = CARPETA_ORDENES + "/" + nombreArchivo;
+                ifstream archivo(rutaArchivo);
+                if (archivo.is_open()) {
+                    string comprobante;
+                    getline(archivo, comprobante, '\0'); 
+                    archivo.close();
+                    comprobantes.insertarAlFinal(comprobante);
+                } else {
+                    cerr << "No se pudo abrir el archivo: " << rutaArchivo << endl;
+                }
+            }
+        }
+        closedir(dir);
+    } else {
+        cerr << "No se pudo abrir el directorio: " << CARPETA_ORDENES << endl;
+    }
+}
 #endif 

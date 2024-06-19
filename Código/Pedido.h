@@ -60,15 +60,15 @@ public:
         return estado;
     }
 
-    int generarId(){
+    int generarId()const {
         return rand()%5999+399;
     }
 
-    string generarComprobante(){
+    string generarComprobante()const {
     	system("cls");
         string comprobante;
         comprobante+="Comprobante de pago.\n";
-        comprobante+="\nOrden #: "+to_string(id);
+        //comprobante+="\nOrden #: "+to_string(generarId());
         comprobante+="\nCliente: "+cliente.getNombre();
         comprobante+="\nProductos adquiridos: ";
         Nodo<Producto>* actual=productos.getCabeza();

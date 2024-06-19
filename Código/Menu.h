@@ -268,6 +268,7 @@ void Menu::pagarPedido(){
         comprobante=pedido.generarComprobante();
         cout<<comprobante;
         cout<<"Su pedido ha sido pagado de forma exitosa."<<endl;
+		guardarPedido(pedido);
         pedido=Pedido();
         break;
     case 2:

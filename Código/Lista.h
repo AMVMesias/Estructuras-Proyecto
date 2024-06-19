@@ -22,8 +22,8 @@ public:
     Nodo<T>* cabeza;
 
 public:
-    Lista() : cabeza(nullptr) {}
-    Nodo<T>* getCabeza(){
+    Lista() : cabeza(nullptr)  {}
+    Nodo<T>* getCabeza() const {
         return cabeza;
     }
     void insertarAlFinal(T valor) {
