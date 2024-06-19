@@ -13,7 +13,7 @@ class Estudiante{
     public:
         //Estudiante ():nombre(" "), usuario(0),contrasenia(" "){}
         Estudiante (string _nombre=" ", int _usuario =0, string _contrasenia=" ") :nombre(_nombre), usuario(_usuario),contrasenia(_contrasenia){}
-        
+
         int getUsuario() const{
             return usuario;
         }
@@ -25,29 +25,18 @@ class Estudiante{
 		string getNombre() const{
 			return nombre;
 		}
-		
-    void ingresarDatos() {
-        cout<<"Ingrese el usuario: ";
-        cin>>usuario;
-        cout<<"Ingrese la contrasenia: ";
-        getline(cin,contrasenia);
-    }
-    void mostrarDatos(){
-        cout<<"Usuario: "<<usuario<<endl;
-        cout<<"Contrasenia: "<<contrasenia<<endl;
-        cout<<"Nombres: "<<nombre << "\n" <<endl;
-    }
+
 
     bool validarPersona_userPswd(Estudiante aux, Estudiante aux1){
     bool a = false;
     if (aux.getUsuario() == aux1.getUsuario() && aux.getPswd() == aux1.getPswd())
     {
-    	
+
         a = true;
     }
     return a;
 	}
-	
+
 	bool validar_DatosVacios(string nom, int ced, string passw){
 	bool vDV=false;
     if(nom.empty()||ced==0||passw.empty())
@@ -56,7 +45,7 @@ class Estudiante{
     }
     return vDV;
 	}
-	
+
 	bool CrearCuenta(Estudiante persona)
 {
        bool cc= false;

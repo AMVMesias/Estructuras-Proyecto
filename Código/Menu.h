@@ -17,6 +17,7 @@ private:
     Pedido pedido;
     Lista<Estudiante> Listausuarios;
     Lista<Producto> ListaProductos;
+    string comprobante;
 public:
     Menu(){
         ListaProductos.insertarAlFinal(Producto("Pizza", 1.00,1));
@@ -153,7 +154,7 @@ void Menu::mostrarMenuFunciones(){
         break;
     case 3:
     	cout<<endl;
-        cout<<pedido.generarComprobante()<<endl;
+        cout<<comprobante<<endl;
         system("pause");
 			mostrarMenuFunciones();
         break;
@@ -231,7 +232,7 @@ void Menu::mostrarCanasta() {
         pagarPedido();
         break;
     case 2:
-        mostrarCanasta();
+        mostrarMenuCarta();
         break;
     case 3:
         eliminarProducto();
@@ -256,7 +257,8 @@ void Menu::pagarPedido(){
     switch(opcion){
     case 1:
         pedido.pagar();
-        cout<<pedido.generarComprobante();
+        comprobante=pedido.generarComprobante();
+        cout<<comprobante;
         cout<<"Su pedido ha sido pagado de forma exitosa."<<endl;
         pedido=Pedido();
         break;
