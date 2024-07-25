@@ -1,7 +1,8 @@
 #include <iostream>
-#include "MetodosExternos.cpp"
-using namespace std;
-void ingresarExternos(string,string);
+//#include "MetodosExternos.cpp"
+#include "ManejoArchivos.cpp"
+//using namespace std;
+/*void ingresarExternos(string,string);
 
 MetodoExterno *directa = new MetodoExterno("OrdenamientoDirecto.txt");
 MetodoExterno *natural = new MetodoExterno("OrdenamientoNatural.txt");
@@ -17,11 +18,10 @@ void ingresarExternos(string nom1, string nom2)
         natural->insertar_Natural(num, nom1);
         directa->insertar(num, nom2);
     }
-}
+}*/
 
-int main()
-{
-    int opc;
+int main(){
+    /*int opc;
     cout << "Metodos Externos" << endl;
     cout << "1) Ordenamiento Directo" << endl;
     cout << "2) Ordenamiento Natural" << endl;
@@ -56,5 +56,18 @@ int main()
     {
         cout<<"Gracias por usar nuestro programa..";
         return 0;
-    }
+    }*/
+    
+    ManejoArchivos manejo;
+    string nombre="Denise";
+    string apellido="Rea";
+    string correo="dnrea@espe.edu.ec";
+    float notas[]={2.3,2.8,4.3,9.6};
+    float notasAlumnos[]={19.2,20,13.2,9,5,1};
+    float prom=3.6;
+    manejo.escribir_Encabezado("EDO","123456",4);
+    manejo.escribir_Info_Alumnos(1,nombre,apellido,correo,notas,4,prom);
+    manejo.escribir_Info_Alumnos(2,"jajasdfgh",apellido,correo,notas,4,prom);
+    manejo.escribir_Resumen(notasAlumnos,5,"Chimuelo ",1752245198);
+    return 0;
 }
