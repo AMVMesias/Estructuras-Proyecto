@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "IngresoDatos.h"
+
 //#define dim 10
 using namespace std;
 

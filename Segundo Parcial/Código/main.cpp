@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Menu.h"
 //#include "MetodosExternos.cpp"
 #include "ManejoArchivos.cpp"
 //using namespace std;
@@ -21,6 +22,10 @@ void ingresarExternos(string nom1, string nom2)
 }*/
 
 int main(){
+	
+	Menu menu;
+	    menu.MostrarMenuPrincipal();
+	
     /*int opc;
     cout << "Metodos Externos" << endl;
     cout << "1) Ordenamiento Directo" << endl;

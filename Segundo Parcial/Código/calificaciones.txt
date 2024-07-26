@@ -1,0 +1,5 @@
+Docente: das, Cedula: 1726886060
+Materia: EDO 174588, NRC: 11111
+Numero de Estudiantes: 3
+Notas: 5.00 3.00 1.50 
+Promedio: 3.17
