@@ -1,4 +1,11 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <string>
+#include <cmath> // Para la función round
 #include "ManejoArchivos.h"
+
+
 
 /*
 	Métodos adicionales
@@ -84,7 +91,7 @@ void ManejoArchivos::escribir_Encabezado(const string& materia,const string& nrc
 }
 }
 
-void ManejoArchivos::escribir_Info_Alumnos(int i,const string& nombre, const string& apellido, const string& correo,const float notas[],int numNotas,float promedio){
+void ManejoArchivos::escribir_Info_Alumnos(int i, const string& nombre, const string& apellido, const string& correo, const float notas[], int numNotas, float promedio) { 
 	ofstream reporte("Reporte_Calificaciones_2024.txt", std::ios::app); // Abrir el archivo en modo de añadir (append)
     if (reporte.is_open()) {
         reporte << left << setw(5) << i + 1 << " || " << setw(15) << nombre << " || " << setw(15) << apellido << " || " << setw(30) << correo << " || ";
