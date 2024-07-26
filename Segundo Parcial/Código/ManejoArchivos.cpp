@@ -64,7 +64,7 @@ void ManejoArchivos::escribir_Encabezado(const string& materia,const string& nrc
 
             if (reporte.is_open()) {
                 reporte << internal << setw(70) << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE" << endl;
-                reporte << internal << setw(60) << "REPORTE DE CALIFICACIONES" << endl;
+                reporte << internal << setw(60) << "REPORTE DE CALIFICACIONES\n\n" << endl;
                 reporte << "		Periodo: Mayo 2024 – Septiembre 2024" << endl;
                 reporte << "		Materia: " << materia << endl;
                 reporte << "		NRC: " << nrc << endl;
@@ -109,10 +109,10 @@ void ManejoArchivos::escribir_Resumen(const float arrPromedios[],int numEstudian
 	ofstream reporte("Reporte_Calificaciones_2024.txt", std::ios::app); // Abrir el archivo en modo de añadir (append)
         if (reporte.is_open()) {
         		reporte << "\n\n\n			RESUMEN\n" << endl;
-                reporte << "		|Promedio del curso: " << promedio(arrPromedios, numEstudiantes) << endl;
-                reporte << "		|Aprobados         :  " << aprobados(arrPromedios, numEstudiantes) << endl;
-                reporte << "		|Suspenso          :  " << suspensos(arrPromedios, numEstudiantes) << endl;
-                reporte << "		|Reprobados        :  " << reprobados(arrPromedios, numEstudiantes) << endl;
+                reporte << "		|Promedio del curso         : " << promedio(arrPromedios, numEstudiantes) << endl;
+                reporte << "		|Aprobados  (14-20)         :  " << aprobados(arrPromedios, numEstudiantes) << endl;
+                reporte << "		|Suspenso   (09-13)         :  " << suspensos(arrPromedios, numEstudiantes) << endl;
+                reporte << "		|Reprobados (01-08)         :  " << reprobados(arrPromedios, numEstudiantes) << endl;
 
                 reporte << endl;
                 reporte << internal << setw(55) << "__________________" << endl;

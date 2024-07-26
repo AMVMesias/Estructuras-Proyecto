@@ -1,5 +1,7 @@
                                UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
-                                   REPORTE DE CALIFICACIONES
+                                 REPORTE DE CALIFICACIONES
+
+
 		Periodo: Mayo 2024 – Septiembre 2024
 		Materia: EDO
 		NRC: 123456
@@ -13,10 +15,10 @@ N°   || Estudiante      || Apellido        || Correo                         ||
 
 			RESUMEN
 
-		|Promedio del curso: 13.28
-		|Aprobados         :  2
-		|Suspenso          :  2
-		|Reprobados        :  1
+		|Promedio del curso         : 13.28
+		|Aprobados  (14-20)         :  2
+		|Suspenso   (09-13)         :  2
+		|Reprobados (01-08)         :  1
 
                                      __________________
                                            Docente
