@@ -5,6 +5,7 @@
 #include <string>
 #include "estudiante.h"
 #include "Lista.h"
+#include "profesor.h"
 //aqui mandar la clase de Estudiante y profesor 
 
 using namespace std;
@@ -20,6 +21,6 @@ class ManejoArchivos{
 	void escribir_Encabezado(const string&,const string&,int);
 	void escribir_Info_Alumnos(int, const string&, const string&, const string&,const float[],int,float);
 	void escribir_Resumen(const float[],int,const string,int);
-	void escribir_ResumenOrdenamiento(const string&, Lista ,int,Profesor);
-	void escribir_ResumenBusqueda(const string&,int,Estudiante,int);
+	void escribir_ResumenOrdenamiento(const string&, Lista <Estudiante>,Profesor);
+	void escribir_ResumenBusqueda(const string&,int,Estudiante,int, Profesor);
 };

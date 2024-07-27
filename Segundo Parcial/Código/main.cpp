@@ -1,13 +1,25 @@
 #include <iostream>
-<<<<<<< HEAD
 //#include "MetodosExternos.cpp"
+#include "Lista.h"
 #include "ManejoArchivos.cpp"
 //using namespace std;
 /*void ingresarExternos(string,string);
-=======
-#include "Menu.h"
->>>>>>> 0f144a20091332fdf117a98563b36a8e39f27e81
 
+MetodoExterno *directa = new MetodoExterno("OrdenamientoDirecto.txt");
+MetodoExterno *natural = new MetodoExterno("OrdenamientoNatural.txt");
+
+void ingresarExternos(string nom1, string nom2)
+{
+    float num;
+    directa->setN(0);
+    for (int i = 0; i < 10; i++)
+    {
+        cout << "Ingrese un numero: ";
+        cin >> num;
+        natural->insertar_Natural(num, nom1);
+        directa->insertar(num, nom2);
+    }
+}*/
 
 int main(){
     /*int opc;
@@ -48,15 +60,18 @@ int main(){
     }*/
     
     ManejoArchivos manejo;
-    string nombre="Denise";
-    string apellido="Rea";
-    string correo="dnrea@espe.edu.ec";
-    float notas[]={2.3,2.8,4.3,9.6};
-    float notasAlumnos[]={19.2,20,13.2,9,5,1};
-    float prom=3.6;
-    manejo.escribir_Encabezado("EDO","123456",4);
-    manejo.escribir_Info_Alumnos(1,nombre,apellido,correo,notas,4,prom);
-    manejo.escribir_Info_Alumnos(2,"jajasdfgh",apellido,correo,notas,4,prom);
-    manejo.escribir_Resumen(notasAlumnos,5,"Chimuelo ",1752245198);
+    Estudiante estudiante1("Denise", "123546", "soguar",14.5);
+    Estudiante estudiante2("jajano", "123546", "soguar",10.5);
+    Estudiante estudiante3("equisde", "123546", "soguar",13.5);
+    Profesor profe("Chimuelo","1478541", "DCCO");
+    
+    //manejo.escribir_ResumenBusqueda("Quicksort",14.5,estudiante,1,profe);
+    
+    Lista<Estudiante> lista;
+    lista.insertarAlFinal(estudiante1);
+    lista.insertarAlFinal(estudiante2);
+    lista.insertarAlFinal(estudiante3);
+    
+    manejo.escribir_ResumenOrdenamiento("Shellsort",lista,profe);
     return 0;
 }

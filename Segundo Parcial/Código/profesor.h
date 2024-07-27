@@ -10,7 +10,7 @@ private:
     string departamento;
 
 public:
-    Docente(string nombre,string id,string departamento):nombre(nombre),id(id),departamento(departamento){}
+    Profesor(string nombre,string id,string departamento):nombre(nombre),id(id),departamento(departamento){}
 
     string getNombre()const{return nombre;}
     string getId()const{return id;}

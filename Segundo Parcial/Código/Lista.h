@@ -75,7 +75,7 @@ public:
         std::cout << std::endl;
     }
 
-    // Verifica si la lista est· vacÌa
+    // Verifica si la lista est√° vac√≠a
     bool estaVacia() const {
         return cabeza == nullptr;
     }
@@ -92,15 +92,15 @@ public:
         tamano = 0;
     }
 
-    // Devuelve el tamaÒo de la lista
+    // Devuelve el tama√±o de la lista
     int size() const {
         return tamano;
     }
 
-    // Acceso por Ìndice
+    // Acceso por √≠ndice
     T& operator[](int index) {
         if (index < 0 || index >= tamano) {
-            throw std::out_of_range("Õndice fuera de rango");
+            throw std::out_of_range("√çndice fuera de rango");
         }
         Nodo<T>* actual = cabeza;
         for (int i = 0; i < index; ++i) {
@@ -109,7 +109,7 @@ public:
         return actual->dato;
     }
 
-    // MÈtodo adicional para obtener la cabeza de la lista
+    // M√©todo adicional para obtener la cabeza de la lista
     Nodo<T>* getCabeza() const {
         return cabeza;
     }
@@ -118,6 +118,7 @@ public:
     ~Lista() {
         clear();
     }
+
 };
 
 #endif // LISTA_H
