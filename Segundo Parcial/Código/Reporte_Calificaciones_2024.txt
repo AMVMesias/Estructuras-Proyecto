@@ -1,26 +1,15 @@
-                               UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
-                                 REPORTE DE CALIFICACIONES
-
-
-		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: EDO
-		NRC: 123456
-
-N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Nota       || Nota       || Promedio  
-=================================================================================================================================================
-2     || Denise          || Rea             || dnrea@espe.edu.ec              || 2.3        || 2.8        || 4.3        || 9.6        || 3.6       
-3     || jajasdfgh       || Rea             || dnrea@espe.edu.ec              || 2.3        || 2.8        || 4.3        || 9.6        || 3.6       
+2     || gabriel         || gabriel         || 123                            || 1          || 10        
 
 
 
-			RESUMEN
+            RESUMEN
 
-		|Promedio del curso         : 13.28
-		|Aprobados  (14-20)         :  2
-		|Suspenso   (09-13)         :  2
-		|Reprobados (01-08)         :  1
+        |Promedio del curso         : 10
+        |Aprobados  (14-20)         :  0
+        |Suspenso   (09-13)         :  1
+        |Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                         Chimuelo 
-                                        1752245198
+                                           gabriel
+                                        1726886060

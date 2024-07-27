@@ -1,24 +1,13 @@
 #include <iostream>
+<<<<<<< HEAD
 //#include "MetodosExternos.cpp"
 #include "ManejoArchivos.cpp"
 //using namespace std;
 /*void ingresarExternos(string,string);
+=======
+#include "Menu.h"
+>>>>>>> 0f144a20091332fdf117a98563b36a8e39f27e81
 
-MetodoExterno *directa = new MetodoExterno("OrdenamientoDirecto.txt");
-MetodoExterno *natural = new MetodoExterno("OrdenamientoNatural.txt");
-
-void ingresarExternos(string nom1, string nom2)
-{
-    float num;
-    directa->setN(0);
-    for (int i = 0; i < 10; i++)
-    {
-        cout << "Ingrese un numero: ";
-        cin >> num;
-        natural->insertar_Natural(num, nom1);
-        directa->insertar(num, nom2);
-    }
-}*/
 
 int main(){
     /*int opc;
