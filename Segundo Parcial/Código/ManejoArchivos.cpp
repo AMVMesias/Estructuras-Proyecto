@@ -125,3 +125,63 @@ void ManejoArchivos::escribir_Resumen(const float arrPromedios[],int numEstudian
         	std::cerr << "Error al abrir el archivo: Reporte_Calificaciones_2024.txt" << std::endl;
 		}
 }
+/*
+void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamiento,estudiante *Estudiantes,int num_estud){
+	ofstream reporte("Reporte_Calificaciones_2024_Ordenadas.txt");
+			if (reporte.is_open()) {
+                reporte << internal << setw(70) << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE" << endl;
+                reporte << internal << setw(60) << "REPORTE DE CALIFICACIONES ORDENADAS\n\n" << endl;
+                reporte << "		Periodo: Mayo 2024 – Septiembre 2024" << endl;
+                reporte << "		Materia: " << materia << endl;
+                reporte << "		NRC: " << nrc << endl;
+                reporte << endl;
+                reporte <<"Calificaciones Ordenadas"<<endl;
+                reporte <<"ALGORITMO :"<<nombre_Ordenamiento<<endl;
+                reporte << left << setw(5) << "N°" << " || " << setw(15) << "Promedio" << " || " << setw(15) << "Nombre" << " || " << setw(30) << "Apellido" << " || ";
+                reporte <<"====================================================================================="+ss<<endl;
+                for (int i = 1; i <= num_estud; ++i) {
+                	//aqui sacamos la info del estudiante y lo imprimimos en el reporte
+                	reporte << left << setw(5) << "N°" << " || " << setw(15) << "promm" << " || " << setw(15) << "Nombre" << " || " << setw(30) << "Apellido" << " || ";
+            }
+            reporte << endl;
+            reporte << endl;
+            
+                reporte << internal << setw(55) << "__________________" << endl;
+                reporte << internal << setw(50) << "Docente" << endl;
+                reporte << internal << setw(50) << nombreDocente << endl;
+                reporte << internal << setw(50) << cedulaDocente << endl;
+            reporte.close();
+}
+}
+
+void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int nota_busqueda,Estudiantes *estudiantes,int numEst){
+	ofstream reporte("Busqueda_Reporte_Calificaciones_2024.txt");
+			if (reporte.is_open()) {
+                reporte << internal << setw(70) << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE" << endl;
+                reporte << internal << setw(60) << "REPORTE DE BUSQUEDA \n\n" << endl;
+                reporte << "		Periodo: Mayo 2024 – Septiembre 2024" << endl;
+                reporte << "		Materia: " << materia << endl;
+                reporte << "		NRC: " << nrc << endl;
+                reporte << endl;
+                reporte <<"Calificacion buscada"<<nota_busqueda<<endl;
+                reporte <<"ALGORITMO :"<<nombre_Busqueda<<endl;
+                reporte << left << setw(5) << "N°" << " || " << setw(15) << "Promedio" << " || " << setw(15) << "Nombre" << " || " << setw(30) << "Apellido" << " || ";
+                reporte <<"====================================================================================="+ss<<endl;
+                for (int i = 1; i <= numEst; ++i) {
+                	//aqui sacamos la info del estudiante y lo imprimimos en el reporte
+                	reporte<<"Corresponde al estudiante: "<<endl;
+                	reporte<<"Alumno: "<<endl;
+                	reporte<<"Correo: "<<endl;
+                	reporte<<"Calificacion: "<<endl;
+                	reporte<<"Index: "<<endl;
+            }
+            reporte << endl;
+            reporte << endl;
+            
+                reporte << internal << setw(55) << "__________________" << endl;
+                reporte << internal << setw(50) << "Docente" << endl;
+                reporte << internal << setw(50) << nombreDocente << endl;
+                reporte << internal << setw(50) << cedulaDocente << endl;
+            reporte.close();
+}	
+}*/
