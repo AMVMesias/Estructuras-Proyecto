@@ -1,10 +1,10 @@
 #include "ManejoArchivos.h"
-
+#include <string>
 /*
 	Métodos adicionales
 */
 
-float promedio(const float arreglo[], int n){
+float promedio(const float *arreglo, int n){
     float suma = 0.0;
     for (int i = 0; i < n; i++){
         suma = suma + arreglo[i];
@@ -105,7 +105,8 @@ void ManejoArchivos::escribir_Info_Alumnos(int i,const string& nombre, const str
     }                 
 }
 
-void ManejoArchivos::escribir_Resumen(const float arrPromedios[],int numEstudiantes,const string nombreDocente, int cedulaDocente){
+void ManejoArchivos::escribir_Resumen(const float *arrPromedios,int numEstudiantes,const string nombreDocente, const string &cedulaDocente){
+	cout<<"Entra al resumen"<<endl;
 	ofstream reporte("Reporte_Calificaciones_2024.txt", std::ios::app); // Abrir el archivo en modo de añadir (append)
         if (reporte.is_open()) {
         		reporte << "\n\n\n			RESUMEN\n" << endl;
@@ -124,6 +125,24 @@ void ManejoArchivos::escribir_Resumen(const float arrPromedios[],int numEstudian
         }else{
         	std::cerr << "Error al abrir el archivo: Reporte_Calificaciones_2024.txt" << std::endl;
 		}
+}
+
+void ManejoArchivos::crear_Reporte_notas(const string& materia, const string& nrc, int numNotas,Lista<Estudiante> estudiantes,Profesor profe){
+	int i=0;
+	float *prom = new float[estudiantes.size()];
+	Nodo<Estudiante>* actual = estudiantes.getCabeza();
+	escribir_Encabezado(materia,nrc,numNotas);
+		while (actual != nullptr) {
+        Nodo<Estudiante>* siguiente = actual->siguiente;
+        escribir_Info_Alumnos(i, actual->dato.getNombre(), actual->dato.getApellido(), actual->dato.getCorreo(),
+        actual->dato.get_notas(), numNotas, actual->dato.get_Promedio());
+        prom[i] = actual->dato.get_Promedio();
+        actual = siguiente;
+        i++;
+        //aux++;
+    }
+		
+	escribir_Resumen(prom,estudiantes.size(),profe.getNombre(),profe.getId());
 }
 
 void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamiento,Lista<Estudiante> estudiantes,Profesor profe){

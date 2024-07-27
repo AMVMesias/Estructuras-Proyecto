@@ -59,10 +59,15 @@ int main(){
         return 0;
     }*/
     
+     /*Estudiante(string nombre,string apellid, float *notas_,
+	 string corre,float prome):nombre(nombre),apellido(apellid),notas(notas_),correo(corre),promedio(prome){}*/
+	float notas[]={12.4,12.8,15};
+	float notas1[]={12.4,14.8,15};
+	float notas2[]={13.4,12.8,19};
     ManejoArchivos manejo;
-    Estudiante estudiante1("Denise", "123546", "soguar",14.5);
-    Estudiante estudiante2("jajano", "123546", "soguar",10.5);
-    Estudiante estudiante3("equisde", "123546", "soguar",13.5);
+    Estudiante estudiante1("Denise","Rea",notas,"dnrea@espe.edu.ec",14.5);
+    Estudiante estudiante2("7dfghj","ghj",notas2,"fgh@espe.edu.ec",17.5);
+    Estudiante estudiante3("cvbn","74411",notas2,"dnrea@vbn.edu.ec",19.5);
     Profesor profe("Chimuelo","1478541", "DCCO");
     
     //manejo.escribir_ResumenBusqueda("Quicksort",14.5,estudiante,1,profe);
@@ -72,6 +77,7 @@ int main(){
     lista.insertarAlFinal(estudiante2);
     lista.insertarAlFinal(estudiante3);
     
-    manejo.escribir_ResumenOrdenamiento("Shellsort",lista,profe);
+    //manejo.escribir_ResumenOrdenamiento("Shellsort",lista,profe);
+    manejo.crear_Reporte_notas("EDO","12345",3,lista,profe);
     return 0;
 }

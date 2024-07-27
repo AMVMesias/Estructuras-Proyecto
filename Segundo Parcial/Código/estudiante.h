@@ -6,24 +6,31 @@ using namespace std;
 class Estudiante{
 private:
     string nombre;
-    string apellido
-    string matricula;
-    string carrera;
+    string apellido;
+    int numNotas;
+    //const float notas[numNotas];
+    float *notas;
+    string correo;
     float promedio;
 
 public:
-    Estudiante(string nombre,string matricula,string carrera,float prome):nombre(nombre),matricula(matricula),carrera(carrera),promedio(prome){}
+    Estudiante(string nombre,string apellid, float *notas_,
+	 string corre,float prome):nombre(nombre),apellido(apellid),notas(notas_),correo(corre),promedio(prome){}
 
     string getNombre()const{return nombre;}
     string getApellido()const{return apellido;}
-    string getMatricula()const{return matricula;}
-    string getCarrera()const{return carrera;}
+    //string getMatricula()const{return matricula;}
+    string getCorreo()const{return correo;}
 
-    void mostrarInformacion()const{
+    /*void mostrarInformacion()const{
         cout<<"Nombre: "<<nombre<<endl<<"Matricula: "<<matricula<<endl<<"Carrera: "<<carrera<<endl;
-    }
+    }*/
     
     float get_Promedio(){
     	return this->promedio;
+	}
+	
+	float* get_notas(){
+		return notas;
 	}
 };
