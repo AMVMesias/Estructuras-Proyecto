@@ -1,22 +1,53 @@
+#ifndef PROFESOR_H
+#define PROFESOR_H
 #include <iostream>
 #include <string>
-
+#include "Materia.h"
+#define numMateriasMax 5
 using namespace std;
 
 class Profesor{
 private:
     string nombre;
-    string id;
-    string departamento;
+    long long int cedula;
+    Materia materias[numMateriasMax];
+    int numMaterias;
 
 public:
-    Profesor(string nombre,string id,string departamento):nombre(nombre),id(id),departamento(departamento){}
+    Profesor():numMaterias(0){}
+    void leerDatosProfesor(){
+        cout << "Ingrese nombre del docente: ";
+        cin >> ws;
+        getline(cin, nombre);
+        cout << "Ingrese cedula del docente: ";
+        cin >> cedula;
+    }
 
-    string getNombre()const{return nombre;}
-    string getId()const{return id;}
-    string getDepartamento()const{return departamento;}
+    string getNombre() const {
+        return nombre;
+    }
 
-    void mostrarInformacion()const{
-        cout<<"Nombre: "<<nombre<<endl<<"ID: "<<id<<endl<<"Departamento: "<<departamento<<endl;
+    long long int getCedula() const {
+        return cedula;
+    }
+
+    void registrarMateria(){
+        if(numMaterias>=numMateriasMax){
+            cout<<"No se pueden registrar mas materias."<<endl;
+            return;
+        }
+    Materia nuevaMateria;
+    nuevaMateria.leerDatos();
+    for(int i=0;i<numMaterias;i++){
+        if(materias[i].getCodigo()==nuevaMateria.getCodigo()){
+            cout<<"La materia con nrc "<<materias[i].getCodigo()<<" ya esta registrado";
+            return;
+        }
+
+        }
+        materias[numMaterias++]=nuevaMateria;
+        cout<<"Materia registrada exitosamente."<<endl;
     }
 };
+
+#endif // PROFESOR_H

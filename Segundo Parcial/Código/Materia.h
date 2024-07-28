@@ -1,3 +1,6 @@
+#ifndef MATERIA_H
+#define MATERIA_H
+
 #include <iostream>
 #include <string>
 
@@ -7,16 +10,23 @@ class Materia{
 private:
     string nombre;
     string codigo;
-    int creditos;
 
 public:
-    Materia(string nombre,string codigo,int creditos):nombre(nombre),codigo(codigo),creditos(creditos){}
+    void leerDatos(){
+        cout<<"Ingrese nombre de la materia: ";
+        cin>>ws;
+        getline(cin, nombre);
+        cout<<"Ingrese codigo de la materia: ";
+        cin>>codigo;
+    }
 
-    string getNombre()const{return nombre;}
-    string getCodigo()const{return codigo;}
-    int getCreditos()const{return creditos;}
+    string getNombre()const{
+        return nombre;
+    }
 
-    void mostrarInformacion() const {
-        cout<< "Nombre: "<<nombre<<endl<<"Codigo: "<<codigo<<endl<<"Creditos: "<<creditos<<endl;
+    string getCodigo()const{
+        return codigo;
     }
 };
+
+#endif // MATERIA_H
