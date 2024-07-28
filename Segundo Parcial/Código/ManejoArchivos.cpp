@@ -142,7 +142,7 @@ void ManejoArchivos::crear_Reporte_notas(const string& materia, const string& nr
         //aux++;
     }
 		
-	escribir_Resumen(prom,estudiantes.size(),profe.getNombre(),profe.getId());
+	escribir_Resumen(prom,estudiantes.size(),profe.getNombre(),std::to_string(profe.getCedula()));
 }
 
 void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamiento,Lista<Estudiante> estudiantes,Profesor profe){
@@ -171,7 +171,7 @@ void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamie
                 reporte << internal << setw(55) << "__________________" << endl;
                 reporte << internal << setw(50) << "Docente" << endl;
                 reporte << internal << setw(50) << profe.getNombre() << endl;
-                reporte << internal << setw(50) << profe.getId() << endl;
+                reporte << internal << setw(50) << std::to_string(profe.getCedula()) << endl;
             reporte.close();
 }
 }
@@ -201,7 +201,7 @@ void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int
                 reporte << internal << setw(55) << "__________________" << endl;
                 reporte << internal << setw(50) << "Docente" << endl;
                 reporte << internal << setw(50) << profe.getNombre() << endl;
-                reporte << internal << setw(50) << profe.getId() << endl;
+                reporte << internal << setw(50) << std::to_string(profe.getCedula()) << endl;
             reporte.close();
 }	
 }

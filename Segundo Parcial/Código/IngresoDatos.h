@@ -8,6 +8,7 @@
 using namespace std;
 
 class IngresoDatos{
+
 	public:
 	IngresoDatos(){};
 
@@ -64,6 +65,89 @@ class IngresoDatos{
     return password;
 }
 
+           /* void backspace(int* i, char* c,string dato){
 
+                if((*c >= 'a' && *c <= 'z') || (*c >= 'A' && *c <= 'Z')){
+                if(*i != 0) --*i;
+                }else{ 
+                    system("CLS"); //Limpio pantalla
+                    for(int p = 0; p < *i-1; p++){
+                        printf("%c", dato[p]); //Imprimo de nuevo hasta el penultimo
+                    }
+
+                    if(*i != 0){ 
+                        dato[--*i]='\0'; //Borro valor
+                        --*i; //Disminuto iterador
+                    }
+                }
+            }*/
+
+	    string  leerLetras(){
+	    	string dato;
+			char c = 0;  // Inicializa c
+			int backspace=0;
+
+    while (c != 13) { // Bucle hasta que se presiona la tecla ENTER
+        c = _getch(); // Recibo el dato por teclado (usa _getch() en lugar de getch() en algunos compiladores)
+
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == ' ') {
+            printf("%c", c); // Imprimo el valor
+	       dato.push_back(c); // Añadir el carácter a la cadena
+            std::cout << "\b \b"; // Borra el último carácter impreso
+            dato.pop_back(); // Borra el último carácter de la cadena
+        }
+    }
+
+    return dato;
+}
+
+
+/*float funcionPrincipalFlotantes(){
+                char *aux = leerDatos();
+                if(aux[0] != '\0' && aux[0] != 46){
+                    return this -> conversion.numFloat(aux);
+                }else if(aux[0] == 46){
+                    cout<<"\n~~ Un flotante no inicia con un punto solo ~~\n"<<endl;
+                    return -1;
+                }else{
+                    cout<<"\n~~ Datos vacios ~~\n"<<endl;
+                    return -1;
+                }
+              
+} */
+
+float leerFlotantes() {
+    std::string dato;
+    char c = 0;  // Inicializa c
+    bool decimalPointUsed = false; // Variable para permitir solo un punto decimal
+    bool negativeSignUsed = false; // Variable para permitir solo un signo negativo al principio
+
+    while (c != 13) { // Bucle hasta que se presiona la tecla ENTER
+        c = _getch(); // Recibo el dato por teclado (usa _getch() en lugar de getch() en algunos compiladores)
+
+        if (c >= '0' && c <= '9') {
+            printf("%c", c); // Imprimo el valor
+            dato.push_back(c); // Añadir el carácter a la cadena
+        } else if (c == '.' && !decimalPointUsed) { // Permitir solo un punto decimal
+            printf("%c", c); // Imprimo el valor
+            dato.push_back(c); // Añadir el carácter a la cadena
+            decimalPointUsed = true; // Marcar que el punto decimal ha sido usado
+        } else if (c == '-' && !negativeSignUsed && dato.empty()) { // Permitir el signo negativo solo al principio
+            printf("%c", c); // Imprimo el valor
+            dato.push_back(c); // Añadir el carácter a la cadena
+            negativeSignUsed = true; // Marcar que el signo negativo ha sido usado
+        } else if (c == 8 && !dato.empty()) { // Si el input es un backspace y hay caracteres para borrar
+            if (dato.back() == '.') {
+                decimalPointUsed = false; // Permitir usar el punto decimal nuevamente si se borra
+            } else if (dato.back() == '-') {
+                negativeSignUsed = false; // Permitir usar el signo negativo nuevamente si se borra
+            }
+            std::cout << "\b \b"; // Borra el último carácter impreso
+            dato.pop_back(); // Borra el último carácter de la cadena
+        }
+    }
+
+    return std::stof(dato); // Convertir la cadena a float y retornarla
+}
 };
 #endif
