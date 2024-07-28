@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
-#include <iomanip>
-#include <cmath>
+
 
 template <typename T>
 void intercambiar(T& a, T& b) {

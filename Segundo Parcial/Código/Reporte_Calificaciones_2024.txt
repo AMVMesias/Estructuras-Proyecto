@@ -4,23 +4,23 @@
 
 		Periodo: Mayo 2024 – Septiembre 2024
 		Materia: Calculo
-		NRC: 2344
+		NRC: 43587
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Promedio  
 ====================================================================================================
-1     || wqe             || sda             || generar_correo                 || 13         || 15         || 14        
-2     || qwe             || sdf             || generar_correo                 || 10         || 0          || 5         
-3     || fsd             || hgf             || generar_correo                 || 20         || 0          || 10        
-4     || ewq             || fsd             || generar_correo                 || 12         || 5          || 8.5       
+1     || Leonardo        || Narvaez         || generar_correo                 || 18         || 12         || 15        
+2     || Denise          || Rea             || generar_correo                 || 18         || 11         || 14.5      
+3     || Mesias Mariscal ||                 || generar_correo                 || 13         || 19         || 16        
+4     || Jose            || Marcillo        || generar_correo                 || 0          || 3          || 1.5       
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 9.375
-		|Aprobados  (14-20)         :  1
-		|Suspenso   (09-13)         :  1
-		|Reprobados (01-08)         :  2
+		|Promedio del curso         : 11.75
+		|Aprobados  (14-20)         :  3
+		|Suspenso   (09-13)         :  0
+		|Reprobados (01-08)         :  1
 
                                      __________________
                                            Docente

@@ -79,7 +79,7 @@ void ManejoArchivos::escribir_Encabezado(const string& materia,const string& nrc
                 	ss=ss+ss;
 				}
                 reporte <<"====================================================================================="+ss<<endl;
-                
+
                 reporte.close();
 }
 }
@@ -102,7 +102,7 @@ void ManejoArchivos::escribir_Info_Alumnos(int i,const string& nombre, const str
     } else {
         // Manejar el error si no se puede abrir el archivo
         std::cerr << "Error al abrir el archivo: Reporte_Calificaciones_2024.txt" << std::endl;
-    }                 
+    }
 }
 
 void ManejoArchivos::escribir_Resumen(const float *arrPromedios,int numEstudiantes,const string nombreDocente, const string &cedulaDocente){
@@ -141,12 +141,12 @@ void ManejoArchivos::crear_Reporte_notas(const string& materia, const string& nr
         i++;
         //aux++;
     }
-		
+
 	escribir_Resumen(prom,estudiantes.size(),profe.getNombre(),std::to_string(profe.getCedula()));
 }
 
 void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamiento,Lista<Estudiante> estudiantes,Profesor profe){
-	ofstream reporte("Reporte_Calificaciones_2024_Ordenadas.txt");
+	ofstream reporte("ordenamiento.txt");
 			if (reporte.is_open()) {
                 reporte << internal << setw(70) << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE" << endl;
                 reporte << internal << setw(60) << "REPORTE DE CALIFICACIONES ORDENADAS\n\n" << endl;
@@ -156,18 +156,18 @@ void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamie
                 reporte <<"ALGORITMO :"<<nombre_Ordenamiento<<endl;
                 reporte << left << setw(5) << "N°" << " || " << setw(15) << "Promedio" << " || " << setw(15) << "Nombre" << " || " << setw(30) << "Apellido" << " || ";
                 reporte <<"\n====================================================================================="<<endl;
-            
+
             Nodo<Estudiante>* actual = estudiantes.getCabeza();
             int i=0;
         	while (actual != nullptr) {
             Nodo<Estudiante>* siguiente = actual->siguiente;
-            reporte << left << setw(5) << i+1 << " || " << setw(15) << actual->dato.get_Promedio() << " || " << setw(15) << actual->dato.getNombre() << " || " << setw(30) << actual->dato.getNombre() << endl;
+            reporte << left << setw(5) << i+1 << " || " << setw(15) << actual->dato.get_Promedio() << " || " << setw(15) << actual->dato.getNombre() << " || " << setw(30) << actual->dato.getApellido() << endl;
             actual = siguiente;
         }
-            
+
             reporte << endl;
             reporte << endl;
-            
+
                 reporte << internal << setw(55) << "__________________" << endl;
                 reporte << internal << setw(50) << "Docente" << endl;
                 reporte << internal << setw(50) << profe.getNombre() << endl;
@@ -197,11 +197,11 @@ void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int
             //}
             reporte << endl;
             reporte << endl;
-            
+
                 reporte << internal << setw(55) << "__________________" << endl;
                 reporte << internal << setw(50) << "Docente" << endl;
                 reporte << internal << setw(50) << profe.getNombre() << endl;
                 reporte << internal << setw(50) << std::to_string(profe.getCedula()) << endl;
             reporte.close();
-}	
+}
 }
