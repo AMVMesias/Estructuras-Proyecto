@@ -3,25 +3,24 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: EDO
-		NRC: 12345
+		Materia: 
+		NRC: 
 
-N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Nota       || Promedio  
-===================================================================================================================
-1     || Denise          || Rea             || dnrea@espe.edu.ec              || 12.4       || 12.8       || 15         || 14.5      
-2     || 7dfghj          || ghj             || fgh@espe.edu.ec                || 13.4       || 12.8       || 19         || 17.5      
-3     || cvbn            || 74411           || dnrea@vbn.edu.ec               || 13.4       || 12.8       || 19         || 19.5      
+N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Promedio  
+====================================================================================================
+1     || chimuelo        || diaz            || generar_correo                 || 20         || 15         || 17.5      
+2     || wilson          || rea             || generar_correo                 || 5          || 30         || 17.5      
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 17.1667
-		|Aprobados  (14-20)         :  3
+		|Promedio del curso         : 17.5
+		|Aprobados  (14-20)         :  2
 		|Suspenso   (09-13)         :  0
 		|Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                          Chimuelo
-                                           1478541
+                                            Denise
+                                        1756177935
