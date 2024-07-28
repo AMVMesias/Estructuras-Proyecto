@@ -1,7 +1,12 @@
 #ifndef TABLA_HASH_H
 #define TABLA_HASH_H
 
+#include <iostream>
+#include <stdexcept>
 #include "Lista.h" 
+#include "Estudiante.h"
+
+using namespace std;
 
 template<typename K, typename V>
 class TablaHash {
@@ -38,27 +43,28 @@ public:
         tabla[indice].insertarOrdenado(nuevaEntrada); 
     }
 
-    V buscar(const K& clave) const {
+    void buscar(const K& clave) const {
         int indice = funcionHash(clave);
         Nodo<Entrada>* tmp = tabla[indice].getCabeza();
         while (tmp) {
             if (tmp->dato.clave == clave) {
-                return tmp->dato.valor; 
+                tmp->dato.valor.mostrarInformacion(); 
+                return;
             }
             tmp = tmp->siguiente;
         }
-        throw std::runtime_error("Clave no encontrada en la tabla hash.");
+        throw runtime_error("Clave no encontrada en la tabla hash.");
     }
 
     void imprimirTabla() const {
         for (int i = 0; i < capacidad; ++i) {
-            std::cout << "Lista " << i << ": ";
+            cout << "Lista " << i << ": ";
             Nodo<Entrada>* actual = tabla[i].getCabeza();
             while (actual) {
-                std::cout << "{" << actual->dato.clave << ": " << actual->dato.valor << "} ";
+                cout << "{" << actual->dato.clave << ": " << actual->dato.valor.getNombre() << "} ";
                 actual = actual->siguiente;
             }
-            std::cout << std::endl;
+            cout << endl;
         }
     }
 
@@ -71,4 +77,4 @@ public:
     }
 };
 
-#endif // TABLA_HASH_H
+#endif 

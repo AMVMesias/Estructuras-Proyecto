@@ -1,3 +1,5 @@
+#ifndef ESTUDIANTE_H
+#define ESTUDIANTE_H
 #include <iostream>
 #include <string>
 
@@ -21,11 +23,14 @@ public:
     string getApellido()const{return apellido;}
     //string getMatricula()const{return matricula;}
     string getCorreo()const{return correo;}
+    string getNombreCompleto() const { return nombre + " " + apellido; }
 
-    /*void mostrarInformacion()const{
-        cout<<"Nombre: "<<nombre<<endl<<"Matricula: "<<matricula<<endl<<"Carrera: "<<carrera<<endl;
-    }*/
-    
+    void mostrarInformacion() const {
+        cout << "Nombre: " << nombre << endl
+             << "Apellido: " << apellido << endl
+             << "Correo: " << correo << endl
+             << "Promedio: " << promedio << endl;
+    }
     float get_Promedio(){
     	return this->promedio;
 	}
@@ -34,3 +39,4 @@ public:
 		return notas;
 	}
 };
+#endif

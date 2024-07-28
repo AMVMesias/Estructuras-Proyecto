@@ -14,9 +14,9 @@ void busquedaBinaria(Lista<Estudiante>& lista, float promedio) {
         medio = (primero + ultimo) / 2;
         Estudiante estudiante = lista[medio];
         
-        if (estudiante.getPromedio() < promedio) {
+        if (estudiante.get_Promedio() < promedio) {
             primero = medio + 1;
-        } else if (estudiante.getPromedio() == promedio) {
+        } else if (estudiante.get_Promedio() == promedio) {
             std::cout << "Estudiante encontrado:" << std::endl;
             estudiante.mostrarInformacion();
             return;

@@ -8,9 +8,10 @@
 #include "ManejoArchivos.cpp"
 #include "IngresoDatos.h"
 #include "Materia.h"
+#include "busquedaBinaria.h"
+#include "TablaHash.h"
 
 using namespace std;
-
 long long int validar(long long int &x);
 
 class Menu {
@@ -19,16 +20,17 @@ public:
     void MostrarMenuPrincipal();
 
 private:
+    int numNotas;
+    int numeroEstudiantes;
+    TablaHash<float, Estudiante> tablaHash; // Cambiado de string a float para promedios
     ManejoArchivos manejoArchivos;
     string nombreDocente;
     string cedulaDocente;
     string materia;
     string NRC;
     IngresoDatos crearUsuario;
-    int numeroEstudiantes;
     Lista<double> notas;
     Lista<Estudiante>estudiantes;
-    int numNotas;
     Profesor profesor;
     
     float* arrPromedios;
@@ -83,8 +85,11 @@ void Menu::MostrarMenuPrincipal() {
         cout << "1. Registro de materia y NRC" << endl;
         cout << "2. Registro de número de estudiantes y numero de notas" << endl;
         cout << "3. Ingresar las notas por cada estudiante" << endl;
-        cout << "4. Submenu de ordenamientos" << endl;
-        cout << "5. Submenu de Busqueda" << endl;
+        cout << "4. " << endl;
+        cout << "5. " << endl;
+        cout << "6. Buscar" << endl;
+        cout << "6. " << endl;
+
         cout << "0. Salir" << endl;
         cout << "Seleccione una opcion: ";
         cin >> opcion;
@@ -251,18 +256,25 @@ void Menu::BuscarCalificacion(){
         cin >> opcion;
 
         switch (opcion) {
-        case 1:
-            //Busqueda Binaria
-        {
+        case 1: {
             cout << "               ~ BUSQUEDA BINARIA ~            " << endl;   
-
-            //aqui va el codigo en Binaria
+			float promedioBuscado;
+			cin >> promedioBuscado;
+			busquedaBinaria(estudiantes, promedioBuscado);
             break;
         }
-        case 3: {
+        case 2: {
             cout << "               ~ BUSQUEDA HASH ~               " << endl;
-			//aqui va el codigo hash 
+            float promedioBuscado;
+            cout << "Ingrese el promedio a buscar: ";
+            cin >> promedioBuscado;
+            try {
+                tablaHash.buscar(promedioBuscado);
+            } catch (const runtime_error& e) {
+                cout << e.what() << endl;
+            }
             break;
+        
         }
         case 0:
             // Volver al menú principal
@@ -328,6 +340,8 @@ void Menu::guardar_informacion(){
         prom=this->CalcularPromedio(notas_);
         Estudiante estudiante(nombre,apellido,notas_,"generar_correo",prom);
         this->estudiantes.insertarAlFinal(estudiante);
+        this->tablaHash.insertar(prom, estudiante); // Insertar en la tabla hash
+
 	}
 }
 
