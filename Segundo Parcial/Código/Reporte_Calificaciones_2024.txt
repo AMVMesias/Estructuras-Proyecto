@@ -8,19 +8,18 @@
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Promedio  
 ====================================================================================================
-1     || chimuelo        || diaz            || generar_correo                 || 20         || 15         || 17.5      
-2     || wilson          || rea             || generar_correo                 || 5          || 30         || 17.5      
+1     || Denise          || Rea             || generar_correo                 || 17         || 18         || 17.5      
 
 
 
 			RESUMEN
 
 		|Promedio del curso         : 17.5
-		|Aprobados  (14-20)         :  2
+		|Aprobados  (14-20)         :  1
 		|Suspenso   (09-13)         :  0
 		|Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                            Denise
-                                        1756177935
+                                            sdfsdf
+                                        1727669267

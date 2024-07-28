@@ -5,14 +5,6 @@
 		Periodo: Mayo 2024 – Septiembre 2024
 
 Calificaciones Ordenadas
-ALGORITMO :Shellsort
-N°   || Promedio        || Nombre          || Apellido                       || =====================================================================================
-1     || 14.5            || Denise          || Denise                        
-1     || 10.5            || jajano          || jajano                        
-1     || 13.5            || equisde         || equisde                       
-
-
-                                     __________________
-                                           Docente
-                                          Chimuelo
-                                           1478541
+ALGORITMO :
+N°   || Promedio        || Nombre          || Apellido                       || 
+=====================================================================================

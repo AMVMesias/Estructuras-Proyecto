@@ -18,11 +18,12 @@ class Menu {
 public:
     Menu();
     void MostrarMenuPrincipal();
+	void MostrarMenuInicioSesion();
 
 private:
     int numNotas;
     int numeroEstudiantes;
-    TablaHash<float, Estudiante> tablaHash; // Cambiado de string a float para promedios
+    TablaHash<float, Estudiante> tablaHash; 
     ManejoArchivos manejoArchivos;
     string nombreDocente;
     string cedulaDocente;
@@ -57,39 +58,28 @@ private:
 Menu::Menu() : profesorLogueado(false), materiaIngresada(false), estudiantesIngresados(false), 
                notasIngresadas(false), datosAlmacenados(false), numeroEstudiantes(0), arrPromedios(nullptr) {}
 
-void Menu::MostrarMenuPrincipal() {
+void Menu::MostrarMenuInicioSesion() {
     int opcion;
-        cout << "           ~ INICIO DE SESION   ~            " << endl;
-        //if (!profesorLogueado) {
-            cout << "1. Registro de docente" << endl;
-            Login();
-        
-    do {          
+    cout << "           ~ INICIO DE SESION   ~            " << endl;
+    if (!profesorLogueado) {
+        cout << "1. Registro de docente" << endl;
+        Login();
+    }
+    MostrarMenuPrincipal();
+}
+
+void Menu::MostrarMenuPrincipal() {
+    int opcion;	    
+    do {
+        system("cls");         
     
         cout << "           ~  Menu Principal   ~             " << endl;
-        /*if (!materiaIngresada) {
-            cout << "2. Ingresar materia y NRC" << endl;
-        } else if (!estudiantesIngresados) {
-            cout << "3. Ingresar numero de estudiantes" << endl;
-        } else if (!notasIngresadas) {
-            cout << "4. Ingresar notas por cada estudiante" << endl;
-        } else if (!datosAlmacenados) {
-            cout << "5. Almacenar datos en archivo 'calificaciones'" << endl;
-        } else {
-            cout << "6. Ordenar notas" << endl;
-            cout << "7. Almacenar resultados de ordenamiento" << endl;
-            cout << "8. Realizar ordenamiento externo" << endl;
-            cout << "9. Buscar calificación" << endl;
-            cout << "10. Almacenar resultados de búsqueda" << endl;
-        }*/
         cout << "1. Registro de materia y NRC" << endl;
         cout << "2. Registro de número de estudiantes y numero de notas" << endl;
         cout << "3. Ingresar las notas por cada estudiante" << endl;
-        cout << "4. " << endl;
-        cout << "5. " << endl;
-        cout << "6. Buscar" << endl;
-        cout << "6. " << endl;
-
+        cout << "4. Almacenar datos" << endl;
+        cout << "5. Ordenar notas" << endl;
+        cout << "6. Buscar calificación" << endl;
         cout << "0. Salir" << endl;
         cout << "Seleccione una opcion: ";
         cin >> opcion;
@@ -97,81 +87,43 @@ void Menu::MostrarMenuPrincipal() {
 
         switch (opcion) {
             case 1:
-                /*if (!profesorLogueado) Login();
-                else cout << "Ya ha iniciado sesión." << endl;*/
                 PedirMateriaNRC();
-                //añadir al array de materias, validar que no sea duplicado
+                system("pause");
                 break;
             case 2:
-                /*if (profesorLogueado && !materiaIngresada) {
-                    PedirMateriaNRC();
-                    materiaIngresada = true;
-                }
-                else cout << "No puede realizar esta acción ahora." << endl;*/
-                    PedirNumeroEstudiantes();
-                    
+                PedirNumeroEstudiantes();
+                system("pause");
                 break;
             case 3:
                 if (estudiantesIngresados) {
-					guardar_informacion();
+                    guardar_informacion();
+                } else {
+                    cout << "No puede realizar esta acción ahora." << endl;
                 }
-                else cout << "No puede realizar esta acción ahora." << endl;
-                
+                system("pause");
                 break;
             case 4:
-                /*if (estudiantesIngresados && !notasIngresadas) {
-                    IngresarNotas();
-                    notasIngresadas = true;
-                }
-                else cout << "No puede realizar esta acción ahora." << endl;*/
                 AlmacenarDatos();
+                system("pause");
                 break;
             case 5:
-                /*if (notasIngresadas && !datosAlmacenados) {
-                    AlmacenarDatos();
-                    datosAlmacenados = true;
-                    cout << "El archivo fue creado o modificado exitosamente." << endl;
-                }
-                else cout << "No puede realizar esta acción ahora." << endl;*/
                 OrdenarNotas();
-                
+                system("pause");
                 break;
             case 6:
-            	BuscarCalificacion();
-                /*if (datosAlmacenados) OrdenarNotas();
-                else cout << "Debe almacenar los datos primero." << endl;*/
-                break;
-            case 7:
-                if (datosAlmacenados) {
-                    // Implementar almacenamiento de resultados de ordenamiento
-                    cout << "Resultados de ordenamiento almacenados en 'ordenamiento.txt'" << endl;
-                }
-                else cout << "Debe ordenar las notas primero." << endl;
-                break;
-            case 8:
-                if (datosAlmacenados) OrdenamientoExterno();
-                else cout << "Debe almacenar los datos primero." << endl;
-                break;
-            case 9:
-                if (datosAlmacenados) BuscarCalificacion();
-                else cout << "Debe almacenar los datos primero." << endl;
-                break;
-            case 10:
-                if (datosAlmacenados) {
-                    // Implementar almacenamiento de resultados de búsqueda
-                    cout << "Resultados de búsqueda almacenados en 'busqueda.txt'" << endl;
-                }
-                else cout << "Debe realizar una búsqueda primero." << endl;
+                BuscarCalificacion();
+                system("pause");
                 break;
             case 0:
                 cout << "Saliendo del programa..." << endl;
+                system("pause");
                 break;
             default:
-                cout << "Opcion invalida, por favor intente nuevamente." << endl;
+                cout << "Opción inválida, por favor intente nuevamente." << endl;
+                system("pause");
         }
     } while (opcion != 0);
 }
-
 void Menu::OrdenarNotas() {
     /*cout << "Seleccione el tipo de ordenamiento:" << endl;
     cout << "1. Burbuja" << endl;
@@ -184,6 +136,8 @@ void Menu::OrdenarNotas() {
     int opcion;
 
     do {
+		system("cls");
+
         cout << "        ~ Submenú de Ordenamiento ~         " << endl;
         cout << ">> 1. BuckertSort" << endl;
         cout << ">> 2. QuickSort" << endl;
@@ -198,29 +152,35 @@ void Menu::OrdenarNotas() {
         switch (opcion) {
         case 1:
         	ordenamiento=" BuckertSort ";
+			system("pause");
             //
             break;
         case 2:
         	ordenamiento=" QuickSort";
+        	system("pause");
             //
             break;
         case 3:
         	ordenamiento=" ShellSort";
+        	system("pause");
             //
             break;
         case 4:
         	ordenamiento=" RadixSort";
+        	system("pause");
             //
             break;
         case 5:
         	ordenamiento=" Métodos Externos";
+        	system("pause");
         	//
         	break;
         case 0:
-            // Opción para volver al menú principal
+			MostrarMenuPrincipal();
             break;
         default:
             cout << "Opción no válida. Por favor, seleccione una opción válida." << endl;
+            system("pause");
             break;
         }
     } while (opcion != 0);  // Repetir mientras la opción no sea 0
@@ -247,6 +207,7 @@ void Menu::BuscarCalificacion(){
     int opcion;
 
     do {
+    	system("cls");
         cout << "         ~ Submenú de Búsqueda ~              " << endl;
         cout << ">> 1. Búsqueda Binaria" << endl;
         cout << ">> 2. Busqueda Hash" << endl;
@@ -257,10 +218,13 @@ void Menu::BuscarCalificacion(){
 
         switch (opcion) {
         case 1: {
-            cout << "               ~ BUSQUEDA BINARIA ~            " << endl;   
+            cout << "               ~ BUSQUEDA BINARIA ~            " << endl;
+            cout << "Ingrese el promedio a buscar: ";
+   
 			float promedioBuscado;
 			cin >> promedioBuscado;
 			busquedaBinaria(estudiantes, promedioBuscado);
+			system("pause");
             break;
         }
         case 2: {
@@ -273,6 +237,8 @@ void Menu::BuscarCalificacion(){
             } catch (const runtime_error& e) {
                 cout << e.what() << endl;
             }
+			system("pause");
+
             break;
         
         }
