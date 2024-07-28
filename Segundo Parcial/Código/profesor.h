@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "Materia.h"
+#include "ValidacionCedula.h"
 #define numMateriasMax 5
 using namespace std;
 
@@ -21,6 +22,8 @@ public:
         getline(cin, nombre);
         cout << "Ingrese cedula del docente: ";
         cin >> cedula;
+        validar(cedula);
+
     }
 
     string getNombre() const {

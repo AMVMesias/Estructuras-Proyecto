@@ -1,21 +1,23 @@
+#ifndef VALIDACIONCEDULA_H
+#define VALIDACIONCEDULA_H
+
 #include <iostream>
 #include <string>
-#include "IngresoDatos.h"
+
 
 //#define dim 10
 using namespace std;
 
 long long int validarr(long long int &x) {
-    IngresoDatos crearUsuario;
     while (x < 100000000 || x > 3999999999) {
-        x=crearUsuario.IngresoEnteros("Error, Ingrese de nuevo la cedula consta de 10 digitos: ");
+        cout<<"Error, Ingrese de nuevo la cedula consta de 10 digitos: ";
+        cin>>x;
     }
 
     return x;
 
 }
 long long int validar(long long int &x) {
-    IngresoDatos crearUsuario;
     long long int A[10]={0};
     int i = 9, sumapares = 0, sumaimpares = 0, sumat, res, mul, a;
     long long int coc;
@@ -46,7 +48,8 @@ long long int validar(long long int &x) {
             return x;
         }
         else {
-            x=crearUsuario.IngresoEnteros("Cedula no valida, ingrese de nuevo: ");
+            cout<<"Cedula no valida, ingrese de nuevo: ";
+            cin>>x;
             return validar(x);
         }
 
@@ -54,3 +57,4 @@ long long int validar(long long int &x) {
 }
 
 
+#endif // VALIDACIONCEDULA_H
