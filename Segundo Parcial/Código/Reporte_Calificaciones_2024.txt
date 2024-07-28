@@ -3,23 +3,26 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: 
-		NRC: 
+		Materia: Calculo
+		NRC: 2344
 
-N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
+N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Promedio  
 ====================================================================================================
-1     || bbbbb           || asd             || generar_correo                 || 14         || 14        
+1     || wqe             || sda             || generar_correo                 || 13         || 15         || 14        
+2     || qwe             || sdf             || generar_correo                 || 10         || 0          || 5         
+3     || fsd             || hgf             || generar_correo                 || 20         || 0          || 10        
+4     || ewq             || fsd             || generar_correo                 || 12         || 5          || 8.5       
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 14
+		|Promedio del curso         : 9.375
 		|Aprobados  (14-20)         :  1
-		|Suspenso   (09-13)         :  0
-		|Reprobados (01-08)         :  0
+		|Suspenso   (09-13)         :  1
+		|Reprobados (01-08)         :  2
 
                                      __________________
                                            Docente
-                                                 2
-                                        1726886060
+                                          Veronica
+                                        1750573733

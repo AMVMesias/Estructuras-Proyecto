@@ -16,6 +16,13 @@
 using namespace std;
 long long int validar(long long int &x);
 Validaciones validador;
+void imprimirNotasOrdenadas(const double* arrPromedios, int numeroEstudiantes) {
+    cout << "Notas ordenadas:" << endl;
+    for (int i = 0; i < numeroEstudiantes; i++) {
+        cout << arrPromedios[i] << " ";
+    }
+    cout << endl;
+}
 
 
 class Menu {
@@ -140,7 +147,11 @@ void Menu::MostrarMenuPrincipal() {
 void Menu::OrdenarNotas() {
     string ordenamiento = "";
     int opcion;
-
+    cout << "Valores de arrPromedios antes de la conversión:" << endl;
+    for (int i = 0; i < numeroEstudiantes; ++i) {
+        cout << arrPromedios[i] << " ";
+    }
+    cout << endl;
     // Convertir arrPromedios de float* a double*
     double* arrPromediosDouble = new double[numeroEstudiantes];
     for (int i = 0; i < numeroEstudiantes; ++i) {
@@ -163,18 +174,22 @@ void Menu::OrdenarNotas() {
             case 1:
                 ordenamiento = "BucketSort";
                 bucketSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 break;
             case 2:
                 ordenamiento = "QuickSort";
                 quickSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 break;
             case 3:
                 ordenamiento = "ShellSort";
                 shellSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 break;
             case 4:
                 ordenamiento = "RadixSort";
                 radixSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 break;
             case 5:
                 ordenamiento = "Métodos Externos";
@@ -189,6 +204,7 @@ void Menu::OrdenarNotas() {
 
     delete[] arrPromediosDouble;
 }
+
 
 void Menu::OrdenamientoExterno() {
     // Implementar ordenamiento externo
@@ -333,6 +349,7 @@ void Menu::guardar_informacion(){
 		notas_=IngresarNotas();
         //arrPromedios[i] = promedio;
         prom=this->CalcularPromedio(notas_);
+        arrPromedios[i]=prom;
         Estudiante estudiante(nombre,apellido,notas_,"generar_correo",prom);
         this->estudiantes.insertarAlFinal(estudiante);
         this->tablaHash.insertar(prom, estudiante); // Insertar en la tabla hash
