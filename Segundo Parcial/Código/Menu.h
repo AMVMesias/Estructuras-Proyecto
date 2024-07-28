@@ -11,6 +11,7 @@
 #include "Materia.h"
 #include "busquedaBinaria.h"
 #include "TablaHash.h"
+#include "ordenamientoVersion2idk.h"
 
 using namespace std;
 long long int validar(long long int &x);
@@ -19,7 +20,7 @@ Validaciones validador;
 
 class Menu {
 public:
-	
+
     Menu();
     void MostrarMenuPrincipal();
 	void MostrarMenuInicioSesion();
@@ -27,7 +28,7 @@ public:
 private:
     int numNotas;
     int numeroEstudiantes;
-    TablaHash<float, Estudiante> tablaHash; 
+    TablaHash<float, Estudiante> tablaHash;
     ManejoArchivos manejoArchivos;
     string nombreDocente;
     string cedulaDocente;
@@ -38,7 +39,7 @@ private:
     Lista<Estudiante>estudiantes;
     Profesor profesor;
     Materia materia1;
-    
+
     float* arrPromedios;
     bool profesorLogueado;
     bool materiaIngresada;
@@ -58,9 +59,13 @@ private:
     void BuscarCalificacion();
     float CalcularPromedio();
     float CalcularPromedio(float*);
+    QuickSort<double> quickSort;
+    ShellSort<double> shellSort;
+    BucketSort<double> bucketSort;
+    RadixSort<double> radixSort;
 };
 
-Menu::Menu() : profesorLogueado(false), materiaIngresada(false), estudiantesIngresados(false), 
+Menu::Menu() : profesorLogueado(false), materiaIngresada(false), estudiantesIngresados(false),
                notasIngresadas(false), datosAlmacenados(false), numeroEstudiantes(0), arrPromedios(nullptr) {}
 
 void Menu::MostrarMenuInicioSesion() {
@@ -75,10 +80,10 @@ void Menu::MostrarMenuInicioSesion() {
 }
 
 void Menu::MostrarMenuPrincipal() {
-    int opcion;	    
+    int opcion;
     do {
-        system("cls");         
-        cout << endl; 
+        system("cls");
+        cout << endl;
         cout << "           ~  Menu Principal   ~             " << endl;
         cout << "1. Registro de materia y NRC" << endl;
         cout << "2. Registro de número de estudiantes y numero de notas" << endl;
@@ -88,8 +93,8 @@ void Menu::MostrarMenuPrincipal() {
         cout << "6. Buscar calificación" << endl;
         cout << "0. Salir" << endl;
         cout << "Seleccione una opcion: ";
-       
-        
+
+
         opcion = validador.ingresar_enteros("Seleccione una opción: ");
 
         switch (opcion) {
@@ -132,21 +137,18 @@ void Menu::MostrarMenuPrincipal() {
     } while (opcion != 0);
 }
 void Menu::OrdenarNotas() {
-    /*cout << "Seleccione el tipo de ordenamiento:" << endl;
-    cout << "1. Burbuja" << endl;
-    cout << "2. Inserción" << endl;
-    cout << "3. Quicksort" << endl;
-    int opcion;
-    cin >> opcion;
-    // Implementar el ordenamiento seleccionado*/
-    string ordenamiento="";
+    string ordenamiento = "";
     int opcion;
 
+    // Convertir arrPromedios de float* a double*
+    double* arrPromediosDouble = new double[numeroEstudiantes];
+    for (int i = 0; i < numeroEstudiantes; ++i) {
+        arrPromediosDouble[i] = static_cast<double>(arrPromedios[i]);
+    }
+
     do {
-		system("cls");
-		cout << endl;
         cout << "        ~ Submenú de Ordenamiento ~         " << endl;
-        cout << ">> 1. BuckertSort" << endl;
+        cout << ">> 1. BucketSort" << endl;
         cout << ">> 2. QuickSort" << endl;
         cout << ">> 3. ShellSort" << endl;
         cout << ">> 4. RadixSort" << endl;
@@ -157,41 +159,34 @@ void Menu::OrdenarNotas() {
         cin >> opcion;
 
         switch (opcion) {
-        case 1:
-        	ordenamiento=" BuckertSort ";
-			system("pause");
-            //
-            break;
-        case 2:
-        	ordenamiento=" QuickSort";
-        	system("pause");
-            //
-            break;
-        case 3:
-        	ordenamiento=" ShellSort";
-        	system("pause");
-            //
-            break;
-        case 4:
-        	ordenamiento=" RadixSort";
-        	system("pause");
-            //
-            break;
-        case 5:
-        	ordenamiento=" Métodos Externos";
-        	system("pause");
-        	//
-        	break;
-        case 0:
-			MostrarMenuPrincipal();
-            break;
-        default:
-            cout << "Opción no válida. Por favor, seleccione una opción válida." << endl;
-            system("pause");
-            break;
+            case 1:
+                ordenamiento = "BucketSort";
+                bucketSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                break;
+            case 2:
+                ordenamiento = "QuickSort";
+                quickSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                break;
+            case 3:
+                ordenamiento = "ShellSort";
+                shellSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                break;
+            case 4:
+                ordenamiento = "RadixSort";
+                radixSort.ordenar(arrPromediosDouble, numeroEstudiantes);
+                break;
+            case 5:
+                ordenamiento = "Métodos Externos";
+                OrdenamientoExterno();
+                break;
+            case 0:
+                break;
+            default:
+                cout << "Opción no válida. Por favor, seleccione una opción válida." << endl;
         }
-    } while (opcion != 0);  // Repetir mientras la opción no sea 0
-    manejoArchivos.escribir_ResumenOrdenamiento(ordenamiento,estudiantes,profesor);
+    } while (opcion != 0);
+
+    delete[] arrPromediosDouble;
 }
 
 void Menu::OrdenamientoExterno() {
@@ -210,7 +205,7 @@ void Menu::BuscarCalificacion(){
     int opcion;
     cin >> opcion;
     // Implementar la búsqueda seleccionada*/
-    
+
     int opcion;
 
     do {
@@ -228,7 +223,7 @@ void Menu::BuscarCalificacion(){
         case 1: {
             cout << "               ~ BUSQUEDA BINARIA ~            " << endl;
             cout << "Ingrese el promedio a buscar: ";
-   
+
 			float promedioBuscado;
 			cin >> promedioBuscado;
 			busquedaBinaria(estudiantes, promedioBuscado);
@@ -236,7 +231,7 @@ void Menu::BuscarCalificacion(){
             break;
         }
         case 2: {
-		   
+
 		    int opcionBusqueda;
 		    cout << endl;
 		    cout << "               ~ BUSQUEDA HASH ~               " << endl;
@@ -245,7 +240,7 @@ void Menu::BuscarCalificacion(){
 		    cout << "2. Buscar por nombre\n";
 		    cout << "Opcion: ";
 		    cin >> opcionBusqueda;
-		
+
 		    if (opcionBusqueda == 1) {
 		        float promedioBuscado;
 		        cout << "Ingrese el promedio a buscar: ";
@@ -268,7 +263,7 @@ void Menu::BuscarCalificacion(){
 		    } else {
 		        cout << "Opcion no valida. Intente de nuevo." << endl;
 		    }
-		
+
 		    system("pause");
 		    break;
 		}
@@ -294,13 +289,13 @@ void Menu::Login() {
     /*cout << "Ingrese el nombre del docente: ";
     cin.ignore();
     nombreDocente=crearUsuario.leerLetras();
-    
+
     long long int cedula;
     do {
         cedula = crearUsuario.IngresoEnteros("Ingrese la cedula del docente: ");
         //cedula = validar(cedula);
     } while (cedula == 0);
-    
+
     cedulaDocente = to_string(cedula);*/
     profesor.leerDatosProfesor();
     profesorLogueado = true;
