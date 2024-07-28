@@ -3,23 +3,23 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: dsa
-		NRC: 741
+		Materia: 
+		NRC: 
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     || aaaa            || aaassaasa       || generar_correo                 || 17         || 17        
+1     || bbbbb           || asd             || generar_correo                 || 14         || 14        
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 17
+		|Promedio del curso         : 14
 		|Aprobados  (14-20)         :  1
 		|Suspenso   (09-13)         :  0
 		|Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                               fdd
-                                        1756177935
+                                                 2
+                                        1726886060

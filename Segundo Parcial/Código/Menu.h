@@ -229,20 +229,43 @@ void Menu::BuscarCalificacion(){
             break;
         }
         case 2: {
-            cout << "               ~ BUSQUEDA HASH ~               " << endl;
-            float promedioBuscado;
-            cout << "Ingrese el promedio a buscar: ";
-            cin >> promedioBuscado;
-            try {
-                tablaHash.buscar(promedioBuscado);
-            } catch (const runtime_error& e) {
-                cout << e.what() << endl;
-            }
-			system("pause");
+		   
+		    int opcionBusqueda;
+		    cout << "               ~ BUSQUEDA HASH ~               " << endl;
+		    cout << "Seleccione el criterio de busqueda:\n";
+		    cout << "1. Buscar por promedio\n";
+		    cout << "2. Buscar por nombre\n";
+		    cout << "Opcion: ";
+		    cin >> opcionBusqueda;
+		
+		    if (opcionBusqueda == 1) {
+		        float promedioBuscado;
+		        cout << "Ingrese el promedio a buscar: ";
+		        cin >> promedioBuscado;
+		        try {
+		            tablaHash.buscarPorPromedio(promedioBuscado);
+		        } catch (const runtime_error& e) {
+		            cout << e.what() << endl;
+		        }
+		    } else if (opcionBusqueda == 2) {
+		        string nombreBuscado;
+		        cout << "Ingrese el nombre a buscar: ";
+		        cin.ignore(); // Para ignorar el carácter de nueva línea pendiente
+		        getline(cin, nombreBuscado);
+		        try {
+		            tablaHash.buscarPorNombre(nombreBuscado);
+		        } catch (const runtime_error& e) {
+		            cout << e.what() << endl;
+		        }
+		    } else {
+		        cout << "Opcion no valida. Intente de nuevo." << endl;
+		    }
+		
+		    system("pause");
+		    break;
+		}
 
-            break;
-        
-        }
+
         case 0:
             // Volver al menú principal
             break;

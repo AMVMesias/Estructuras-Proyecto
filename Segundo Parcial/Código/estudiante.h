@@ -10,7 +10,7 @@ private:
     string nombre;
     string apellido;
     int numNotas;
-    //const float notas[numNotas];
+
     float *notas;
     string correo;
     float promedio;
@@ -25,12 +25,8 @@ public:
     string getCorreo()const{return correo;}
     string getNombreCompleto() const { return nombre + " " + apellido; }
 
-    void mostrarInformacion() const {
-        cout << "Nombre: " << nombre << endl
-             << "Apellido: " << apellido << endl
-             << "Correo: " << correo << endl
-             << "Promedio: " << promedio << endl;
-    }
+    
+    
     float get_Promedio(){
     	return this->promedio;
 	}
@@ -38,5 +34,13 @@ public:
 	float* get_notas(){
 		return notas;
 	}
+	
+	void mostrarInformacion() const {
+        cout << "Nombre: " << nombre << endl
+             << "Apellido: " << apellido << endl
+             << "Correo: " << correo << endl
+             << "Promedio: " << promedio << endl;
+    }
+	
 };
 #endif
