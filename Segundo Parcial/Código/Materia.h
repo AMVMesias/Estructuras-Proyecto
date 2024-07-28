@@ -12,12 +12,14 @@ private:
     string codigo;
 
 public:
+	Materia(){};
     void leerDatos(){
         cout<<"Ingrese nombre de la materia: ";
         cin>>ws;
         getline(cin, nombre);
         cout<<"Ingrese codigo de la materia: ";
         cin>>codigo;
+        //seleccionada=false;
     }
 
     string getNombre()const{
@@ -27,6 +29,7 @@ public:
     string getCodigo()const{
         return codigo;
     }
+    
 };
 
 #endif // MATERIA_H

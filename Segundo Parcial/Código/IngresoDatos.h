@@ -2,9 +2,9 @@
 #define INGRESODATOS_H
 
 #include <iostream>
-#include <conio.h>
-#include <cctype>
 #include <string>
+#include <conio.h>  
+#include <cstdlib>  
 
 using namespace std;
 
@@ -91,41 +91,41 @@ public:
         return dato;
     }
 
-    float leerFlotantes() {
-        std::string dato;
-        char c = 0;
-        bool decimalPointUsed = false;
-        bool negativeSignUsed = false;
+/*    float leerFlotantes() {
+    std::string dato;
+    char c = 0;
+    bool decimalPointUsed = false;
+    bool negativeSignUsed = false;
 
-        while (true) {
-            c = _getch();
-            if (c == 13) { // ENTER key
-                break;
-            } else if (c >= '0' && c <= '9') {
-                printf("%c", c);
-                dato.push_back(c);
-            } else if (c == '.' && !decimalPointUsed) {
-                printf("%c", c);
-                dato.push_back(c);
-                decimalPointUsed = true;
-            } else if (c == '-' && !negativeSignUsed && dato.empty()) {
-                printf("%c", c);
-                dato.push_back(c);
-                negativeSignUsed = true;
-            } else if (c == 8 && !dato.empty()) { // Backspace key
-                if (dato.back() == '.') {
-                    decimalPointUsed = false;
-                } else if (dato.back() == '-') {
-                    negativeSignUsed = false;
-                }
-                printf("\b \b");
-                dato.pop_back();
+    while (true) {
+        c = _getch();
+        if (c == 13) { // Tecla ENTER
+            break;
+        } else if (c >= '0' && c <= '9') {
+            printf("%c", c);
+            dato.push_back(c);
+        } else if (c == '.' && !decimalPointUsed) {
+            printf("%c", c);
+            dato.push_back(c);
+            decimalPointUsed = true;
+        } else if (c == '-' && !negativeSignUsed && dato.empty()) {
+            printf("%c", c);
+            dato.push_back(c);
+            negativeSignUsed = true;
+        } else if (c == 8 && !dato.empty()) { // Tecla Backspace
+            if (dato.back() == '.') {
+                decimalPointUsed = false;
+            } else if (dato.back() == '-') {
+                negativeSignUsed = false;
             }
+            printf("\b \b");
+            dato.pop_back();
         }
-
-        cout << '\n';
-        return std::stof(dato);
     }
+
+    std::cout << '\n';
+    return std::stof(dato);
+}*/
 };
 
 #endif

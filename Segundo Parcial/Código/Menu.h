@@ -33,6 +33,7 @@ private:
     Lista<double> notas;
     Lista<Estudiante>estudiantes;
     Profesor profesor;
+    Materia materia1;
     
     float* arrPromedios;
     bool profesorLogueado;
@@ -294,6 +295,7 @@ void Menu::guardar_informacion(){
 	string nombre,apellido,cedula;
 	float *notas_= new float(this->numNotas);
 	float prom=0;
+	materia1=profesor.seleccionarMateria();
 	for(int i=0; i< this->numeroEstudiantes;i++){
 		cout<<"Registre: "<<endl;
 		cout<<"Nombre: ";
@@ -315,31 +317,19 @@ void Menu::guardar_informacion(){
 float* Menu::IngresarNotas() {
 	float *notas=new float(this->numNotas);
 	float suma=0;
-    /*if (numeroEstudiantes <= 0) {
-        cout << "Número de estudiantes no válido." << endl;
-        return ;
-    }
-    
-    notas.clear();*/
-    
-    /*for (int i = 0; i < numeroEstudiantes; ++i) {
-        cout << "Ingrese las notas del estudiante " << i + 1 << ": ";
-        float sumaNotas = 0.0;
-        for (int j = 0; j < 4; ++j) {  // Suponiendo que hay 4 notas por estudiante
-            double nota;
-            cin >> nota;
-            sumaNotas += nota;
-            notas.insertarAlFinal(nota);
-        }
-        float promedio = sumaNotas / 4;  // Promedio de las 4 notas
-        arrPromedios[i] = promedio;  // Guardar el promedio en el array*/
+	float val=0;
         for(int i=0; i<this->numNotas; i++){
         cout<<"Nota "<<i+1<<" : ";
-        notas[i]=this->crearUsuario.leerFlotantes();
-        //suma=suma+notas[i];
+        //val=this->crearUsuario.leerFlotantes();
+        cin>>val;
+        while(val>20 || val< 0){
+        	cout<<" Fuera de rango, admite valores entre 1-20"<<endl;
+        	//val=this->crearUsuario.leerFlotantes();
+        	cout<<"Nota "<<i+1<<" : ";
+        	cin>>val;
 		}
-		
-    //}
+			notas[i]=val;
+		}
     return notas;
 }
 
@@ -357,7 +347,7 @@ void Menu::AlmacenarDatos() {
     }
 
     float promedioCurso = CalcularPromedio();
-    manejoArchivos.crear_Reporte_notas(this->materia,this->NRC,this->numNotas,this->estudiantes,this->profesor);
+    manejoArchivos.crear_Reporte_notas(this->materia1.getNombre(),this->materia1.getCodigo(),this->numNotas,this->estudiantes,this->profesor);
     //manejoArchivos.escribir_Info_Alumnos(1, nombreDocente, nombreDocente, NRC, arrayNotas, numeroEstudiantes, promedioCurso);
     //manejoArchivos.escribir_Resumen(arrPromedios, numeroEstudiantes, nombreDocente, stoi(cedulaDocente));
 

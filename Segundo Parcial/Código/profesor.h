@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include "Materia.h"
+#include "ValidacionCedula.h"
+#include "IngresoDatos.h"
 #define numMateriasMax 5
 using namespace std;
 
@@ -49,6 +51,22 @@ public:
         materias[numMaterias++]=nuevaMateria;
         cout<<"Materia registrada exitosamente."<<endl;
     }
+    
+    Materia seleccionarMateria(){
+    	Materia aux=this->materias[0];
+    	int op=0;
+    	IngresoDatos ingreso;
+    	if(this->numMaterias>1){
+    		cout<<"Seleccione su materia a registrar las notas: \n";
+    		for(int i=0; i<this->numMaterias; i++){
+    			cout<<"[ "<<i+1<<" ]"<<materias[i].getNombre()<<" NRC:"<<materias[i].getCodigo()<<endl;
+			}
+			op=ingreso.IngresoEnteros("materia: ");
+			aux=materias[op-1];
+		}
+		return aux;
+	}
+    
 };
 
 #endif // PROFESOR_H

@@ -3,23 +3,23 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: 
-		NRC: 
+		Materia: dsa
+		NRC: 741
 
-N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Promedio  
+N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     || Denise          || Rea             || generar_correo                 || 17         || 18         || 17.5      
+1     || aaaa            || aaassaasa       || generar_correo                 || 17         || 17        
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 17.5
+		|Promedio del curso         : 17
 		|Aprobados  (14-20)         :  1
 		|Suspenso   (09-13)         :  0
 		|Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                            sdfsdf
-                                        1727669267
+                                               fdd
+                                        1756177935
