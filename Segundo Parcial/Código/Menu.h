@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "ValidacionCedula.h"
+#include "Validaciones.h"
 #include "Lista.h"
 #include "ManejoArchivos.cpp"
 #include "IngresoDatos.h"
@@ -13,9 +14,12 @@
 
 using namespace std;
 long long int validar(long long int &x);
+Validaciones validador;
+
 
 class Menu {
 public:
+	
     Menu();
     void MostrarMenuPrincipal();
 	void MostrarMenuInicioSesion();
@@ -61,6 +65,7 @@ Menu::Menu() : profesorLogueado(false), materiaIngresada(false), estudiantesIngr
 
 void Menu::MostrarMenuInicioSesion() {
     int opcion;
+    cout << endl;
     cout << "           ~ INICIO DE SESION   ~            " << endl;
     if (!profesorLogueado) {
         cout << "1. Registro de docente" << endl;
@@ -73,7 +78,7 @@ void Menu::MostrarMenuPrincipal() {
     int opcion;	    
     do {
         system("cls");         
-    
+        cout << endl; 
         cout << "           ~  Menu Principal   ~             " << endl;
         cout << "1. Registro de materia y NRC" << endl;
         cout << "2. Registro de número de estudiantes y numero de notas" << endl;
@@ -83,8 +88,9 @@ void Menu::MostrarMenuPrincipal() {
         cout << "6. Buscar calificación" << endl;
         cout << "0. Salir" << endl;
         cout << "Seleccione una opcion: ";
-        cin >> opcion;
-        cin.ignore();
+       
+        
+        opcion = validador.ingresar_enteros("Seleccione una opción: ");
 
         switch (opcion) {
             case 1:
@@ -138,7 +144,7 @@ void Menu::OrdenarNotas() {
 
     do {
 		system("cls");
-
+		cout << endl;
         cout << "        ~ Submenú de Ordenamiento ~         " << endl;
         cout << ">> 1. BuckertSort" << endl;
         cout << ">> 2. QuickSort" << endl;
@@ -209,6 +215,7 @@ void Menu::BuscarCalificacion(){
 
     do {
     	system("cls");
+    	cout << endl;
         cout << "         ~ Submenú de Búsqueda ~              " << endl;
         cout << ">> 1. Búsqueda Binaria" << endl;
         cout << ">> 2. Busqueda Hash" << endl;
@@ -231,6 +238,7 @@ void Menu::BuscarCalificacion(){
         case 2: {
 		   
 		    int opcionBusqueda;
+		    cout << endl;
 		    cout << "               ~ BUSQUEDA HASH ~               " << endl;
 		    cout << "Seleccione el criterio de busqueda:\n";
 		    cout << "1. Buscar por promedio\n";
