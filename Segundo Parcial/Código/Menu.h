@@ -34,7 +34,7 @@ private:
     string cedulaDocente;
     string materia;
     string NRC;
-    IngresoDatos crearUsuario;
+    IngresoDatos validador;
     Lista<double> notas;
     Lista<Estudiante>estudiantes;
     Profesor profesor;
@@ -93,9 +93,10 @@ void Menu::MostrarMenuPrincipal() {
         cout << "6. Buscar calificación" << endl;
         cout << "0. Salir" << endl;
         cout << "Seleccione una opcion: ";
+        cin.ignore();
 
 
-        opcion = validador.ingresar_enteros("Seleccione una opción: ");
+        opcion = validador.IngresoEnteros("Seleccione una opción: ");
 
         switch (opcion) {
             case 1:
@@ -307,9 +308,9 @@ void Menu::PedirMateriaNRC() {
 
 void Menu::PedirNumeroEstudiantes() {
     cout << "Ingrese el numero de estudiantes: "<<endl;
-    numeroEstudiantes=crearUsuario.IngresoEnteros("Numero alumnos: ");
+    numeroEstudiantes=validador.IngresoEnteros("Numero alumnos: ");
     cout << "Ingrese el numero de notas a registrar: "<<endl;
-    this->numNotas=crearUsuario.IngresoEnteros("Numero notas: ");
+    this->numNotas=validador.IngresoEnteros("Numero notas: ");
     notas.clear();
     delete[] arrPromedios;
     arrPromedios = new float[numeroEstudiantes];
@@ -325,9 +326,9 @@ void Menu::guardar_informacion(){
 	for(int i=0; i< this->numeroEstudiantes;i++){
 		cout<<"Registre: "<<endl;
 		cout<<"Nombre: ";
-		nombre=this->crearUsuario.leerLetras();
+		nombre=this->validador.leerLetras();
 		cout<<"Apellido: ";
-		apellido=this->crearUsuario.leerLetras();
+		apellido=this->validador.leerLetras();
 		//puedo poner que ingrese su correo
 		notas_=IngresarNotas();
         //arrPromedios[i] = promedio;
