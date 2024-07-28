@@ -303,14 +303,13 @@ void Menu::PedirMateriaNRC() {
 void Menu::PedirNumeroEstudiantes() {
     cout << "Ingrese el numero de estudiantes: "<<endl;
     numeroEstudiantes=crearUsuario.IngresoEnteros("Numero alumnos: ");
-    cin.ignore();
     cout << "Ingrese el numero de notas a registrar: "<<endl;
     this->numNotas=crearUsuario.IngresoEnteros("Numero notas: ");
-    cin.ignore();
     notas.clear();
     delete[] arrPromedios;
     arrPromedios = new float[numeroEstudiantes];
     estudiantesIngresados = true;
+
 }
 
 void Menu::guardar_informacion(){
