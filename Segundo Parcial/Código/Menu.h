@@ -7,6 +7,7 @@
 #include "Lista.h"
 #include "ManejoArchivos.cpp"
 #include "IngresoDatos.h"
+#include "Materia.h"
 
 using namespace std;
 
@@ -296,11 +297,7 @@ void Menu::Login() {
 }
 
 void Menu::PedirMateriaNRC() {
-    cout << "Ingrese la materia: ";
-    cin.ignore();
-    materia= crearUsuario.leerLetras();
-    //cout << "Ingrese el NRC: ";
-    NRC=std::to_string(crearUsuario.IngresoEnteros("Ingrese el NRC:"));
+	this->profesor.registrarMateria();
 }
 
 void Menu::PedirNumeroEstudiantes() {
@@ -328,6 +325,7 @@ void Menu::guardar_informacion(){
         //arrPromedios[i] = promedio;
         prom=this->CalcularPromedio(notas_);
         Estudiante estudiante(nombre,apellido,notas_,"generar_correo",prom);
+        this->estudiantes.insertarAlFinal(estudiante);
 	}
 }
 

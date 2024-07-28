@@ -81,25 +81,34 @@ class IngresoDatos{
                     }
                 }
             }*/
+            
+void backspace(int* i, char* c, std::string* dato) {
+    if (!dato->empty()) {
+        std::cout << "\b \b"; // Borra el último carácter impreso
+        dato->pop_back(); // Borra el último carácter de la cadena
+        (*i)--; // Decrementa el índice
+    }
+}
 
-	    string  leerLetras(){
-	    	string dato;
-			char c = 0;  // Inicializa c
-			int backspace=0;
+std::string leerLetras() {
+    std::string dato;
+    char c = 0; // Inicializa c
 
     while (c != 13) { // Bucle hasta que se presiona la tecla ENTER
-        c = _getch(); // Recibo el dato por teclado (usa _getch() en lugar de getch() en algunos compiladores)
+        c = _getch(); // Recibo el dato por teclado
 
         if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == ' ') {
             printf("%c", c); // Imprimo el valor
-	       dato.push_back(c); // Añadir el carácter a la cadena
-            std::cout << "\b \b"; // Borra el último carácter impreso
-            dato.pop_back(); // Borra el último carácter de la cadena
+            dato.push_back(c); // Añadir el carácter a la cadena
+        } else if (c == 8) { // Si el input es un backspace
+            backspace(nullptr, &c, &dato); // Llamar a la función backspace
         }
     }
 
     return dato;
 }
+
+	   
 
 
 /*float funcionPrincipalFlotantes(){
