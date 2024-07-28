@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <stdexcept>
-#include <functional>
 #include "Lista.h" 
 #include "Estudiante.h"
 
@@ -20,9 +19,9 @@ private:
         }
         
         bool operator<(const Entrada& other) const {
-            return clave < other.clave;
-        }
-        
+	        return clave < other.clave;
+	    }
+	    
         Entrada(const K& k, const V& v) : clave(k), valor(v) {}
     };
 
@@ -57,34 +56,6 @@ public:
         throw runtime_error("Clave no encontrada en la tabla hash.");
     }
 
-    void buscarPorPromedio(float promedioBuscado) const {
-        for (int i = 0; i < capacidad; ++i) {
-            Nodo<Entrada>* actual = tabla[i].getCabeza();
-            while (actual) {
-                if (actual->dato.valor.get_Promedio() == promedioBuscado) {
-                    actual->dato.valor.mostrarInformacion();
-                    return;
-                }
-                actual = actual->siguiente;
-            }
-        }
-        throw runtime_error("Promedio no encontrado en la tabla hash.");
-    }
-
-    void buscarPorNombre(const string& nombreBuscado) const {
-        for (int i = 0; i < capacidad; ++i) {
-            Nodo<Entrada>* actual = tabla[i].getCabeza();
-            while (actual) {
-                if (actual->dato.valor.getNombre() == nombreBuscado) {
-                    actual->dato.valor.mostrarInformacion();
-                    return;
-                }
-                actual = actual->siguiente;
-            }
-        }
-        throw runtime_error("Nombre no encontrado en la tabla hash.");
-    }
-
     void imprimirTabla() const {
         for (int i = 0; i < capacidad; ++i) {
             cout << "Lista " << i << ": ";
@@ -106,4 +77,4 @@ public:
     }
 };
 
-#endif
+#endif 
