@@ -2,18 +2,10 @@
                        REPORTE DE CALIFICACIONES ORDENADAS
 
 
-		Periodo: Mayo 2024 – Septiembre 2024
+        Periodo: Mayo 2024 – Septiembre 2024
 
 Calificaciones Ordenadas
 ALGORITMO :QuickSort
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 14.5            || Leo             || Leo                           
-1     || 9               || Jose            || Jose                          
-1     || 4.5             || Jose            || Jose                          
-
-
-                                     __________________
-                                           Docente
-                                    Veronica Reina
-                                        1750573733
+1     || 3               || mdfsh           || lkjsdf                        

@@ -1,0 +1,13 @@
+UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
+REPORTE DE CALIFICACIONES
+
+Periodo: Mayo 2024 – Septiembre 2024
+Materia: 
+NRC: 
+
+Notas ordenadas con BucketSort:
+N°   || Promedio        || Nombre          || Apellido                       || 
+=====================================================================================
+1     || 9               || Leonardo        || Narvaez                       
+2     || 10              || Mesias          || Mariscal                      
+3     || 20              || Denise          || Rea                           

@@ -47,12 +47,14 @@ private:
     void PedirDatosDocente();
     void PedirMateriaNRC();
     void PedirNumeroEstudiantes();
+    void escribirNotasOrdenadasEnArchivo(const double* arrPromedios, int numeroEstudiantes, const string& metodoOrdenamiento);
     void guardar_informacion();
     float* IngresarNotas();
     void AlmacenarDatos();
     void OrdenarNotas();
     void OrdenamientoExterno();
     void BuscarCalificacion();
+
     float CalcularPromedio();
     float CalcularPromedio(float*);
     QuickSort<double> quickSort;
@@ -137,27 +139,22 @@ void Menu::MostrarMenuPrincipal() {
     } while (opcion != 0);
 }
 void Menu::OrdenarNotas() {
-    /*cout << "Seleccione el tipo de ordenamiento:" << endl;
-    cout << "1. Burbuja" << endl;
-    cout << "2. Inserción" << endl;
-    cout << "3. Quicksort" << endl;
+    string ordenamiento = "";
     int opcion;
-    cin >> opcion;
-    // Implementar el ordenamiento seleccionado*/
-    string ordenamiento="";
-    int opcion;
+
     cout << "Valores de arrPromedios antes de la conversión:" << endl;
     for (int i = 0; i < numeroEstudiantes; ++i) {
         cout << arrPromedios[i] << " ";
     }
     cout << endl;
+
     // Convertir arrPromedios de float* a double*
     double* arrPromediosDouble = new double[numeroEstudiantes];
     for (int i = 0; i < numeroEstudiantes; ++i) {
         arrPromediosDouble[i] = static_cast<double>(arrPromedios[i]);
     }
-    do {
 
+    do {
         cout << "        ~ Submenú de Ordenamiento ~         " << endl;
         cout << ">> 1. BucketSort" << endl;
         cout << ">> 2. QuickSort" << endl;
@@ -174,24 +171,25 @@ void Menu::OrdenarNotas() {
                 ordenamiento = "BucketSort";
                 bucketSort.ordenar(arrPromediosDouble, numeroEstudiantes);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
+                escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "BucketSort");
                 break;
             case 2:
                 ordenamiento = "QuickSort";
                 quickSort.ordenar(arrPromediosDouble, numeroEstudiantes);
-                manejoArchivos.escribir_ResumenOrdenamiento(ordenamiento,estudiantes,profesor);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
+                escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "QuickSort");
                 break;
             case 3:
                 ordenamiento = "ShellSort";
                 shellSort.ordenar(arrPromediosDouble, numeroEstudiantes);
-                manejoArchivos.escribir_ResumenOrdenamiento(ordenamiento,estudiantes,profesor);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
+                escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "ShellSort");
                 break;
             case 4:
                 ordenamiento = "RadixSort";
                 radixSort.ordenar(arrPromediosDouble, numeroEstudiantes);
-                manejoArchivos.escribir_ResumenOrdenamiento(ordenamiento,estudiantes,profesor);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
+                escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "RadixSort");
                 break;
             case 5:
                 ordenamiento = "Métodos Externos";
@@ -205,9 +203,35 @@ void Menu::OrdenarNotas() {
         }
     } while (opcion != 0);
 
+    manejoArchivos.escribir_ResumenOrdenamiento(ordenamiento, estudiantes, profesor);
     delete[] arrPromediosDouble;
 }
+void Menu::escribirNotasOrdenadasEnArchivo(const double* arrPromedios, int numeroEstudiantes, const string& metodoOrdenamiento) {
+    ofstream archivo("notas_ordenadas_" + metodoOrdenamiento + ".txt");
+    if (!archivo) {
+        cerr << "No se pudo abrir el archivo para escritura." << endl;
+        return;
+    }
+     archivo << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE\n";
+    archivo << "REPORTE DE CALIFICACIONES\n\n";
+    archivo << "Periodo: Mayo 2024 – Septiembre 2024\n";
+    archivo << "Materia: " << materia << "\n";
+    archivo << "NRC: " << NRC << "\n\n";
+    archivo << "Notas ordenadas con " << metodoOrdenamiento << ":" << endl;
+    archivo << left << setw(5) << "N°" << " || " << setw(15) << "Promedio" << " || " << setw(15) << "Nombre" << " || " << setw(30) << "Apellido" << " || ";
+    archivo << "\n=====================================================================================" << endl;
 
+    Nodo<Estudiante>* actual = estudiantes.getCabeza();
+    int i = 0;
+    while (actual != nullptr) {
+        archivo << left << setw(5) << i + 1 << " || " << setw(15) << arrPromedios[i] << " || " << setw(15) << actual->dato.getNombre() << " || " << setw(30) << actual->dato.getApellido() << endl;
+        actual = actual->siguiente;
+        i++;
+    }
+
+    archivo.close();
+    cout << "Notas ordenadas guardadas en 'notas_ordenadas_" << metodoOrdenamiento << ".txt'." << endl;
+}
 void Menu::OrdenamientoExterno() {
     // Implementar ordenamiento externo
     cout << "Realizando ordenamiento externo..." << endl;

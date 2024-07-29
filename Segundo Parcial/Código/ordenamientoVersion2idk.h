@@ -83,9 +83,94 @@ public:
 
 template <typename T>
 class BucketSort : public Ordenamiento<T> {
+private:
+    struct Nodo {
+        T valor;
+        Nodo* siguiente;
+        Nodo(T v) : valor(v), siguiente(nullptr) {}
+    };
+
+    void agregarEnUrna(Nodo*& urna, T valor) {
+        Nodo* nuevoNodo = new Nodo(valor);
+        if (!urna) {
+            urna = nuevoNodo;
+        } else {
+            Nodo* temp = urna;
+            while (temp->siguiente) {
+                temp = temp->siguiente;
+            }
+            temp->siguiente = nuevoNodo;
+        }
+    }
+
+    bool esVacia(Nodo* urna) {
+        return urna == nullptr;
+    }
+
+    Nodo* encontrarSiguiente(Nodo* actual) {
+        return actual ? actual->siguiente : nullptr;
+    }
+
+    void combinarUrnas(Nodo* urnas[], int n, T a[]) {
+        int pos = 0;
+        for (int i = 0; i < n; ++i) {
+            Nodo* dir = urnas[i];
+            while (dir) {
+                a[pos++] = dir->valor;
+                Nodo* temp = dir;
+                dir = encontrarSiguiente(dir);
+                delete temp;
+            }
+        }
+    }
+
 public:
     void ordenar(T a[], int n) override {
-        // TODO
+        if (n <= 0) return;
+
+        // Encontrar el máximo valor para determinar el número de urnas
+        T max = encontrarMaximo(a, n);
+        int numUrnas = max + 1;
+
+        // Crear urnas
+        Nodo** urnas = new Nodo*[numUrnas];
+        for (int i = 0; i < numUrnas; ++i) {
+            urnas[i] = nullptr;
+        }
+
+        // Distribuir los elementos en las urnas
+        for (int i = 0; i < n; ++i) {
+            int clave = a[i];
+            agregarEnUrna(urnas[clave], a[i]);
+        }
+
+        // Encontrar la primera urna no vacía
+        int i = 0;
+        while (i < numUrnas && esVacia(urnas[i])) {
+            i++;
+        }
+
+        // Enlazar urnas no vacías
+        Nodo* ultimaUrna = nullptr;
+        for (int j = i; j < numUrnas; ++j) {
+            if (!esVacia(urnas[j])) {
+                if (!ultimaUrna) {
+                    ultimaUrna = urnas[j];
+                } else {
+                    Nodo* temp = ultimaUrna;
+                    while (temp->siguiente) {
+                        temp = temp->siguiente;
+                    }
+                    temp->siguiente = urnas[j];
+                }
+            }
+        }
+
+        // Combinar urnas en el arreglo original
+        combinarUrnas(urnas, numUrnas, a);
+
+        // Limpiar memoria
+        delete[] urnas;
     }
 };
 

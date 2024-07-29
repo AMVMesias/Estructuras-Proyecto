@@ -1,0 +1,13 @@
+UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
+REPORTE DE CALIFICACIONES
+
+Periodo: Mayo 2024 – Septiembre 2024
+Materia: 
+NRC: 
+
+Notas ordenadas con QuickSort:
+N°   || Promedio        || Nombre          || Apellido                       || 
+=====================================================================================
+1     || 16              || jkfsd           || ksjdf                         
+2     || 18              || Leo             || Narvaez                       
+3     || 20              || Mesias          || Mariscal                      

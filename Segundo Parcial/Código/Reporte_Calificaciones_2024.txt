@@ -3,26 +3,25 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: Calculo
-		NRC: 43587
+		Materia: sdfiu
+		NRC: 123
 
-N°   || Estudiante      || Apellido        || Correo                         || Nota       || Nota       || Promedio  
+N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     || Leonardo        || Narvaez         || generar_correo                 || 18         || 12         || 15        
-2     || Denise          || Rea             || generar_correo                 || 18         || 11         || 14.5      
-3     || Mesias Mariscal ||                 || generar_correo                 || 13         || 19         || 16        
-4     || Jose            || Marcillo        || generar_correo                 || 0          || 3          || 1.5       
+1     || Leonardo        || Narvaez         || generar_correo                 || 10         || 10        
+2     || Mesias          || Mariscal        || generar_correo                 || 20         || 20        
+3     || Denise          || Rea             || generar_correo                 || 9          || 9         
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 11.75
-		|Aprobados  (14-20)         :  3
-		|Suspenso   (09-13)         :  0
-		|Reprobados (01-08)         :  1
+		|Promedio del curso         : 13
+		|Aprobados  (14-20)         :  1
+		|Suspenso   (09-13)         :  2
+		|Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                          Veronica
+                                             sdfjk
                                         1750573733
