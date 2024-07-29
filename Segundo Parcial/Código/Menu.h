@@ -9,7 +9,7 @@
 #include "SetConsole - UTF8.h"
 #include "IngresoDatos.h"
 #include "Materia.h"
-#include "ordenamientoVersion2idk.h"
+#include "ordenamiento.h"
 #include "busquedaBinaria.h"
 #include "TablaHash.h"
 

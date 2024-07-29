@@ -5,7 +5,27 @@
 #include "Lista.h"
 #include "Estudiante.h"
 
+void ordenarPorBurbuja(Lista<Estudiante>& lista) {
+    int n = lista.size();
+    bool swapped;
+
+    do {
+        swapped = false;
+        for (int i = 1; i < n; i++) {
+            if (lista[i - 1].get_Promedio() > lista[i].get_Promedio()) {
+                Estudiante temp = lista[i - 1];
+                lista[i - 1] = lista[i];
+                lista[i] = temp;
+                swapped = true;
+            }
+        }
+        n--; 
+    } while (swapped);
+}
+
 void busquedaBinaria(Lista<Estudiante>& lista, float promedio) {
+    ordenarPorBurbuja(lista); 
+
     int primero = 0;
     int ultimo = lista.size() - 1;
     int medio;
@@ -27,4 +47,4 @@ void busquedaBinaria(Lista<Estudiante>& lista, float promedio) {
     std::cout << "No se encontró un estudiante con el promedio: " << promedio << std::endl;
 }
 
-#endif 
+#endif
