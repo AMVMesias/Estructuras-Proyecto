@@ -81,7 +81,7 @@ public:
     }
 };
 
-template <typename T>
+/*template <typename T>
 class BucketSort : public Ordenamiento<T> {
 private:
     struct Nodo {
@@ -124,6 +124,16 @@ private:
         }
     }
 
+    T encontrarMaximo(T a[], int n) {
+        T max = a[0];
+        for (int i = 1; i < n; ++i) {
+            if (a[i] > max) {
+                max = a[i];
+            }
+        }
+        return max;
+    }
+
 public:
     void ordenar(T a[], int n) override {
         if (n <= 0) return;
@@ -141,28 +151,8 @@ public:
         // Distribuir los elementos en las urnas
         for (int i = 0; i < n; ++i) {
             int clave = a[i];
-            agregarEnUrna(urnas[clave], a[i]);
-        }
-
-        // Encontrar la primera urna no vacía
-        int i = 0;
-        while (i < numUrnas && esVacia(urnas[i])) {
-            i++;
-        }
-
-        // Enlazar urnas no vacías
-        Nodo* ultimaUrna = nullptr;
-        for (int j = i; j < numUrnas; ++j) {
-            if (!esVacia(urnas[j])) {
-                if (!ultimaUrna) {
-                    ultimaUrna = urnas[j];
-                } else {
-                    Nodo* temp = ultimaUrna;
-                    while (temp->siguiente) {
-                        temp = temp->siguiente;
-                    }
-                    temp->siguiente = urnas[j];
-                }
+            if (clave >= 0 && clave < numUrnas) {  // Verificar que la clave esté dentro del rango
+                agregarEnUrna(urnas[clave], a[i]);
             }
         }
 
@@ -170,9 +160,17 @@ public:
         combinarUrnas(urnas, numUrnas, a);
 
         // Limpiar memoria
+        for (int i = 0; i < numUrnas; ++i) {
+            Nodo* temp = urnas[i];
+            while (temp) {
+                Nodo* siguiente = temp->siguiente;
+                delete temp;
+                temp = siguiente;
+            }
+        }
         delete[] urnas;
     }
-};
+};*/
 
 template <typename T>
 void countingSort(T a[], int n, int exp) {

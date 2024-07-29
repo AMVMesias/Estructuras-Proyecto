@@ -8,6 +8,4 @@ NRC:
 Notas ordenadas con ShellSort:
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 16              || jkfsd           || ksjdf                         
-2     || 18              || Leo             || Narvaez                       
-3     || 20              || Mesias          || Mariscal                      
+1     || 3               || fdsf            || dfd                           

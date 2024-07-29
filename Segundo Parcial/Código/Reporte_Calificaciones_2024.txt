@@ -3,25 +3,25 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: sdfiu
-		NRC: 123
+		Materia: dfsfsd
+		NRC: 213213
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     || Leonardo        || Narvaez         || generar_correo                 || 10         || 10        
-2     || Mesias          || Mariscal        || generar_correo                 || 20         || 20        
-3     || Denise          || Rea             || generar_correo                 || 9          || 9         
+1     ||                 ||                 || generar_correo                 || 5          || 5         
+2     ||                 ||                 || generar_correo                 || 6          || 6         
+3     ||                 ||                 || generar_correo                 || 7          || 7         
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 13
-		|Aprobados  (14-20)         :  1
-		|Suspenso   (09-13)         :  2
-		|Reprobados (01-08)         :  0
+		|Promedio del curso         : 6
+		|Aprobados  (14-20)         :  0
+		|Suspenso   (09-13)         :  0
+		|Reprobados (01-08)         :  3
 
                                      __________________
                                            Docente
-                                             sdfjk
-                                        1750573733
+                                            sdfsdf
+                                        1727669267

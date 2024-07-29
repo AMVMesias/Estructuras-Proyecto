@@ -1,6 +1,11 @@
+UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
+REPORTE DE CALIFICACIONES
+
+Periodo: Mayo 2024 – Septiembre 2024
+Materia: 
+NRC: 
+
 Notas ordenadas con RadixSort:
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 4               || skldfj          || sfdkj                         
-2     || 10              || dfjks           || sdfkj                         
-3     || 20              || sdfljk          || sdfkj                         
+1     || 3               || fdsf            || dfd                           

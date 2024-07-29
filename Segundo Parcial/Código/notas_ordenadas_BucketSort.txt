@@ -8,6 +8,6 @@ NRC:
 Notas ordenadas con BucketSort:
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 9               || Leonardo        || Narvaez                       
-2     || 10              || Mesias          || Mariscal                      
-3     || 20              || Denise          || Rea                           
+1     || 1               || sd              ||                               
+2     || 2               ||                 ||                               
+3     || 3               ||                 ||                               

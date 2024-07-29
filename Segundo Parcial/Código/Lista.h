@@ -2,6 +2,7 @@
 #define LISTA_H
 
 #include <iostream>
+#include <stdexcept>
 
 template<typename T>
 struct Nodo {
@@ -34,15 +35,15 @@ public:
         tamano++;
     }
 
-    // Inserta un nuevo elemento en la lista en orden
+    // Inserta un nuevo elemento en la lista en orden (asumiendo que T tiene operador <)
     void insertarOrdenado(const T& valor) {
         Nodo<T>* nuevo = new Nodo<T>(valor);
-        if (!cabeza || !(valor < cabeza->dato)) {
+        if (!cabeza || valor < cabeza->dato) {
             nuevo->siguiente = cabeza;
             cabeza = nuevo;
         } else {
             Nodo<T>* actual = cabeza;
-            while (actual->siguiente && (valor < actual->siguiente->dato)) {
+            while (actual->siguiente && !(valor < actual->siguiente->dato)) {
                 actual = actual->siguiente;
             }
             nuevo->siguiente = actual->siguiente;
@@ -118,7 +119,6 @@ public:
     ~Lista() {
         clear();
     }
-
 };
 
 #endif // LISTA_H

@@ -6,6 +6,7 @@
 #include "ValidacionCedula.h"
 #include "Lista.h"
 #include "ManejoArchivos.cpp"
+#include "SetConsole - UTF8.h"
 #include "IngresoDatos.h"
 #include "Materia.h"
 #include "ordenamientoVersion2idk.h"
@@ -56,10 +57,10 @@ private:
     void BuscarCalificacion();
 
     float CalcularPromedio();
-    float CalcularPromedio(float*);
+    float CalcularPromedio(float* n, int numNotas);
     QuickSort<double> quickSort;
     ShellSort<double> shellSort;
-    BucketSort<double> bucketSort;
+    BucketSort bucketSort; 
     RadixSort<double> radixSort;
 };
 
@@ -148,12 +149,10 @@ void Menu::OrdenarNotas() {
     }
     cout << endl;
 
-    // Convertir arrPromedios de float* a double*
-    double* arrPromediosDouble = new double[numeroEstudiantes];
-    for (int i = 0; i < numeroEstudiantes; ++i) {
-        arrPromediosDouble[i] = static_cast<double>(arrPromedios[i]);
-    }
-
+	double* arrPromediosDouble = new double[numeroEstudiantes];
+		for (int i = 0; i < numeroEstudiantes; ++i) {
+    arrPromediosDouble[i] = static_cast<double>(arrPromedios[i]);
+}
     do {
         cout << "        ~ Submenú de Ordenamiento ~         " << endl;
         cout << ">> 1. BucketSort" << endl;
@@ -349,7 +348,7 @@ void Menu::guardar_informacion(){
 		//puedo poner que ingrese su correo
 		notas_=IngresarNotas();
         //arrPromedios[i] = promedio;
-        prom=this->CalcularPromedio(notas_);
+        prom=this->CalcularPromedio(notas_, this->numNotas);
         arrPromedios[i]=prom;
         Estudiante estudiante(nombre,apellido,notas_,"generar_correo",prom);
         this->estudiantes.insertarAlFinal(estudiante);
@@ -357,8 +356,6 @@ void Menu::guardar_informacion(){
 
 	}
 }
-
-
 float* Menu::IngresarNotas() {
 	float *notas=new float(this->numNotas);
 	float suma=0;
@@ -379,24 +376,26 @@ float* Menu::IngresarNotas() {
 }
 
 void Menu::AlmacenarDatos() {
-    if (numeroEstudiantes <= 0) {
-        cout << "Número de estudiantes no válido." << endl;
-        return;
+ 
+	manejoArchivos.escribir_Encabezado(materia1.getNombre(),materia1.getCodigo(), numNotas);
+    arrPromedios = new float[numeroEstudiantes];
+
+    Nodo<Estudiante>* actual = estudiantes.getCabeza();
+    int i = 0;
+
+    while (actual != nullptr) {
+        float promedio = CalcularPromedio(actual->dato.get_notas(), numNotas);
+        arrPromedios[i] = promedio;
+
+        manejoArchivos.escribir_Info_Alumnos(i, actual->dato.getNombre(), actual->dato.getApellido(), actual->dato.getCorreo(), actual->dato.get_notas(), numNotas, promedio);
+
+        actual = actual->siguiente;
+        i++;
     }
+	manejoArchivos.escribir_Resumen(arrPromedios, numeroEstudiantes, profesor.getNombre(), std::to_string(profesor.getCedula()));
 
-    // Convertir la lista de notas a un array de float
-    float* arrayNotas = new float[notas.size()];
 
-    for (size_t i = 0; i < notas.size(); ++i) {
-        arrayNotas[i] = static_cast<float>(notas[i]);
-    }
-
-    float promedioCurso = CalcularPromedio();
-    manejoArchivos.crear_Reporte_notas(this->materia1.getNombre(),this->materia1.getCodigo(),this->numNotas,this->estudiantes,this->profesor);
-    //manejoArchivos.escribir_Info_Alumnos(1, nombreDocente, nombreDocente, NRC, arrayNotas, numeroEstudiantes, promedioCurso);
-    //manejoArchivos.escribir_Resumen(arrPromedios, numeroEstudiantes, nombreDocente, stoi(cedulaDocente));
-
-    delete[] arrayNotas;
+    std::cout << "Datos almacenados exitosamente." << std::endl;
 }
 
 float Menu::CalcularPromedio() {
@@ -407,12 +406,13 @@ float Menu::CalcularPromedio() {
     return suma / numeroEstudiantes;
 }
 
-float Menu::CalcularPromedio(float* n){
-	    float suma = 0.0;
-    for (int i = 0; i < this->numNotas; ++i) {
+float Menu::CalcularPromedio(float* n, int numNotas) {
+    float suma = 0.0;
+    for (int i = 0; i < numNotas; ++i) {
         suma += n[i];
     }
     return suma / numNotas;
 }
+
 
 #endif // MENU_H
