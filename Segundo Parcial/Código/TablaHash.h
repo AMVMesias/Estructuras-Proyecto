@@ -44,10 +44,12 @@ public:
     }
 
     void buscar(const K& clave) const {
+    	//ManejoArchivos manejo;
         int indice = funcionHash(clave);
         Nodo<Entrada>* tmp = tabla[indice].getCabeza();
         while (tmp) {
             if (tmp->dato.clave == clave) {
+            	//manejo.escribir_ResumenBusqueda("Búsqueda Tabla Hash",clave,tmp)
                 tmp->dato.valor.mostrarInformacion(); 
                 return;
             }

@@ -8,5 +8,6 @@ NRC:
 Notas ordenadas con QuickSort:
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 1               ||                 ||                               
-2     || 5               ||                 ||                               
+1     || 9               || fds             || fds                           
+2     || 13              || fds             || fds                           
+3     || 20              || fds             || fds                           

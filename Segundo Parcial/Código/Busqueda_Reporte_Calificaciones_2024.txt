@@ -4,18 +4,17 @@
 
 		Periodo: Mayo 2024 – Septiembre 2024
 
-Calificacion buscada14
-ALGORITMO :Quicksort
+Calificacion buscada: 3
+ALGORITMO :Busqueda Binaria
 
 =====================================================================================
 Corresponde al estudiante: 
-Alumno: Denise
+Alumno: Majo
 Correo: coreeeeo
-Calificacion: 14.5
-Index: 14
+Calificacion: 3
 
 
                                      __________________
                                            Docente
-                                          Chimuelo
-                                           1478541
+                                              gfhj
+                                        1756177935

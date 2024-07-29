@@ -4,10 +4,12 @@
 #include <iostream>
 #include "Lista.h"
 #include "Estudiante.h"
+//#include "ManejoArchivos.cpp"
 
 void ordenarPorBurbuja(Lista<Estudiante>& lista) {
     int n = lista.size();
     bool swapped;
+    
 
     do {
         swapped = false;
@@ -23,9 +25,9 @@ void ordenarPorBurbuja(Lista<Estudiante>& lista) {
     } while (swapped);
 }
 
-void busquedaBinaria(Lista<Estudiante>& lista, float promedio) {
+void busquedaBinaria(Lista<Estudiante>& lista, float promedio,Estudiante &encontrado) {
     ordenarPorBurbuja(lista); 
-
+	//ManejoArchivos manejo;
     int primero = 0;
     int ultimo = lista.size() - 1;
     int medio;
@@ -38,6 +40,7 @@ void busquedaBinaria(Lista<Estudiante>& lista, float promedio) {
             primero = medio + 1;
         } else if (estudiante.get_Promedio() == promedio) {
             std::cout << "Estudiante encontrado:" << std::endl;
+            encontrado=estudiante;
             estudiante.mostrarInformacion();
             return;
         } else {

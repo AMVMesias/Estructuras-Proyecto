@@ -8,5 +8,6 @@ NRC:
 Notas ordenadas con BucketSort:
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 1               ||                 ||                               
-2     || 5               ||                 ||                               
+1     || 3               || Denise          || Rea                           
+2     || 10              || Belen           || Diaz                          
+3     || 12              || Majo            || Rea                           

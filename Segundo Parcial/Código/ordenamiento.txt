@@ -5,14 +5,15 @@
 		Periodo: Mayo 2024 – Septiembre 2024
 
 Calificaciones Ordenadas
-ALGORITMO :RadixSort
+ALGORITMO :QuickSort
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 5               ||                 ||                               
-1     || 1               ||                 ||                               
+1     || 9               || fds             || fds                           
+1     || 13              || fds             || fds                           
+1     || 20              || fds             || fds                           
 
 
                                      __________________
                                            Docente
-                                         fsdfsdfsd
-                                        1727669267
+                                               dfg
+                                        1756177935

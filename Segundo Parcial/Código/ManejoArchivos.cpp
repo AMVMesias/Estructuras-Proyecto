@@ -173,10 +173,12 @@ void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamie
                 reporte << internal << setw(50) << profe.getNombre() << endl;
                 reporte << internal << setw(50) << std::to_string(profe.getCedula()) << endl;
             reporte.close();
+}else{
+	cout<<"no se pudo abrir el archivo"<<endl;
 }
 }
 
-void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int nota_busqueda,Estudiante estudiante,int index,Profesor profe){
+void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int nota_busqueda,Estudiante estudiante,Profesor profe){
 	ofstream reporte("Busqueda_Reporte_Calificaciones_2024.txt");
 			if (reporte.is_open()) {
                 reporte << internal << setw(70) << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE" << endl;
@@ -193,7 +195,7 @@ void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int
                 	reporte<<"Alumno: "<<estudiante.getNombre()<<endl;
                 	reporte<<"Correo: "<<"coreeeeo"<<endl;
                 	reporte<<"Calificacion: "<<estudiante.get_Promedio()<<endl;
-                	reporte<<"Index: "<<index<<endl;
+                //	reporte<<"Index: "<<index<<endl;
             //}
             reporte << endl;
             reporte << endl;

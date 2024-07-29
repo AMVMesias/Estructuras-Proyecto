@@ -12,6 +12,8 @@
 #include "ordenamiento.h"
 #include "busquedaBinaria.h"
 #include "TablaHash.h"
+#include "MetodosExternos.cpp"
+#include "Estudiante.h"
 
 using namespace std;
 long long int validar(long long int &x);
@@ -63,6 +65,20 @@ private:
     BucketSort bucketSort; 
     RadixSort<double> radixSort;
 };
+
+string crearCorreo(const string& nombre, const string& apellido) {
+    string correo;
+    string nombreC= nombre;
+    string apellidoC = apellido;
+
+    for (char& c : nombreC) c = tolower(c);
+    for (char& c : apellidoC) c = tolower(c);
+
+    // Construir la dirección de correo
+    correo = nombreC.substr(0, 1) + apellidoC + "@espe.edu.ec";
+    
+    return correo;
+}
 
 Menu::Menu() : profesorLogueado(false), materiaIngresada(false), estudiantesIngresados(false),
                notasIngresadas(false), datosAlmacenados(false), numeroEstudiantes(0), arrPromedios(nullptr) {}
@@ -239,21 +255,17 @@ void Menu::escribirNotasOrdenadasEnArchivo(const double* arrPromedios, int numer
     cout << "Notas ordenadas guardadas en 'notas_ordenadas_" << metodoOrdenamiento << ".txt'." << endl;
 }
 void Menu::OrdenamientoExterno() {
-    // Implementar ordenamiento externo
+    MetodoExterno metodo("OrdenamientoDirecto.txt");
+    for (int i=0;i<this->numeroEstudiantes;i++){
+    	metodo.insertar(this->arrPromedios[i],"OrdenamientoDirecto.txt");
+	}
+	metodo.setN(this->numeroEstudiantes);
+	metodo.ordenarPorDirecta();
     cout << "Realizando ordenamiento externo..." << endl;
     cout << "Archivos creados: particion1.txt, particion2.txt, OrdenExterno.txt" << endl;
 }
 
 void Menu::BuscarCalificacion(){
-    /*cout << "Ingrese la calificación a buscar: ";
-    float calificacion;
-    cin >> calificacion;
-    cout << "Seleccione el algoritmo de búsqueda:" << endl;
-    cout << "1. Búsqueda lineal" << endl;
-    cout << "2. Búsqueda binaria" << endl;
-    int opcion;
-    cin >> opcion;
-    // Implementar la búsqueda seleccionada*/
 
     int opcion;
 
@@ -273,8 +285,16 @@ void Menu::BuscarCalificacion(){
             cout << "Ingrese el promedio a buscar: ";
 
 			float promedioBuscado;
-			cin >> promedioBuscado;
-			busquedaBinaria(estudiantes, promedioBuscado);
+			//cin >> promedioBuscado;
+			Estudiante aux;
+			promedioBuscado=this->crearUsuario.IngresoEnteros("promedio>>  ");
+			busquedaBinaria(estudiantes, promedioBuscado,aux);
+			//busquedaBinaria(estudiantes, promedioBuscado);
+			if(aux.getNombre()!=""){
+				
+				cout<<"Se ha creado su informe de búsqueda con nombre Busqueda_Reporte_Calificaciones_2024.txt"<<endl;
+				manejoArchivos.escribir_ResumenBusqueda("Busqueda Binaria",promedioBuscado,aux,profesor);
+			}
 			system("pause");
             break;
         }
@@ -342,22 +362,25 @@ void Menu::PedirNumeroEstudiantes() {
 }
 
 void Menu::guardar_informacion(){
-	string nombre,apellido,cedula;
+	string nombre,apellido,correo;
 	float *notas_= new float(this->numNotas);
 	float prom=0;
 	materia1=profesor.seleccionarMateria();
 	for(int i=0; i< this->numeroEstudiantes;i++){
-		cout<<"Registre: "<<endl;
-		cout<<"Nombre: ";
+		cout<<endl;
+		cout<<"R E G I S T R O "<<i+1<<endl;
+		cout<<"Nombre:   ";
 		nombre=this->crearUsuario.leerLetras();
 		cout<<"Apellido: ";
 		apellido=this->crearUsuario.leerLetras();
 		//puedo poner que ingrese su correo
 		notas_=IngresarNotas();
-        //arrPromedios[i] = promedio;
+		cout<<endl;
         prom=this->CalcularPromedio(notas_, this->numNotas);
         arrPromedios[i]=prom;
-        Estudiante estudiante(nombre,apellido,notas_,"generar_correo",prom);
+        correo=crearCorreo(nombre,apellido);
+        Estudiante estudiante(nombre,apellido,notas_,correo,prom);
+        
         this->estudiantes.insertarAlFinal(estudiante);
         this->tablaHash.insertar(prom, estudiante); 
 

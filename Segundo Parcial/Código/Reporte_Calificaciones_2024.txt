@@ -3,24 +3,25 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: fsdfsd
-		NRC: 12321
+		Materia: EDO
+		NRC: 14521
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     ||                 ||                 || generar_correo                 || 5          || 5         
-2     ||                 ||                 || generar_correo                 || 1          || 1         
+1     || Denise          || Rea             || drea@espe.edu.ec               || 15         || 15        
+2     || Belen           || Rea             || brea@espe.edu.ec               || 13         || 13        
+3     || Eduardo         || Herrera         || eherrera@espe.edu.ec           || 20         || 20        
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 3
-		|Aprobados  (14-20)         :  0
-		|Suspenso   (09-13)         :  0
-		|Reprobados (01-08)         :  2
+		|Promedio del curso         : 16
+		|Aprobados  (14-20)         :  2
+		|Suspenso   (09-13)         :  1
+		|Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                         fsdfsdfsd
-                                        1727669267
+                                             Belen
+                                        1756177935
