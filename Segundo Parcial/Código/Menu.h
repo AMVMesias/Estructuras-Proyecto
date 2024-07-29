@@ -154,6 +154,7 @@ void Menu::OrdenarNotas() {
     arrPromediosDouble[i] = static_cast<double>(arrPromedios[i]);
 }
     do {
+    	system("cls");
         cout << "        ~ Submenú de Ordenamiento ~         " << endl;
         cout << ">> 1. BucketSort" << endl;
         cout << ">> 2. QuickSort" << endl;
@@ -171,34 +172,40 @@ void Menu::OrdenarNotas() {
                 bucketSort.ordenar(arrPromediosDouble, numeroEstudiantes);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "BucketSort");
+                system("pause");
                 break;
             case 2:
                 ordenamiento = "QuickSort";
                 quickSort.ordenar(arrPromediosDouble, numeroEstudiantes);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "QuickSort");
-                break;
+                system("pause");
+				break;
             case 3:
                 ordenamiento = "ShellSort";
                 shellSort.ordenar(arrPromediosDouble, numeroEstudiantes);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "ShellSort");
+                system("pause");
                 break;
             case 4:
                 ordenamiento = "RadixSort";
                 radixSort.ordenar(arrPromediosDouble, numeroEstudiantes);
                 imprimirNotasOrdenadas(arrPromediosDouble, numeroEstudiantes);
                 escribirNotasOrdenadasEnArchivo(arrPromediosDouble, numeroEstudiantes, "RadixSort");
+                system("pause");
                 break;
             case 5:
                 ordenamiento = "Métodos Externos";
                 OrdenamientoExterno();
+                system("pause");
                 break;
             case 0:
                 MostrarMenuPrincipal();
                 break;
             default:
                 cout << "Opción no válida. Por favor, seleccione una opción válida." << endl;
+                system("pause");
         }
     } while (opcion != 0);
 
@@ -352,7 +359,7 @@ void Menu::guardar_informacion(){
         arrPromedios[i]=prom;
         Estudiante estudiante(nombre,apellido,notas_,"generar_correo",prom);
         this->estudiantes.insertarAlFinal(estudiante);
-        this->tablaHash.insertar(prom, estudiante); // Insertar en la tabla hash
+        this->tablaHash.insertar(prom, estudiante); 
 
 	}
 }

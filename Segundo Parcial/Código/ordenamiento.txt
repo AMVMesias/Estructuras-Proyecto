@@ -2,10 +2,17 @@
                        REPORTE DE CALIFICACIONES ORDENADAS
 
 
-        Periodo: Mayo 2024 – Septiembre 2024
+		Periodo: Mayo 2024 – Septiembre 2024
 
 Calificaciones Ordenadas
-ALGORITMO :QuickSort
+ALGORITMO :RadixSort
 N°   || Promedio        || Nombre          || Apellido                       || 
 =====================================================================================
-1     || 3               || mdfsh           || lkjsdf                        
+1     || 5               ||                 ||                               
+1     || 1               ||                 ||                               
+
+
+                                     __________________
+                                           Docente
+                                         fsdfsdfsd
+                                        1727669267

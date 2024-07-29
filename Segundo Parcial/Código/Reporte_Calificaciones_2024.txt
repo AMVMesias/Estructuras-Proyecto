@@ -3,27 +3,24 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: fdsfsd
-		NRC: 12645
+		Materia: fsdfsd
+		NRC: 12321
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     ||                 ||                 || generar_correo                 || 1          || 1         
-2     ||                 ||                 || generar_correo                 || 2          || 2         
-3     ||                 ||                 || generar_correo                 || 3          || 3         
-4     ||                 ||                 || generar_correo                 || 4          || 4         
-5     ||                 ||                 || generar_correo                 || 7          || 7         
+1     ||                 ||                 || generar_correo                 || 5          || 5         
+2     ||                 ||                 || generar_correo                 || 1          || 1         
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 3.4
+		|Promedio del curso         : 3
 		|Aprobados  (14-20)         :  0
 		|Suspenso   (09-13)         :  0
-		|Reprobados (01-08)         :  5
+		|Reprobados (01-08)         :  2
 
                                      __________________
                                            Docente
-                                            sdfsdf
+                                         fsdfsdfsd
                                         1727669267
