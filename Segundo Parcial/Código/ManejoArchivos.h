@@ -21,6 +21,5 @@ class ManejoArchivos{
 	void escribir_Encabezado(const string&,const string&,int);
 	void escribir_Info_Alumnos(int, const string&, const string&, const string&,const float[],int,float);
 	void escribir_Resumen(const float*,int,const string,const string&);
-	void escribir_ResumenOrdenamiento(const string&, Lista <Estudiante>,Profesor);
 	void escribir_ResumenBusqueda(const string&,float,Estudiante,Profesor);
 };

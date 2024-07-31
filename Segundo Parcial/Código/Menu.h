@@ -147,7 +147,7 @@ void Menu::MostrarMenuPrincipal() {
                 break;
             case 0:
                 cout << "Saliendo del programa..." << endl;
-                system("pause");
+                exit(0);
                 break;
             default:
                 cout << "Opción inválida, por favor intente nuevamente." << endl;
@@ -225,7 +225,7 @@ void Menu::OrdenarNotas() {
         }
     } while (opcion != 0);
 
-    manejoArchivos.escribir_ResumenOrdenamiento(ordenamiento, estudiantes, profesor);
+    //manejoArchivos.escribir_ResumenOrdenamiento(ordenamiento, estudiantes, profesor);
     delete[] arrPromediosDouble;
 }
 void Menu::escribirNotasOrdenadasEnArchivo(const double* arrPromedios, int numeroEstudiantes, const string& metodoOrdenamiento) {
@@ -237,8 +237,8 @@ void Menu::escribirNotasOrdenadasEnArchivo(const double* arrPromedios, int numer
      archivo << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE\n";
     archivo << "REPORTE DE CALIFICACIONES\n\n";
     archivo << "Periodo: Mayo 2024 – Septiembre 2024\n";
-    archivo << "Materia: " << materia << "\n";
-    archivo << "NRC: " << NRC << "\n\n";
+    archivo << "Materia: " << materia1.getNombre() << "\n";
+    archivo << "NRC: " << materia1.getCodigo() << "\n\n";
     archivo << "Notas ordenadas con " << metodoOrdenamiento << ":" << endl;
     archivo << left << setw(5) << "N°" << " || " << setw(15) << "Promedio" << " || " << setw(15) << "Nombre" << " || " << setw(30) << "Apellido" << " || ";
     archivo << "\n=====================================================================================" << endl;
@@ -371,6 +371,7 @@ void Menu::guardar_informacion(){
 	string nombre,apellido,correo;
 	float *notas_= new float(this->numNotas);
 	float prom=0;
+	int id=0;
 	materia1=profesor.seleccionarMateria();
 	for(int i=0; i< this->numeroEstudiantes;i++){
 		cout<<endl;
@@ -385,8 +386,8 @@ void Menu::guardar_informacion(){
         prom=this->CalcularPromedio(notas_, this->numNotas);
         arrPromedios[i]=prom;
         correo=crearCorreo(nombre,apellido);
-        Estudiante estudiante(nombre,apellido,notas_,correo,prom);
-        
+        id=i+1;
+        Estudiante estudiante(nombre,apellido,notas_,correo,prom,id);
         this->estudiantes.insertarAlFinal(estudiante);
         this->tablaHash.insertar(prom, estudiante); 
 

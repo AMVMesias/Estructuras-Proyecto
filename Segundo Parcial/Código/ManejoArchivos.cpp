@@ -145,7 +145,7 @@ void ManejoArchivos::crear_Reporte_notas(const string& materia, const string& nr
 	escribir_Resumen(prom,estudiantes.size(),profe.getNombre(),std::to_string(profe.getCedula()));
 }
 
-void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamiento,Lista<Estudiante> estudiantes,Profesor profe){
+/* ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamiento,Lista<Estudiante> estudiantes,Profesor profe){
 	ofstream reporte("ordenamiento.txt");
 			if (reporte.is_open()) {
                 reporte << internal << setw(70) << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE" << endl;
@@ -176,7 +176,7 @@ void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamie
 }else{
 	cout<<"no se pudo abrir el archivo"<<endl;
 }
-}
+}*/
 
 void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, float nota_busqueda,Estudiante estudiante,Profesor profe){
 	ofstream reporte("Busqueda_"+nombre_Busqueda+"_Reporte_Calificaciones_2024.txt");
@@ -193,9 +193,10 @@ void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, flo
                 	//aqui sacamos la info del estudiante y lo imprimimos en el reporte
                 	reporte<<"Corresponde al estudiante: "<<endl;
                 	reporte<<"Alumno: "<<estudiante.getNombre()<<endl;
+                	reporte<<"Apellido: "<<estudiante.getApellido()<<endl;
                 	reporte<<"Correo: "<<estudiante.getCorreo()<<endl;
                 	reporte<<"Calificacion: "<<estudiante.get_Promedio()<<endl;
-                //	reporte<<"Index: "<<index<<endl;
+                	reporte<<"Index: "<<estudiante.getID()<<endl;
             //}
             reporte << endl;
             reporte << endl;

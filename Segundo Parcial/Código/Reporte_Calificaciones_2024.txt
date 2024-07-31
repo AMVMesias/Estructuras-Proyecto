@@ -3,26 +3,25 @@
 
 
 		Periodo: Mayo 2024 – Septiembre 2024
-		Materia: EDO
-		NRC: 145
+		Materia: edo
+		NRC: 7451
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     || Mesias          || Mariscal        || mmariscal@espe.edu.ec          || 12.6       || 12.6      
-2     || Gabriel Murillo || Murilloo        || gmurilloo@espe.edu.ec          || 13         || 13        
-3     || Majo            || Diaz            || mdiaz@espe.edu.ec              || 10         || 10        
-4     || Belen           || Rea             || brea@espe.edu.ec               || 19         || 19        
+1     || aaaaa           || eeee            || aeeee@espe.edu.ec              || 12.3       || 12.3      
+2     || aeeeee          || fffffggggff     || afffffggggff@espe.edu.ec       || 3.6        || 3.6       
+3     || sdsdsd          || lkj             || slkj@espe.edu.ec               || 16         || 16        
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 13.65
+		|Promedio del curso         : 10.6333
 		|Aprobados  (14-20)         :  1
-		|Suspenso   (09-13)         :  3
-		|Reprobados (01-08)         :  0
+		|Suspenso   (09-13)         :  1
+		|Reprobados (01-08)         :  1
 
                                      __________________
                                            Docente
-                                            Denise
+                                             sdfgh
                                         1756177935
