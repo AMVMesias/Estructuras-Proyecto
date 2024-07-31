@@ -4,17 +4,17 @@
 
 		Periodo: Mayo 2024 – Septiembre 2024
 
-Calificacion buscada: 4
+Calificacion buscada: 12.6
 ALGORITMO :Busqueda Hash
 
 =====================================================================================
 Corresponde al estudiante: 
-Alumno: ed
-Correo: essd@espe.edu.ec
-Calificacion: 4
+Alumno: Mesias
+Correo: mmariscal@espe.edu.ec
+Calificacion: 12.6
 
 
                                      __________________
                                            Docente
-                                        Denise Rea
+                                            Denise
                                         1756177935

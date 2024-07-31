@@ -4,24 +4,25 @@
 
 		Periodo: Mayo 2024 – Septiembre 2024
 		Materia: EDO
-		NRC: 14521
+		NRC: 145
 
 N°   || Estudiante      || Apellido        || Correo                         || Nota       || Promedio  
 ====================================================================================================
-1     || Denise          || Rea             || drea@espe.edu.ec               || 15         || 15        
-2     || Belen           || Rea             || brea@espe.edu.ec               || 13         || 13        
-3     || Eduardo         || Herrera         || eherrera@espe.edu.ec           || 20         || 20        
+1     || Mesias          || Mariscal        || mmariscal@espe.edu.ec          || 12.6       || 12.6      
+2     || Gabriel Murillo || Murilloo        || gmurilloo@espe.edu.ec          || 13         || 13        
+3     || Majo            || Diaz            || mdiaz@espe.edu.ec              || 10         || 10        
+4     || Belen           || Rea             || brea@espe.edu.ec               || 19         || 19        
 
 
 
 			RESUMEN
 
-		|Promedio del curso         : 16
-		|Aprobados  (14-20)         :  2
-		|Suspenso   (09-13)         :  1
+		|Promedio del curso         : 13.65
+		|Aprobados  (14-20)         :  1
+		|Suspenso   (09-13)         :  3
 		|Reprobados (01-08)         :  0
 
                                      __________________
                                            Docente
-                                             Belen
+                                            Denise
                                         1756177935

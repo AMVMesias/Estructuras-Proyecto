@@ -287,12 +287,13 @@ void Menu::BuscarCalificacion(){
 			float promedioBuscado;
 			//cin >> promedioBuscado;
 			Estudiante aux;
-			promedioBuscado=this->crearUsuario.IngresoEnteros("promedio>>  ");
+		//	promedioBuscado=this->crearUsuario.IngresoEnteros("promedio>>  ");
+			cin>>promedioBuscado;
 			busquedaBinaria(estudiantes, promedioBuscado,aux);
 			//busquedaBinaria(estudiantes, promedioBuscado);
 			if(aux.getNombre()!=""){
 				
-				cout<<"Se ha creado su informe de búsqueda con nombre Busqueda_Reporte_Calificaciones_2024.txt"<<endl;
+				cout<<"Se ha creado su informe de búsqueda con nombre Busqueda_Busqueda Binaria_Reporte_Calificaciones_2024.txt"<<endl;
 				manejoArchivos.escribir_ResumenBusqueda("Busqueda Binaria",promedioBuscado,aux,profesor);
 			}
 			system("pause");
@@ -300,11 +301,16 @@ void Menu::BuscarCalificacion(){
         }
         case 2: {
             cout << "               ~ BUSQUEDA HASH ~               " << endl;
+            Estudiante aux;
             float promedioBuscado;
             cout << "Ingrese el promedio a buscar: ";
             cin >> promedioBuscado;
             try {
-                tablaHash.buscar(promedioBuscado);
+                tablaHash.buscar(promedioBuscado,aux);
+                if(aux.getNombre()!=""){
+				cout<<"Se ha creado su informe de búsqueda con nombre Busqueda_Busqueda Hash_Reporte_Calificaciones_2024.txt"<<endl;
+				manejoArchivos.escribir_ResumenBusqueda("Busqueda Hash",promedioBuscado,aux,profesor);
+				}
             } catch (const runtime_error& e) {
                 cout << e.what() << endl;
             }
@@ -394,7 +400,7 @@ float* Menu::IngresarNotas() {
         cout<<"Nota "<<i+1<<" : ";
         //val=this->crearUsuario.leerFlotantes();
         cin>>val;
-        while(val>20 || val< 0){
+        while(val>20 || val<= 0){
         	cout<<" Fuera de rango, admite valores entre 1-20"<<endl;
         	//val=this->crearUsuario.leerFlotantes();
         	cout<<"Nota "<<i+1<<" : ";

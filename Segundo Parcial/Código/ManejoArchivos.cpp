@@ -178,8 +178,8 @@ void ManejoArchivos::escribir_ResumenOrdenamiento(const string &nombre_Ordenamie
 }
 }
 
-void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int nota_busqueda,Estudiante estudiante,Profesor profe){
-	ofstream reporte("Busqueda_Reporte_Calificaciones_2024.txt");
+void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, float nota_busqueda,Estudiante estudiante,Profesor profe){
+	ofstream reporte("Busqueda_"+nombre_Busqueda+"_Reporte_Calificaciones_2024.txt");
 			if (reporte.is_open()) {
                 reporte << internal << setw(70) << "UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE" << endl;
                 reporte << internal << setw(60) << "REPORTE DE BUSQUEDA \n\n" << endl;
@@ -193,7 +193,7 @@ void ManejoArchivos::escribir_ResumenBusqueda(const string& nombre_Busqueda, int
                 	//aqui sacamos la info del estudiante y lo imprimimos en el reporte
                 	reporte<<"Corresponde al estudiante: "<<endl;
                 	reporte<<"Alumno: "<<estudiante.getNombre()<<endl;
-                	reporte<<"Correo: "<<"coreeeeo"<<endl;
+                	reporte<<"Correo: "<<estudiante.getCorreo()<<endl;
                 	reporte<<"Calificacion: "<<estudiante.get_Promedio()<<endl;
                 //	reporte<<"Index: "<<index<<endl;
             //}

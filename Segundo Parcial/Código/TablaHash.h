@@ -43,7 +43,7 @@ public:
         tabla[indice].insertarOrdenado(nuevaEntrada); 
     }
 
-    void buscar(const K& clave) const {
+    void buscar(const K& clave, Estudiante &estudiante) const {
     	//ManejoArchivos manejo;
         int indice = funcionHash(clave);
         Nodo<Entrada>* tmp = tabla[indice].getCabeza();
@@ -51,6 +51,7 @@ public:
             if (tmp->dato.clave == clave) {
             	//manejo.escribir_ResumenBusqueda("Búsqueda Tabla Hash",clave,tmp)
                 tmp->dato.valor.mostrarInformacion(); 
+                estudiante=tmp->dato.valor;
                 return;
             }
             tmp = tmp->siguiente;
